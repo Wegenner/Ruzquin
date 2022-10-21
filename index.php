@@ -3,7 +3,7 @@
     include 'shared/_header.php';
 
 ?>
-
+<div class="container">
     <div class="container">
 
         <div class="row">
@@ -52,108 +52,108 @@
 
             <div class="col-auto align-items-center columnasSiniestros" style="padding:0;width:15%;text-align:center">
 
-                <div class="titulosEstados" style="color:white;background-color:#343F46">
-                    <p>Recepción</p>
+                <div class="titulosEstados">
+                    <p style="margin-bottom:1rem;">Recepción</p>
                 </div>
 
                     <ul id="siniestrosIds">
                         
-                        <a class="LigaSiniestros" >@sini</a>
-                        <a class="LigaSiniestros" >@sini2</a>
-                        <a class="LigaSiniestros" >@sini3</a>
-                        <a class="LigaSiniestros" >@sini4</a>
-                        <a class="LigaSiniestros" >@sini5</a>
-                        <a class="LigaSiniestros" >@sini6</a>
+                        <a class="LigaSiniestros" href="#" >@sini</a>
+                        <a class="LigaSiniestros" href="#" >@sini2</a>
+                        <a class="LigaSiniestros" href="#" >@sini3</a>
+                        <a class="LigaSiniestros" href="#" >@sini4</a>
+                        <a class="LigaSiniestros" href="#" >@sini5</a>
+                        <a class="LigaSiniestros" href="#" >@sini6</a>
                     
                     </ul>
 
             </div>
             <div class="col-auto align-items-center columnasSiniestros" style="padding:0;width:15%;text-align:center">
-                <div class="titulosEstados" style="color:white;background-color:#343F46"> 
+                <div class="titulosEstados"> 
                     <p>Visita</p>
                 </div>
 
                 <ul class="siniestrosIds">
                     
-                        <a class="LigaSiniestros" asp-action="Details" asp-route-id="@item.ID">@sini</a>
+                        <a class="LigaSiniestros" href="#">@sini</a>
                 
                 </ul>
 
             </div>
 
             <div class="col-auto align-items-center columnasSiniestros" style="padding:0;width:15%;text-align:center">
-                <div class="titulosEstados" style="color:white;background-color:#343F46"> 
+                <div class="titulosEstados"> 
                     <p>Presupuesto</p>
                 </div>
 
                 <ul class="siniestrosIds">
                     
-                    <a class="LigaSiniestros" asp-action="Details" asp-route-id="@item.ID">@sini</a>
+                    <a class="LigaSiniestros" href="#">@sini</a>
 
                 </ul>
 
             </div>
 
             <div class="col-auto align-items-center columnasSiniestros" style="padding:0;width:15%;text-align:center">
-                <div class="titulosEstados" style="color:white;background-color:#343F46"> 
+                <div class="titulosEstados"> 
                     <p>Autorizado</p>
                 </div>
 
                 <ul class="siniestrosIds">
                     
-                    <a class="LigaSiniestros" asp-action="Details" asp-route-id="@item.ID">@sini</a>
+                    <a class="LigaSiniestros" href="#">@sini</a>
                     
                 </ul>
 
             </div>
 
             <div class="col-auto align-items-center columnasSiniestros" style="padding:0;width:15%;text-align:center">
-                <div class="titulosEstados" style="color:white;background-color:#343F46"> 
+                <div class="titulosEstados"> 
                     <p>Espera</p>
                 </div>
 
                 <ul class="siniestrosIds">
                     
-                    <a class="LigaSiniestros" asp-action="Details" asp-route-id="@item.ID">@sini</a>
+                    <a class="LigaSiniestros" href="#">@sini</a>
                     
                 </ul>
 
             </div>
 
             <div class="col-auto align-items-center columnasSiniestros" style="padding:0;width:15%;text-align:center">
-                <div class="titulosEstados" style="color:white;background-color:#343F46"> 
-                    <p>Envío de evidencia</p>
+                <div class="titulosEstados"> 
+                    <p>E. E.</p>
                 </div>
 
                 <ul class="siniestrosIds">
                     
-                    <a class="LigaSiniestros" asp-action="Details" asp-route-id="@item.ID">@sini</a>
+                    <a class="LigaSiniestros" href="#">@sini</a>
                 
                 </ul>
 
             </div>
 
             <div class="col-auto align-items-center columnasSiniestros" style="padding:0;width:15%;text-align:center">
-                <div class="titulosEstados" style="color:white;background-color:#343F46"> 
+                <div class="titulosEstados"> 
                     <p>Cancelado</p>
                 </div>
 
                 <ul class="siniestrosIds">
                     
-                    <a class="LigaSiniestros" asp-action="Details" asp-route-id="@item.ID">@sini</a>
+                    <a class="LigaSiniestros" href="#">@sini</a>
                     
                 </ul>
 
             </div>
 
             <div class="col-auto align-items-center columnasSiniestros" style="padding:0;width:15%;text-align:center">
-                <div class="titulosEstados" style="color:white;background-color:#343F46"> 
-                    <p>Pago de daños</p>
+                <div class="titulosEstados"> 
+                    <p>P. D.</p>
                 </div>
 
                 <ul class="siniestrosIds">
                     
-                    <a class="LigaSiniestros" asp-action="Details" asp-route-id="@item.ID">@sini</a>
+                    <a class="LigaSiniestros" href="#">@sini</a>
                     
                 </ul>
 
@@ -161,13 +161,13 @@
 
             <div class="col-auto align-items-center columnasSiniestros" style="padding:0;width:15%;text-align:center">
             
-                <div class="titulosEstados" style="color:white;background-color:#343F46"> 
+                <div class="titulosEstados"> 
                     <p>Facturación</p>
                 </div>
 
                 <ul class="siniestrosIds">
                     
-                    <a class="LigaSiniestros" asp-action="Details" asp-route-id="@item.ID">@sini</a>
+                    <a class="LigaSiniestros" href="#">@sini</a>
                     
                 </ul>
 
@@ -176,6 +176,7 @@
         </div>
 
     </div>
+</div>
 
 <?php 
 

@@ -1,18 +1,46 @@
-html {
-  font-size: 14px;
+@import url('https://fonts.googleapis.com/css2?family=Fauna+One&display=swap');
+
+*{
+  box-sizing: border-box;
 }
 
-@media (min-width: 768px) {
-  html {
-    font-size: 16px;
-  }
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-family: 'Fauna One', serif;
+  margin: 0;
+  padding: 0;
+  background-color: #2f393f;
+
 }
 
-html {
-  position: relative;
-  min-height: 100%;
+#logo {
+  font-size: 20px;
+  margin: 0 5px 0 30px;
+  background-color:#2f393f;
+  color:white;
 }
 
-body {
-  margin-bottom: 60px;
+#menuLink{
+  font-size: 12px;
+  background-color:#2f393f;
+  color:white;
+}
+
+.nav{
+  list-style: none;
+  display:inline-block;
+}
+
+.nav li {
+  padding: 0 20px;  
+}
+
+.footer[b-k77iyhiojw] {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  white-space: nowrap;
+  line-height: 60px;
 }

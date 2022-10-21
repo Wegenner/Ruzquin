@@ -6,9 +6,12 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
         <style>
-           <?php include "root/css/Custom.css" ?>
-           <?php include "root/css/site.css" ?>
-           <?php include "root/Ruzquin2.styles.css" ?>
+            <?php include "root/css/site.css" ?>
+            <?php   
+                header("Cache-Control: no-cache, must-revalidate"); // HTTP/1.1
+                header("Expires: Sat, 1 Jul 2000 05:00:00 GMT"); 
+            ?>
+            <?php include "root/css/siniestros.css" ?>
         </style>
 
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css"
@@ -16,4 +19,16 @@
 
     </head>
     
-<body style="padding: 0 15px 0 15px">
+<body>
+
+<header>
+    <img src="root/imagenes/LOGO.png" width="50px">
+    <nav>
+        <ul class="nav">
+            <li><a href="#" class="menuLink"> Siniestros </a></li>
+            <li><a href="#" class="menuLink"> Presupuestos </a></li>
+            <li><a href="#" class="menuLink"> Personal </a></li>
+            <li><a href="#" class="menuLink"> Chat </a></li>
+        </ul>
+    </nav>
+</header>
