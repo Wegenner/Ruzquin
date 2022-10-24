@@ -25,7 +25,7 @@ ul {
     margin-bottom: 5px;
 }
 
-    .LigaSiniestros:link, a:visited, a:focus {
+    .LigaSiniestros:link, .LigaSiniestros:visited, .LigaSiniestros:focus {
         color: white;
         background: #687e8c;
         text-decoration: none;

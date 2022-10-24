@@ -1,8 +1,7 @@
 <?php 
-
     include 'shared/_header.php';
-
 ?>
+
 <div class="container">
     <div class="container">
 
@@ -179,7 +178,5 @@
 </div>
 
 <?php 
-
     include 'shared/_footer.php';
-
 ?>

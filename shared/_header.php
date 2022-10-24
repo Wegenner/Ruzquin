@@ -6,12 +6,13 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
         <style>
-            <?php include "root/css/site.css" ?>
             <?php   
                 header("Cache-Control: no-cache, must-revalidate"); // HTTP/1.1
                 header("Expires: Sat, 1 Jul 2000 05:00:00 GMT"); 
             ?>
-            <?php include "root/css/siniestros.css" ?>
+
+            <?php include $_SERVER['DOCUMENT_ROOT']."/Ruzquin/root/css/site.css" ?>
+            <?php include $_SERVER['DOCUMENT_ROOT']."/Ruzquin/root/css/siniestros.css" ?>
         </style>
 
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css"
@@ -22,13 +23,21 @@
 <body>
 
 <header>
-    <img src="root/imagenes/LOGO.png" width="50px">
+    <a href="#"> 
+        <?php
+            $urlSiniestrosNav = "/Ruzquin/root/imagenes/LOGO.png";
+            echo "<img src='$urlSiniestrosNav' width='50px'> </a>"; 
+        ?>
     <nav>
         <ul class="nav">
-            <li><a href="#" class="menuLink"> Siniestros </a></li>
+            <?php
+                $urlSiniestrosNav = "/Ruzquin/backend/Siniestros/SiniestrosNav.php";
+                echo "<li><a href='$urlSiniestrosNav' class='menuLink'> Siniestros </a></li>"; 
+            ?>
             <li><a href="#" class="menuLink"> Presupuestos </a></li>
             <li><a href="#" class="menuLink"> Personal </a></li>
             <li><a href="#" class="menuLink"> Chat </a></li>
         </ul>
     </nav>
+    <a href="#" class="LoginLink"> Iniciar Sesión </a>
 </header>

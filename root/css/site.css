@@ -5,14 +5,19 @@
 }
 
 header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+  display: flex !important;
+  justify-content: space-between !important;
+  align-items: center !important;
   font-family: 'Fauna One', serif;
   margin: 0;
-  padding: 0;
+  padding: 7px;
   background-color: #2f393f;
+}
 
+#navSiniestros{
+  justify-content:end !important;
+  color: white;
+  background: #4b5b65;
 }
 
 #logo {
@@ -22,20 +27,62 @@ header {
   color:white;
 }
 
-#menuLink{
-  font-size: 12px;
-  background-color:#2f393f;
-  color:white;
-}
-
 .nav{
   list-style: none;
-  display:inline-block;
 }
 
 .nav li {
-  padding: 0 20px;  
+  padding: 0 25px;  
 }
+
+.menuLink{
+  font-size: 12px;
+  background:#2f393f;
+  color:white;
+  outline: none;
+  text-decoration: none;
+  display: inline-block ;
+  width: 150%;
+  text-align: center;
+  line-height: 3;
+  border-radius: 20px;
+}
+
+    .menuLink:hover {
+      color: white;
+      background: #2f698d;
+      text-decoration: none;
+    }
+
+    .menuLink:active {
+      background: #de8c1c;
+      color: white;
+    }
+  
+.LoginLink{
+  font-size: 12px;
+  background:#687e8c;
+  color:white;
+  outline: none;
+  text-decoration: none;
+  display: inline-block ;
+  width: 20%;
+  text-align: center;
+  line-height: 3;
+  border-radius: 20px;
+}
+
+    .LoginLink:hover {
+      color: white;
+      background: #2f698d;
+      text-decoration: none;
+    }
+
+    .LoginLink:active {
+      background: #de8c1c;
+      color: white;
+    }
+    
 
 .footer[b-k77iyhiojw] {
   position: absolute;
