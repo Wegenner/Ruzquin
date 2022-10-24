@@ -13,6 +13,7 @@
 
             <?php include $_SERVER['DOCUMENT_ROOT']."/Ruzquin/root/css/site.css" ?>
             <?php include $_SERVER['DOCUMENT_ROOT']."/Ruzquin/root/css/siniestros.css" ?>
+            <?php include $_SERVER['DOCUMENT_ROOT']."/Ruzquin/root/css/chat-modelo.css" ?>
         </style>
 
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css"
@@ -23,20 +24,29 @@
 <body>
 
 <header>
-    <a href="#"> 
-        <?php
-            $urlSiniestrosNav = "/Ruzquin/root/imagenes/LOGO.png";
-            echo "<img src='$urlSiniestrosNav' width='50px'> </a>"; 
-        ?>
+    <?php
+        $index = "/Ruzquin/index.php";
+        $urlSiniestrosNav = "/Ruzquin/root/imagenes/LOGO.png";
+        echo "<a href='$index'><img src='$urlSiniestrosNav' width='50px'> </a>"; 
+    ?>
     <nav>
         <ul class="nav">
             <?php
-                $urlSiniestrosNav = "/Ruzquin/backend/Siniestros/SiniestrosNav.php";
+                $urlSiniestrosNav = "/Ruzquin/backend/Siniestros/SiniestrosActivos.php";
                 echo "<li><a href='$urlSiniestrosNav' class='menuLink'> Siniestros </a></li>"; 
             ?>
-            <li><a href="#" class="menuLink"> Presupuestos </a></li>
-            <li><a href="#" class="menuLink"> Personal </a></li>
-            <li><a href="#" class="menuLink"> Chat </a></li>
+            <?php
+                $urlSiniestrosNav = "/Ruzquin/backend/Presupuestos/PresupuestosGraficos.php";
+                echo "<li><a href='$urlSiniestrosNav' class='menuLink'> Presupuestos </a></li>"; 
+            ?>
+            <?php
+                $urlSiniestrosNav = "/Ruzquin/backend/Usuarios/UsuariosTodos.php";
+                echo "<li><a href='$urlSiniestrosNav' class='menuLink'> Personal </a></li>"; 
+            ?>
+            <?php
+                $urlSiniestrosNav = "/Ruzquin/backend/Chat/ChatGeneral.php";
+                echo "<li><a href='$urlSiniestrosNav' class='menuLink'> Chat </a></li>"; 
+            ?>
         </ul>
     </nav>
     <a href="#" class="LoginLink"> Iniciar Sesión </a>

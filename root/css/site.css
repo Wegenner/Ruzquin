@@ -14,11 +14,15 @@ header {
   background-color: #2f393f;
 }
 
-#navSiniestros{
-  justify-content:end !important;
+#navSiniestros{ 
+  display: inline-block;
   color: white;
+  width:100%;
+  margin: 0;
+  padding: 5px;
   background: #4b5b65;
 }
+
 
 #logo {
   font-size: 20px;
@@ -32,7 +36,7 @@ header {
 }
 
 .nav li {
-  padding: 0 25px;  
+  padding: 0 5px;  
 }
 
 .menuLink{
@@ -42,10 +46,11 @@ header {
   outline: none;
   text-decoration: none;
   display: inline-block ;
-  width: 150%;
   text-align: center;
   line-height: 3;
   border-radius: 20px;
+  padding: 1px 22px 1px 22px;
+
 }
 
     .menuLink:hover {
@@ -64,9 +69,8 @@ header {
   background:#687e8c;
   color:white;
   outline: none;
+  flex-basis: 10%;
   text-decoration: none;
-  display: inline-block ;
-  width: 20%;
   text-align: center;
   line-height: 3;
   border-radius: 20px;
