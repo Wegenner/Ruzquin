@@ -62,12 +62,12 @@
 
                     <ul id="siniestrosIds">
                         
-                        <a class="LigaSiniestros" href="#" >@sini</a>
-                        <a class="LigaSiniestros" href="#" >@sini2</a>
-                        <a class="LigaSiniestros" href="#" >@sini3</a>
-                        <a class="LigaSiniestros" href="#" >@sini4</a>
-                        <a class="LigaSiniestros" href="#" >@sini5</a>
-                        <a class="LigaSiniestros" href="#" >@sini6</a>
+                        <a class="LigaSiniestros" id="conqueja" href="#" >@sini</a>
+                        <a class="LigaSiniestros" id="conmasde3meses" href="#" >@sini2</a>
+                        <a class="LigaSiniestros" id="problemaconseguro" href="#" >@sini3</a>
+                        <a class="LigaSiniestros" id="necesitafactura" href="#" >@sini4</a>
+                        <a class="LigaSiniestros" id="conanticipoaproveedor" href="#" >@sini5</a>
+                        <a class="LigaSiniestros" id="pendientedeale" href="#" >@sini6</a>
                     
                     </ul>
 
@@ -180,6 +180,9 @@
         </div>
 
     </div>
+</div>
+<div class="container">
+    
 </div>
 
 

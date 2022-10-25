@@ -8,12 +8,12 @@
             <nav>
                 <ul class="nav">
                     <?php
-                        $urlPresupuestosNav = "/Ruzquin/backend/Chat/ChatGeneral.php";
-                        echo "<li><a href='$urlPresupuestosNav' class='menuLink' style='background: #2f698d'> Chat General </a></li>"; 
+                        $urlchatNav = "/Ruzquin/backend/Chat/ChatGeneral.php";
+                        echo "<li><a href='$urlchatNav' class='menuLink' style='background: #2f698d'> Chat General </a></li>"; 
                     ?>
                     <?php
-                        $urlPresupuestosNav = "/Ruzquin/backend/Chat/ChatGeneral.php";
-                        echo "<li><a href='#' class='menuLink'> Historial de Notificaciones </a></li>"; 
+                        $urlchatNav = "/Ruzquin/backend/Chat/ChatNotificaciones.php";
+                        echo "<li><a href='$urlchatNav' class='menuLink'> Historial de Notificaciones </a></li>"; 
                     ?>
                 </ul>
             </nav>
