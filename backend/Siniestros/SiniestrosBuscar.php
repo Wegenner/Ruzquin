@@ -23,6 +23,11 @@
             <input type="text" style="border-radius:13px"/>
 
             <button type="button" class="btn btn-dark" style="border-radius: 20px !important"> Buscar </button>
+
+            <button type="button" style="background-color:#687e8c; 
+                                            line-height: 1.5;
+                                            border-radius: 16px"
+                class="btn btn-secondary"> Nuevo </button>
         </div>
     </div>
 </div>

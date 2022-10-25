@@ -33,7 +33,6 @@
 
 <!-- Fin del nav de siniestros e inicio de la pagina -->
 
-
 <div class="container">
     <div class="container">
 
