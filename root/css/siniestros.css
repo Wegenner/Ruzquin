@@ -1,0 +1,131 @@
+.titulosEstados {
+    text-align: center;
+    color: white;
+    background-color: #343F46;
+    margin-top: 1rem;
+    padding: 5px 1.5rem 2px 1.5rem;
+}
+
+ul {
+    padding: 0;
+    margin-bottom: 2px;
+}
+
+.LigaSiniestros {
+    color: white;
+    background: #687e8c;
+    outline: none;
+    text-decoration: none;
+    display: inline-block;
+    width: 100%;
+    padding: 0 -5px 0 -5px;
+    text-align: center;
+    line-height: 3;
+    border-radius: 0px;
+    margin-bottom: 5px;
+    border-radius: 8px;
+}
+
+    .LigaSiniestros:link, .LigaSiniestros:visited, .LigaSiniestros:focus {
+        color: white;
+        background: #687e8c;
+        text-decoration: none;
+    }
+
+    .LigaSiniestros:hover {
+        color: white;
+        background: #485f6c;
+        text-decoration: none;
+    }
+
+    .LigaSiniestros:active {
+        background: #de8c1c;
+        color: white;
+    }
+
+/* Tipos de notificación colores de siniestro */
+
+#conqueja{
+    background:rgb(173, 35, 35);
+}
+    #conqueja:hover {
+        color: white;
+        background: #485f6c;
+        text-decoration: none;
+    }
+
+    #conqueja:active {
+        background: #de8c1c;
+        color: white;
+    }
+
+#conmasde3meses{
+    background:#FFEA13;
+    color: black;
+}
+    #conmasde3meses:hover {
+        color: white;
+        background: #485f6c;
+        text-decoration: none;
+    }
+
+    #conmasde3meses:active {
+        background: #de8c1c;
+        color: white;
+    }
+
+#problemaconseguro{
+    background:rgb(151, 30, 151);
+}
+    #problemaconseguro:hover {
+        color: white;
+        background: #485f6c;
+        text-decoration: none;
+    }
+
+    #problemaconseguro:active {
+        background: #de8c1c;
+        color: white;
+    }
+
+#necesitafactura{
+    background:rgb(6, 99, 175);
+}
+    #necesitafactura:hover {
+        color: white;
+        background: #485f6c;
+        text-decoration: none;
+    }
+
+    #necesitafactura:active {
+        background: #de8c1c;
+        color: white;
+    }
+
+#conanticipoaproveedor{
+    color:#21FF13;
+}
+    #conanticipoaproveedor:hover {
+        color: white;
+        background: #485f6c;
+        text-decoration: none;
+    }
+
+    #conanticipoaproveedor:active {
+        background: #de8c1c;
+        color: white;
+    }
+
+#pendientedeale{
+    background:rgb(46, 145, 22);
+}
+    #pendientedeale:hover {
+        color: white;
+        background: #485f6c;
+        text-decoration: none;
+    }
+
+    #pendientedeale:active {
+        background: #de8c1c;
+        color: white;
+    }

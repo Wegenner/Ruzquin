@@ -1,18 +1,101 @@
-html {
-  font-size: 14px;
+@import url('https://fonts.googleapis.com/css2?family=Fauna+One&display=swap');
+
+*{
+  box-sizing: border-box;
 }
 
-@media (min-width: 768px) {
-  html {
-    font-size: 16px;
-  }
+header {
+  display: flex !important;
+  justify-content: space-between !important;
+  align-items: center !important;
+  font-family: 'Fauna One', serif;
+  margin: 0;
+  padding: 7px;
+  background-color: #2f393f;
 }
 
-html {
-  position: relative;
-  min-height: 100%;
+#navSiniestros{ 
+  display: inline-block;
+  color: white;
+  width:100%;
+  margin: 0;
+  padding: 5px;
+  background: #4b5b65;
 }
 
-body {
-  margin-bottom: 60px;
+
+#logo {
+  font-size: 20px;
+  margin: 0 5px 0 30px;
+  background-color:#2f393f;
+  color:white;
+}
+
+.nav{
+  list-style: none;
+}
+
+.nav li {
+  padding: 0 5px;  
+}
+
+.menuLink{
+  font-size: 12px;
+  background:#2f393f;
+  color:white;
+  outline: none;
+  text-decoration: none;
+  display: inline-block ;
+  text-align: center;
+  line-height: 3;
+  border-radius: 20px;
+  padding: 1px 22px 1px 22px;
+
+}
+
+    .menuLink:hover {
+      color: white;
+      background: #2f698d;
+      text-decoration: none;
+    }
+
+    .menuLink:active {
+      background: #de8c1c;
+      color: white;
+    }
+  
+.LoginLink{
+  font-size: 12px;
+  background:#687e8c;
+  color:white;
+  outline: none;
+  flex-basis: 10%;
+  text-decoration: none;
+  text-align: center;
+  line-height: 3;
+  border-radius: 20px;
+}
+
+    .LoginLink:hover {
+      color: white;
+      background: #2f698d;
+      text-decoration: none;
+    }
+
+    .LoginLink:active {
+      background: #de8c1c;
+      color: white;
+    }
+    
+
+.footer[b-k77iyhiojw] {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  white-space: nowrap;
+  line-height: 60px;
+}
+
+td{
+  text-align: center
 }
