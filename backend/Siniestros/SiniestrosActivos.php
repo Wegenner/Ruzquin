@@ -1,5 +1,5 @@
 <?php 
-    include $_SERVER['DOCUMENT_ROOT']."/public_html/shared/_header.php";
+    include $_SERVER['DOCUMENT_ROOT']."/shared/_header.php";
 ?>
 
 <div id="navSiniestros" class="container-fluid">
@@ -8,11 +8,11 @@
             <nav>
                 <ul class="nav">
                     <?php
-                        $urlSiniestrosNav = "/public_html/backend/Siniestros/SiniestrosActivos.php";
+                        $urlSiniestrosNav = "/backend/Siniestros/SiniestrosActivos.php";
                         echo "<li><a href='$urlSiniestrosNav' class='menuLink' style='background: #2f698d'> Siniestros Activos </a></li>"; 
                     ?>
                     <?php
-                        $urlSiniestrosNav = "/public_html/backend/Siniestros/SiniestrosBuscar.php";
+                        $urlSiniestrosNav = "/backend/Siniestros/SiniestrosBuscar.php";
                         echo "<li><a href='$urlSiniestrosNav' class='menuLink' > Siniestros Buscar </a></li>"; 
                     ?>
                 </ul>
@@ -147,5 +147,5 @@
 
 
 <?php 
-    include $_SERVER['DOCUMENT_ROOT']."/public_html/shared/_footer.php";
+    include $_SERVER['DOCUMENT_ROOT']."/shared/_footer.php";
 ?>
