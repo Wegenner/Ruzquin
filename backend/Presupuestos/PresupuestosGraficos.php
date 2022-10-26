@@ -1,5 +1,5 @@
 <?php 
-    include $_SERVER['DOCUMENT_ROOT']."/public_html/shared/_header.php";
+    include $_SERVER['DOCUMENT_ROOT']."/shared/_header.php";
 ?>
 
 <div id="navSiniestros" class="container-fluid">
@@ -8,15 +8,15 @@
             <nav>
                 <ul class="nav">
                     <?php
-                        $urlPresupuestosNav = "/public_html/backend/Presupuestos/PresupuestosTodos.php";
+                        $urlPresupuestosNav = "/backend/Presupuestos/PresupuestosTodos.php";
                         echo "<li><a href='$urlPresupuestosNav' class='menuLink'> Todos </a></li>"; 
                     ?>
                     <?php
-                        $urlPresupuestosNav = "/public_html/backend/Presupuestos/PresupuestosGraficos.php";
+                        $urlPresupuestosNav = "/backend/Presupuestos/PresupuestosGraficos.php";
                         echo "<li><a href='$urlPresupuestosNav' class='menuLink' style='background: #2f698d'> Dashboard </a></li>"; 
                     ?>
                     <?php
-                        $urlPresupuestosNav = "/public_html/backend/Presupuestos/PresupuestosBusqueda.php";
+                        $urlPresupuestosNav = "/backend/Presupuestos/PresupuestosBusqueda.php";
                         echo "<li><a href='$urlPresupuestosNav' class='menuLink'> Buscar </a></li>"; 
                     ?>
                 </ul>
@@ -31,5 +31,5 @@
 </div>
 
 <?php 
-    include $_SERVER['DOCUMENT_ROOT']."/public_html/shared/_footer.php";
+    include $_SERVER['DOCUMENT_ROOT']."/shared/_footer.php";
 ?>
