@@ -2,7 +2,7 @@
     de los usuarios y genere una push notification para js/ajax de manera que sean avisados -->
 
     <?php 
-    include $_SERVER['DOCUMENT_ROOT']."/Ruzquin/shared/_header.php";
+    include $_SERVER['DOCUMENT_ROOT']."/public_html/shared/_header.php";
 ?>
 
 <div id="navSiniestros" class="container-fluid">
@@ -11,11 +11,11 @@
             <nav>
                 <ul class="nav">
                     <?php
-                        $urlPresupuestosNav = "/Ruzquin/backend/Chat/ChatGeneral.php";
+                        $urlPresupuestosNav = "/public_html/backend/Chat/ChatGeneral.php";
                         echo "<li><a href='$urlPresupuestosNav' class='menuLink' > Chat General </a></li>"; 
                     ?>
                     <?php
-                        $urlPresupuestosNav = "/Ruzquin/backend/Chat/ChatGeneral.php";
+                        $urlPresupuestosNav = "/public_html/backend/Chat/ChatGeneral.php";
                         echo "<li><a href='#' class='menuLink' style='background: #2f698d'> Historial de Notificaciones </a></li>"; 
                     ?>
                 </ul>
@@ -44,5 +44,5 @@
 
 
 <?php 
-    include $_SERVER['DOCUMENT_ROOT']."/Ruzquin/shared/_footer.php";
+    include $_SERVER['DOCUMENT_ROOT']."/public_html/shared/_footer.php";
 ?>
