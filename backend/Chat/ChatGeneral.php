@@ -1,5 +1,5 @@
 <?php 
-    include $_SERVER['DOCUMENT_ROOT']."/Ruzquin/shared/_header.php";
+    include $_SERVER['DOCUMENT_ROOT']."/public_html/shared/_header.php";
 ?>
 
 <div id="navSiniestros" class="container-fluid">
@@ -8,11 +8,11 @@
             <nav>
                 <ul class="nav">
                     <?php
-                        $urlchatNav = "/Ruzquin/backend/Chat/ChatGeneral.php";
+                        $urlchatNav = "/public_html/backend/Chat/ChatGeneral.php";
                         echo "<li><a href='$urlchatNav' class='menuLink' style='background: #2f698d'> Chat General </a></li>"; 
                     ?>
                     <?php
-                        $urlchatNav = "/Ruzquin/backend/Chat/ChatNotificaciones.php";
+                        $urlchatNav = "/public_html/backend/Chat/ChatNotificaciones.php";
                         echo "<li><a href='$urlchatNav' class='menuLink'> Historial de Notificaciones </a></li>"; 
                     ?>
                 </ul>
@@ -440,5 +440,5 @@
 </div>
 
 <?php 
-    include $_SERVER['DOCUMENT_ROOT']."/Ruzquin/shared/_footer.php";
+    include $_SERVER['DOCUMENT_ROOT']."/public_html/shared/_footer.php";
 ?>
