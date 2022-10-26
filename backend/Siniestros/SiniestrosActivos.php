@@ -54,7 +54,7 @@
 
         <div class="row justify-content-center rounded" style="width: 100%;">
 
-            <div class="col-auto align-items-center columnasSiniestros" style="padding:0;width:15%;text-align:center">
+            <div class="col-auto align-items-center columnasSiniestros" style="padding:0;width:15%;text-align:center;">
 
                 <div class="titulosEstados">
                     <p style="margin-bottom:1rem;">Recepción</p>
@@ -137,52 +137,12 @@
 
             </div>
 
-            <div class="col-auto align-items-center columnasSiniestros" style="padding:0;width:15%;text-align:center">
-                <div class="titulosEstados"> 
-                    <p>Cancelado</p>
-                </div>
-
-                <ul class="siniestrosIds">
-                    
-                    <a class="LigaSiniestros" href="#">@sini</a>
-                    
-                </ul>
-
-            </div>
-
-            <div class="col-auto align-items-center columnasSiniestros" style="padding:0;width:15%;text-align:center">
-                <div class="titulosEstados"> 
-                    <p>P. D.</p>
-                </div>
-
-                <ul class="siniestrosIds">
-                    
-                    <a class="LigaSiniestros" href="#">@sini</a>
-                    
-                </ul>
-
-            </div>
-
-            <div class="col-auto align-items-center columnasSiniestros" style="padding:0;width:15%;text-align:center">
-            
-                <div class="titulosEstados"> 
-                    <p>Facturación</p>
-                </div>
-
-                <ul class="siniestrosIds">
-                    
-                    <a class="LigaSiniestros" href="#">@sini</a>
-                    
-                </ul>
-
-            </div>
-
         </div>
 
     </div>
 </div>
 <div class="container">
-    
+
 </div>
 
 
