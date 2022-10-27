@@ -142,9 +142,18 @@
     </div>
 </div>
 <div class="container">
-
+    <br />
+    <h2 style="text-align:center"> Acotaciones</h2>
+    <hr />
+    <br />
+    <a class="LigaSiniestros" id="conqueja" href="#" > Siniestro con queja </a>
+    <a class="LigaSiniestros" id="conmasde3meses" href="#" >Siniestro con mas de 3 meses</a>
+    <a class="LigaSiniestros" id="problemaconseguro" href="#" >Siniestro problemas con el seguro</a>
+    <a class="LigaSiniestros" id="necesitafactura" href="#" >Siniestro necesita factura</a>
+    <a class="LigaSiniestros" id="conanticipoaproveedor" href="#" >Siniestro con anticipo proveedor</a>
+    <a class="LigaSiniestros" id="pendientedeale" href="#" >Siniestro pendiente Alejandro</a>
 </div>
-
+<br />
 
 <?php 
     include $_SERVER['DOCUMENT_ROOT']."/shared/_footer.php";
