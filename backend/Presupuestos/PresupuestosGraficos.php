@@ -2,6 +2,8 @@
     include $_SERVER['DOCUMENT_ROOT']."/shared/_header.php";
 ?>
 
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
 <div id="navSiniestros" class="container-fluid">
     <div class="row">
         <div class="col">
@@ -32,78 +34,76 @@
 
 <!-- Inicio de los graficos -->
 
-<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<div class="container">
+    <div class="row justify-content-center">
 
-    <div class="container">
-        <div class="row justify-content-center">
-
-            <div class="col">
-                <h1 style="text-align: center">Balance - 05 / 2022</h1>
-            </div>
-
+        <div class="col">
+            <h1 style="text-align: center">Balance - 05 / 2022</h1>
         </div>
-        <br/>
+
     </div>
-
-    <div class="container">
-        <div class="row">
-            <div class="col" style="width: 50%">
-                <form action="BalanceMes.php" style="text-align:center">
-
-                    <h3>Busqueda por mes:</h3>
-
-                    <input type="month" name="mes" class="form-control" />
-
-                    <br/>
-
-                    <input type="submit" style="width: 120px; line-height: 1.5; border-radius: 3px; margin-top: -12px" value="Buscar" class="btn btn-primary DetallesSiniestros" /> 
-
-                </form>
-            </div>
-            <div class="col" style="width: 50%">
-                <form action="BalanceAnual.php" style="text-align:center">
-
-                    <h3>Busqueda por año:</h3>
-                
-                    <input type="year" name="ano" class="form-control" />
-
-                    <br/>
-
-                    <input type="submit" style="width: 120px; line-height: 1.5; border-radius: 3px; margin-top: -12px" value="Buscar" class="btn btn-primary DetallesSiniestros" /> 
-
-                </form>
-            </div>
-        </div>
-    </div>
-
-    <hr/>
     <br/>
+</div>
 
-        <div class="container">
-            <div class="row">
-                <div class="col"> 
+<div class="container">
+    <div class="row">
+        <div class="col" style="width: 50%">
+            <form action="BalanceMes.php" style="text-align:center">
 
-                    <h2 style="text-align:center"> Siniestros </h2>
+                <h3>Busqueda por mes:</h3>
 
-                    <br/>
+                <input type="month" name="mes" class="form-control" />
 
-                    <p>Totales:  600</p>
-                    <p>Cancelados:  150</p>
-                    <p>Facturados:  150</p>
-                    <p>Pago de daños:  150</p>
-                    <P>Otros:  150</p> <br>
-                    <P style="text-align:center; font-size: 30px">Margen de Utilidad: </p>
-                    <p style="text-align: center; font-size: 30px">$ 1,000,000.00</p>
+                <br/>
 
-                </div>
-                <div class="col" style="height:500px">
+                <input type="submit" style="width: 120px; line-height: 1.5; border-radius: 3px; margin-top: -12px" value="Buscar" class="btn btn-primary DetallesSiniestros" /> 
 
-                    <canvas id="myChart"></canvas>
+            </form>
+        </div>
+        <div class="col" style="width: 50%">
+            <form action="BalanceAnual.php" style="text-align:center">
 
-                </div>
-            </div>
+                <h3>Busqueda por año:</h3>
+            
+                <input type="year" name="ano" class="form-control" />
+
+                <br/>
+
+                <input type="submit" style="width: 120px; line-height: 1.5; border-radius: 3px; margin-top: -12px" value="Buscar" class="btn btn-primary DetallesSiniestros" /> 
+
+            </form>
+        </div>
+    </div>
+</div>
+
+<hr/>
+<br/>
+
+<div class="container">
+    <div class="row">
+        <div class="col"> 
+
+            <h2 style="text-align:center"> Siniestros </h2>
+
+            <br/>
+
+            <p>Totales:  600</p>
+            <p>Cancelados:  150</p>
+            <p>Facturados:  150</p>
+            <p>Pago de daños:  150</p>
+            <P>Activos:  150</p> <br>
+            <P style="text-align:center; font-size: 30px">Margen de Utilidad: </p>
+            <p style="text-align: center; font-size: 30px">$ 1,000,000.00</p>
 
         </div>
+        <div class="col" style="height:500px">
+
+            <canvas id="myChart"></canvas>
+
+        </div>
+    </div>
+
+</div>
 
 <!-- Sección Chart.js -->
 

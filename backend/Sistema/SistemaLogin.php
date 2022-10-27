@@ -6,7 +6,7 @@
 
     <img  src="/root/imagenes/LOGO.png" style="width: 150px;height:130px; margin-top:15px; margin-bottom: 40px;">
     <h1> Inicia Sesión</h1>
-    <hr style="size: 15 !important;">
+    <hr>
 
     <form action="login.php">
         <div class="form">   
@@ -34,4 +34,4 @@
 
 <?php 
     include $_SERVER['DOCUMENT_ROOT']."/shared/_footer.php";
-?>      
+?>    

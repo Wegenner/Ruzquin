@@ -99,3 +99,44 @@ header {
 td{
   text-align: center
 }
+
+.form{
+  position: relative;
+  width:30rem;
+  height:5rem;
+  margin-bottom: 10px;
+}
+
+.form__input{
+  position: absolute;
+  width:100%;
+  height:100%;
+  top: 0;
+  left:0;
+  border: 2px solid #BDE8F9;
+  border-radius:15px;
+  outline:none;
+  padding:0 20px 0 10px;
+  background: #e8f0fe;
+}
+
+  .form__input:hover{
+    border: 2px solid #3AC1F8;
+  }
+  
+  .form__input:focus{
+    border: 2px solid #3AC1F8;
+    background: #e8f0fe;
+  }
+
+.form__label{
+  position:absolute;
+  opacity: 0.6;
+  left: 0.7rem;
+  top: 0.2rem;
+}
+
+.form__input:focus ~ .form__label{
+  color: grey;
+  opacity: 0.4;
+}
