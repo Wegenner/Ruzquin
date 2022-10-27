@@ -140,3 +140,26 @@ td{
   color: grey;
   opacity: 0.4;
 }
+
+
+@media screen and (max-width: 700px) {
+  .form{
+    position: relative;
+    width:19rem;
+    height:4rem;
+    margin-bottom: 15px;
+  }
+
+  .LoginLink{
+    font-size: 12px;
+    background:#687e8c;
+    color:white;
+    outline: none;
+    flex-basis: 10%;
+    text-decoration: none;
+    text-align: center;
+    line-height: 3;
+    border-radius: 20px;
+    padding: 0 7px 0 7px;
+  }
+}
