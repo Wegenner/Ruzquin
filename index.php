@@ -8,7 +8,7 @@
     <h1> Inicia Sesión</h1>
     <hr style="size: 15 !important;">
 
-    <form action="login.php">
+    <form action="/backend/Database/login.php" name="Login" method="post">
         <div class="form">   
             <input class="form__input" autocomplete="Nombre de Usuario" 
             aria-required="true" type="text" data-val="true" 
@@ -27,7 +27,7 @@
             <label class="form__label" for="Input_Password">Contraseña</label>
         </div>
 
-        <button id="login-submit" type="submit" class="btn btn-lg btn-primary" style="width:100%; margin-top:10px; border-radius: 16px">Ingresar</button>
+        <input id="login-submit" type="submit"  name="submit" value="Ingresar" class="btn btn-lg btn-primary" style="width:100%; margin-top:10px; border-radius: 16px">
     </form>
 
 </div>
