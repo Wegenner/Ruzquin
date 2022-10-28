@@ -155,7 +155,7 @@ h1{
 
 .time{
   width:100%; 
-  border-top: 2px solid rgba(124, 124, 124, 0.171);
+  border-top: 2px solid rgb(124, 124, 124);
 }
 
 .mensaje{
@@ -166,7 +166,7 @@ h1{
 
 .att{
   width:100%;
-  border-bottom: 2px solid rgba(102, 102, 102, 0.205);
+  border-bottom: 2px solid rgb(102, 102, 102);
   align-items: flex-end;
   margin-bottom: 10px;
 }
