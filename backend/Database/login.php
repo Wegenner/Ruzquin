@@ -6,7 +6,7 @@
 
         $redirect = $_SERVER['DOCUMENT_ROOT']."/backend/Siniestros/SiniestrosActivos.php";
 
-        header("Location: /backend/Siniestros/SiniestrosActivos.php",true,303);
+        header("Location: /backend/Avisos/AvisosLanding.php",true,303);
         die();
 
     }else{
