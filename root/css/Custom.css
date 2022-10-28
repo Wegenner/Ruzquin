@@ -96,11 +96,6 @@ select {
     background-color: #f1f1f1;
 }
 
-input {
-    border-style: solid;
-    border-color: black;
-}
-
 .formularios{
 
     margin: 5px;
@@ -108,34 +103,6 @@ input {
     padding-bottom: 20px;
 
 }
-
-.LigaSiniestros {
-    color: white;
-    background: #687e8c;
-    outline: none;
-    text-decoration: none;
-    display: inline-block;
-    width: 100%;
-    margin-right: 0.625%;
-    text-align: center;
-    line-height: 3;
-    border-radius: 0px;
-    margin-bottom: 5px;
-}
-
-    .LigaSiniestros:link, a:visited, a:focus {
-        background: #687e8c;
-    }
-
-    .LigaSiniestros:hover {
-        color: white;
-        background: #485f6c;
-    }
-
-    .LigaSiniestros:active {
-        background: #de8c1c;
-        color: white;
-    }
 
 .creadopor {
     display: flex;

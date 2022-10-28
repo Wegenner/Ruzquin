@@ -21,12 +21,12 @@
         <div class="col" style="text-align:end">
             <input type="text" style="border-radius:13px;"/>
 
-            <button type="button" class="btn btn-dark" style="border-radius: 20px !important"> Buscar </button>
+            <button type="button" class="btn btn-dark botonnav" style="border-radius: 20px !important"> Buscar </button>
 
             <button type="button" style="background-color:#687e8c; 
                                             line-height: 1.5;
                                             border-radius: 16px"
-                class="btn btn-secondary"> Nuevo </button>
+                class="btn btn-secondary botonnav"> Nuevo </button>
         </div>
     </div>
 </div>
@@ -62,12 +62,12 @@
 
                     <ul id="siniestrosIds">
                         
-                        <a class="LigaSiniestros" id="conqueja" href="#" >@sini</a>
-                        <a class="LigaSiniestros" id="conmasde3meses" href="#" >@sini2</a>
-                        <a class="LigaSiniestros" id="problemaconseguro" href="#" >@sini3</a>
-                        <a class="LigaSiniestros" id="necesitafactura" href="#" >@sini4</a>
-                        <a class="LigaSiniestros" id="conanticipoaproveedor" href="#" >@sini5</a>
-                        <a class="LigaSiniestros" id="pendientedeale" href="#" >@sini6</a>
+                        <a class="LigaSiniestros" id="conqueja" href="/backend/Siniestros/Siniestros.php" >@sini</a>
+                        <a class="LigaSiniestros" id="conmasde3meses" href="/backend/Siniestros/Siniestros.php" >@sini2</a>
+                        <a class="LigaSiniestros" id="problemaconseguro" href="/backend/Siniestros/Siniestros.php" >@sini3</a>
+                        <a class="LigaSiniestros" id="necesitafactura" href="/backend/Siniestros/Siniestros.php" >@sini4</a>
+                        <a class="LigaSiniestros" id="conanticipoaproveedor" href="/backend/Siniestros/Siniestros.php" >@sini5</a>
+                        <a class="LigaSiniestros" id="pendientedeale" href="/backend/Siniestros/Siniestros.php" >@sini6</a>
                     
                     </ul>
 
