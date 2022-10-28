@@ -2,7 +2,7 @@
     include $_SERVER['DOCUMENT_ROOT']."/shared/_header.php";
 ?>
 
-<h1 style="text-align: center; margin: 5px">Editar - @User.Identity.Name</h1>
+<h1 style="text-align: center; margin: 5px">Editar - Siniestro Random</h1>
 
 <hr style="width: 70%"/>
 
