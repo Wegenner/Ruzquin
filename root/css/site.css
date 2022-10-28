@@ -142,6 +142,35 @@ td{
 }
 
 
+.line{
+  border: 1px solid black;
+  width: 100%;
+  opacity: 0.1;
+  margin-bottom: 20px;
+}
+
+h1{
+  margin-bottom: 0px;
+}
+
+.time{
+  width:100%; 
+  border-top: 2px solid rgba(124, 124, 124, 0.171);
+}
+
+.mensaje{
+  width:120%;
+  height: 60%;
+  margin: 10px;
+}
+
+.att{
+  width:100%;
+  border-bottom: 2px solid rgba(102, 102, 102, 0.205);
+  align-items: flex-end;
+  margin-bottom: 10px;
+}
+
 @media screen and (max-width: 700px) {
   .form{
     position: relative;
@@ -163,3 +192,4 @@ td{
     padding: 0 7px 0 7px;
   }
 }
+

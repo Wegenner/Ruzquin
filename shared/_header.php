@@ -48,6 +48,10 @@
                 $urlSiniestrosNav = "/backend/Chat/ChatGeneral.php";
                 echo "<li><a href='$urlSiniestrosNav' class='menuLink'> Chat </a></li>"; 
             ?>
+            <?php
+                $urlSiniestrosNav = "/backend/Avisos/AvisosCrear.php";
+                echo "<li><a href='$urlSiniestrosNav' class='menuLink'> Avisos </a></li>"; 
+            ?>
         </ul>
     </nav>
     <a href="/backend/Sistema/SistemaLogin.php" class="LoginLink"> Iniciar Sesión </a>

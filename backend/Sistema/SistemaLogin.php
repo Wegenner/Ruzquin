@@ -6,7 +6,7 @@
 
     <img  src="/root/imagenes/LOGO.png" style="width: 150px;height:130px; margin-top:15px; margin-bottom: 40px;">
     <h1> Inicia Sesión</h1>
-    <hr style="size: 15 !important;">
+    <hr class="line">
 
     <form action="/backend/Database/login.php" name="Login" method="post">
         <div class="form">   
