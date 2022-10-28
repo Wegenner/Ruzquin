@@ -155,7 +155,7 @@ h1{
 
 .time{
   width:100%; 
-  border-top: 2px solid rgba(124, 124, 124, 0.171);
+  border-top: 2px solid rgb(124, 124, 124);
 }
 
 .mensaje{
@@ -166,7 +166,7 @@ h1{
 
 .att{
   width:100%;
-  border-bottom: 2px solid rgba(102, 102, 102, 0.205);
+  border-bottom: 2px solid rgb(102, 102, 102);
   align-items: flex-end;
   margin-bottom: 10px;
 }
@@ -190,6 +190,31 @@ h1{
     line-height: 3;
     border-radius: 20px;
     padding: 0 7px 0 7px;
+  }
+
+  .mensaje{
+    width:100%;
+    height: 60%;
+    margin: 10px;
+  }
+
+  .menuLink{
+    font-size: 12px;
+    background:#2f393f;
+    color:white;
+    outline: none;
+    text-decoration: none;
+    display: inline-block ;
+    text-align: center;
+    line-height: 3;
+    border-radius: 20px;
+    padding: 1px 22px 1px 22px;
+    margin:2px;
+  
+  }
+
+  .botonnav{
+    margin: 3px;
   }
 }
 
