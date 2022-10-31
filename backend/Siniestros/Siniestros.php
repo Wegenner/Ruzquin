@@ -60,10 +60,10 @@
     <a class="detalles" href="/backend/Siniestros/SiniestrosEditar.php">Editar</a>
     <br />
     <br />
-    <a class="detalles">Borrar</a>
+    <a class="detalles" href="/backend/Siniestros/SiniestrosBorrar.php">Borrar</a>
     <br />
     <br />
-    <a class="detalles">Regresar</a>
+    <a class="detalles" href="/backend/Siniestros/SiniestrosActivos.php">Regresar</a>
 </div>
     <br />
     <br />
@@ -102,7 +102,7 @@
         </div>
     </div>
     <br />
-            <a class="detalles" asp-action="Edit" asp-controller="Billing" asp-route-id="@Model.siniestroBalance.ID">Editar</a>
+            <a class="detalles" href="/backend/Presupuestos/PresupuestosEditar.php">Editar</a>
     <br />
     <br />
 
@@ -110,7 +110,7 @@
 
     <hr />
 
-    <a class="detalles" href="#"> Ver / Subir Archivos</a>
+    <a class="detalles" href="/backend/Archivos/ArchivosVer.php"> Ver / Subir Archivos</a>
 
     <br /><br />
 
@@ -125,7 +125,7 @@
 
     <br /><br />
 
-    <a class="detalles" asp-action="Delete" asp-route-id="@Model?.ID">Borrar</a>
+    <a class="detalles">Borrar</a>
     <br />
 
     <br />
