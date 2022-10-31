@@ -1,6 +1,29 @@
-<?php 
-    include $_SERVER['DOCUMENT_ROOT']."/shared/_header.php";
-?>
+<html>
+    <head>
+
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+        <style>
+            <?php   
+                header("Cache-Control: no-cache, must-revalidate"); // HTTP/1.1
+                header("Expires: Sat, 1 Jul 2000 05:00:00 GMT"); 
+            ?>
+
+        </style>
+
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css"
+                integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+        <link rel="stylesheet" href="/root/css/site.css">
+        <link rel="stylesheet" href="/root/css/siniestros.css">
+        <link rel="stylesheet" href="/root/css/chat-modelo.css">
+        <link rel="stylesheet" href="/root/css/archivos.css">
+        
+    </head>
+    
+<body>
 
 <div class="container" style="display:flex;align-items:center;flex-direction:column">
 

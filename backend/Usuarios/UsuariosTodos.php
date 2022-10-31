@@ -46,7 +46,7 @@
             <td>Edain</td>
             <td>Externa</td>
             <td>
-                <a href="#" class="btn btn-primary" style="padding:5px; margin:0px;"> Detalles</a>
+                <a href="/backend/Usuarios/UsuariosEditar.php" class="btn btn-primary" style="padding:5px; margin:0px;"> Detalles</a>
                 <a href="/backend/Usuarios/UsuariosEliminar.php" class="btn btn-danger" style="padding:5px; margin:0px;"> Eliminar</a>
             </td>
             </tr>
@@ -54,13 +54,19 @@
             <th scope="row">2</th>
             <td>Alejandro</td>
             <td>Administrador</td>
-            <td><a href="#" class="btn btn-primary" style="padding:5px; margin:0px;"> Detalles</a></td>
+            <td>
+                <a href="/backend/Usuarios/UsuariosEditar.php" class="btn btn-primary" style="padding:5px; margin:0px;"> Detalles</a>
+                <a href="/backend/Usuarios/UsuariosEliminar.php" class="btn btn-danger" style="padding:5px; margin:0px;"> Eliminar</a>
+            </td>
             </tr>
             <tr>
             <th scope="row">3</th>
             <td>Bladimir</td>
             <td>Gerente</td>
-            <td><a href="#" class="btn btn-primary" style="padding:5px; margin:0px;"> Detalles</a></td>
+            <td>
+                <a href="/backend/Usuarios/UsuariosEditar.php" class="btn btn-primary" style="padding:5px; margin:0px;"> Detalles</a>
+                <a href="/backend/Usuarios/UsuariosEliminar.php" class="btn btn-danger" style="padding:5px; margin:0px;"> Eliminar</a>
+            </td>
             </tr>
         </tbody>
     </table>
