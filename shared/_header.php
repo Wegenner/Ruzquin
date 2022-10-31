@@ -19,6 +19,7 @@
         <link rel="stylesheet" href="/root/css/site.css">
         <link rel="stylesheet" href="/root/css/siniestros.css">
         <link rel="stylesheet" href="/root/css/chat-modelo.css">
+        <link rel="stylesheet" href="/root/css/archivos.css">
         
     </head>
     

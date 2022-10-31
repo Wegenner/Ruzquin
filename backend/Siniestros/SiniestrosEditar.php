@@ -2,7 +2,7 @@
     include $_SERVER['DOCUMENT_ROOT']."/shared/_header.php";
 ?>
 
-<h1 style="text-align: center; margin: 5px">Editar - @User.Identity.Name</h1>
+<h1 style="text-align: center; margin: 5px">Editar - Siniestro Random</h1>
 
 <hr style="width: 70%"/>
 
@@ -19,7 +19,7 @@
             </div>
             <div class="col formularios">
                 <label style="margin-bottom: 5px" class="control-label siniestrosLabels">Fecha del Siniestro:</label>
-                <input class="form-control" />
+                <input class="form-control" type="date" />
                 <span asp-validation-for="siniestroFecha" class="text-danger"></span>
             </div>
         </div>
@@ -116,7 +116,7 @@
         <div class="row">
             <div class="col formularios">
                 <label style="margin-bottom: 5px" class="control-label siniestrosLabels">Fecha de Envío del presupuesto: </label>
-                <input class="form-control" />
+                <input class="form-control" type="date"/>
                 <span class="text-danger"></span>
             </div>
         </div>
@@ -124,7 +124,7 @@
         <div class="row">
             <div class="col formularios">
                 <label style="margin-bottom: 5px" class="control-label siniestrosLabels">Fecha de Autorización del presupuesto: </label>
-                <input  class="form-control" />
+                <input  class="form-control" type="date" />
                 <span class="text-danger"></span>
             </div>
         </div>
@@ -132,7 +132,7 @@
         <div class="row">
             <div class="col formularios">
                 <label style="margin-bottom: 5px" class="control-label siniestrosLabels">Fecha de Reparación: </label>
-                <input class="form-control" />
+                <input class="form-control" type="date" />
                 <span class="text-danger"></span>
             </div>
         </div>
@@ -140,7 +140,7 @@
         <div class="row">
             <div class="col formularios">
                 <label style="margin-bottom: 5px" class="control-label siniestrosLabels">Fecha de Termino: </label>
-                <input class="form-control" />
+                <input class="form-control" type="date"/>
                 <span class="text-danger"></span>
             </div>
         </div>
@@ -151,7 +151,7 @@
             <input type="submit" value="Save" class="btn btn-primary" style="width:100%; border-radius:7px; padding: 0.5rem 0 0.5rem 0;" />
             <br />
             <br />
-            <a class="detalles" href="#">Regresar</a>
+            <a class="detalles" href="/backend/Siniestros/Siniestros.php">Regresar</a>
             <br />
             <br />
             <a class="detalles" href="#">Borrar</a>
