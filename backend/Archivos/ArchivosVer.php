@@ -4,7 +4,7 @@
 
 <!-- Si no hay archivos ni documentos -->
 
-<h1 style="text-align:center; margin-top:20px"> Archivos - Siniestro: @Model.siniestroid</h1>
+<h1 style="text-align:center; margin-top:20px"> Archivos - Siniestro Random</h1>
 
 <hr />
 <br />
@@ -36,7 +36,7 @@
 
 <!-- Si si tenemos archivos -->
 
-<h1 style="text-align:center; margin-top:20px"> Subida de archivos - Siniestro: @Model.siniestroid</h1>
+<h1 style="text-align:center; margin-top:20px"> Subida de archivos - Siniestro Random</h1>
 <hr />
 <div class="container">
     <div class="row">
