@@ -1,5 +1,20 @@
 <?php 
     include $_SERVER['DOCUMENT_ROOT']."/shared/_header.php";
+    include $_SERVER['DOCUMENT_ROOT']."/backend/Database/connection.php"; 
+
+    if($_POST){
+        
+        $id = $_POST['id'];
+
+        $sql = "SELECT ID,siniestroId,siniestroColor, siniestroAnticipo,siniestroEstado, siniestroFecha FROM siniestromodelo WHERE ID = ".$id;
+
+        $result = $connect->query($sql);
+
+        while ($row = $result->fetch_assoc()){
+            echo $row['siniestroId'];
+        }
+
+    }
 ?>
 
 <h1 style="text-align: center; padding-top:10px">Detalles - Siniestro random</h1>

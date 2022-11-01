@@ -1,5 +1,12 @@
 <?php 
+
     include $_SERVER['DOCUMENT_ROOT']."/shared/_header.php";
+    include $_SERVER['DOCUMENT_ROOT']."/backend/Database/connection.php"; 
+
+    $sql = "SELECT ID,siniestroId,siniestroColor, siniestroAnticipo,siniestroEstado FROM siniestromodelo WHERE (siniestroEstado != 'Cancelado')AND(siniestroEstado != 'Facturación')AND(siniestroEstado != 'Facturación ')AND(siniestroEstado != 'Facturacion')AND(siniestroEstado != 'Pago de daños')AND(siniestroFecha BETWEEN '2022-05-01 00:00:00' AND '2022-11-01 00:00:00')";
+
+    $result = $connect->query($sql);
+
 ?>
 
 <div id="navSiniestros" class="container-fluid">
@@ -39,7 +46,7 @@
         <div class="row">
             <div class="col" style="text-align:center">
 
-                <h1 style="margin-top:15px">Siniestros</h1>
+                <h1 style="margin-top:15px">Siniestros Activos (3 Meses)</h1>
                 
             </div>
         </div>
@@ -48,7 +55,7 @@
 
     <hr />
 
-    <h2 style="text-align : center">Total : @Model.Count()</h2>
+    <h2 style="text-align : center">Total : <?php echo $result->num_rows ?></h2>
 
     <div class="rounded container-fluid align-items-center">
 
@@ -62,24 +69,85 @@
 
                     <ul id="siniestrosIds">
                         
-                        <a class="LigaSiniestros" id="conqueja" href="/backend/Siniestros/Siniestros.php" >@sini</a>
-                        <a class="LigaSiniestros" id="conmasde3meses" href="/backend/Siniestros/Siniestros.php" >@sini2</a>
-                        <a class="LigaSiniestros" id="problemaconseguro" href="/backend/Siniestros/Siniestros.php" >@sini3</a>
-                        <a class="LigaSiniestros" id="necesitafactura" href="/backend/Siniestros/Siniestros.php" >@sini4</a>
-                        <a class="LigaSiniestros" id="conanticipoaproveedor" href="/backend/Siniestros/Siniestros.php" >@sini5</a>
-                        <a class="LigaSiniestros" id="pendientedeale" href="/backend/Siniestros/Siniestros.php" >@sini6</a>
-                    
-                    </ul>
+                        <?php 
+                            if ($result->num_rows > 0) {
+                            while($row = $result->fetch_assoc()) {
+                        
+                                if(str_contains($row["siniestroEstado"], "Recepción")){
+                                    if($row["siniestroColor"] == "null" || $row["siniestroColor"] == 0 ){
+                                        echo "<form action='/backend/Siniestros/Siniestros.php' method='POST'>
+                                                    <input class='LigaSiniestros' type='number' hidden name='id' value='".$row['ID']."' >
+                                                    <input class='LigaSiniestros' type='submit' value='".$row['siniestroId']."' >
+                                            </form>";
+                                    }
+                                    if($row["siniestroColor"] == 1 ){
+                                        echo "<a class='LigaSiniestros' id='conqueja' href='/backend/Siniestros/Siniestros.php' >".$row['siniestroId']."</a>";
+                                    }
+                                    if($row["siniestroColor"] == 2 ){
+                                        echo "<a class='LigaSiniestros' id='conmasde3meses' href='/backend/Siniestros/Siniestros.php' >".$row['siniestroId']."</a>";
+                                    }
+                                    if($row["siniestroColor"] == 3 ){
+                                        echo "<a class='LigaSiniestros' id='problemaconseguro' href='/backend/Siniestros/Siniestros.php' >".$row['siniestroId']."</a>";
+                                    }
+                                    if($row["siniestroColor"] == 4 ){
+                                        echo "<a class='LigaSiniestros' id='nnecesitafacturaormal' href='/backend/Siniestros/Siniestros.php' >".$row['siniestroId']."</a>";
+                                    }
+                                    if($row["siniestroColor"] == 5 ){
+                                        echo "<a class='LigaSiniestros' id='conanticipoaproveedor' href='/backend/Siniestros/Siniestros.php' >".$row['siniestroId']."</a>";
+                                    }
+                                    if($row["siniestroColor"] == 6 ){
+                                        echo "<a class='LigaSiniestros' id='pendientedeale' href='/backend/Siniestros/Siniestros.php' >".$row['siniestroId']."</a>";
+                                    }
+                                }
 
-            </div>
-            <div class="col-auto align-items-center columnasSiniestros" style="padding:0;width:15%;text-align:center">
-                <div class="titulosEstados"> 
-                    <p>Visita</p>
-                </div>
+                            }
+                    ?>
 
-                <ul class="siniestrosIds">
-                    
-                        <a class="LigaSiniestros" href="#">@sini</a>
+
+</ul>
+
+    </div>
+    <div class='col-auto align-items-center columnasSiniestros' style='padding:0;width:15%;text-align:center'>
+        <div class='titulosEstados'> 
+            <p>Visita</p>
+        </div>
+
+        <ul class='siniestrosIds'>
+
+                        <?php
+
+                        $result = $connect->query($sql);
+
+                        while($row=$result->fetch_assoc()) {
+
+                            if(str_contains($row["siniestroEstado"], "Visita")){
+                                if($row["siniestroColor"] == "null" || $row["siniestroColor"] == 0 ){
+                                    echo "<a class='LigaSiniestros' id='normal' href='/backend/Siniestros/Siniestros.php' >".$row['siniestroId']."</a>";
+                                }
+                                if($row["siniestroColor"] == 1 ){
+                                    echo "<a class='LigaSiniestros' id='conqueja' href='/backend/Siniestros/Siniestros.php' >".$row['siniestroId']."</a>";
+                                }
+                                if($row["siniestroColor"] == 2 ){
+                                    echo "<a class='LigaSiniestros' id='conmasde3meses' href='/backend/Siniestros/Siniestros.php' >".$row['siniestroId']."</a>";
+                                }
+                                if($row["siniestroColor"] == 3 ){
+                                    echo "<a class='LigaSiniestros' id='problemaconseguro' href='/backend/Siniestros/Siniestros.php' >".$row['siniestroId']."</a>";
+                                }
+                                if($row["siniestroColor"] == 4 ){
+                                    echo "<a class='LigaSiniestros' id='nnecesitafacturaormal' href='/backend/Siniestros/Siniestros.php' >".$row['siniestroId']."</a>";
+                                }
+                                if($row["siniestroColor"] == 5 ){
+                                    echo "<a class='LigaSiniestros' id='conanticipoaproveedor' href='/backend/Siniestros/Siniestros.php' >".$row['siniestroId']."</a>";
+                                }
+                                if($row["siniestroColor"] == 6 ){
+                                    echo "<a class='LigaSiniestros' id='pendientedeale' href='/backend/Siniestros/Siniestros.php' >".$row['siniestroId']."</a>";
+                                }
+                            }
+                        }
+
+                        }
+
+                        ?>
                 
                 </ul>
 
@@ -91,8 +159,39 @@
                 </div>
 
                 <ul class="siniestrosIds">
-                    
-                    <a class="LigaSiniestros" href="#">@sini</a>
+                        <?php  
+                        
+                        $result = $connect->query($sql);
+                        
+                            if ($result->num_rows > 0) {
+                            while($row = $result->fetch_assoc()) {
+
+                            if(str_contains($row["siniestroEstado"], "Presupuesto")){
+                                if($row["siniestroColor"] == "null" || $row["siniestroColor"] == 0 ){
+                                    echo "<a class='LigaSiniestros' id='normal' href='/backend/Siniestros/Siniestros.php' >".$row['siniestroId']."</a>";
+                                }
+                                if($row["siniestroColor"] == 1 ){
+                                    echo "<a class='LigaSiniestros' id='conqueja' href='/backend/Siniestros/Siniestros.php' >".$row['siniestroId']."</a>";
+                                }
+                                if($row["siniestroColor"] == 2 ){
+                                    echo "<a class='LigaSiniestros' id='conmasde3meses' href='/backend/Siniestros/Siniestros.php' >".$row['siniestroId']."</a>";
+                                }
+                                if($row["siniestroColor"] == 3 ){
+                                    echo "<a class='LigaSiniestros' id='problemaconseguro' href='/backend/Siniestros/Siniestros.php' >".$row['siniestroId']."</a>";
+                                }
+                                if($row["siniestroColor"] == 4 ){
+                                    echo "<a class='LigaSiniestros' id='nnecesitafacturaormal' href='/backend/Siniestros/Siniestros.php' >".$row['siniestroId']."</a>";
+                                }
+                                if($row["siniestroColor"] == 5 ){
+                                    echo "<a class='LigaSiniestros' id='conanticipoaproveedor' href='/backend/Siniestros/Siniestros.php' >".$row['siniestroId']."</a>";
+                                }
+                                if($row["siniestroColor"] == 6 ){
+                                    echo "<a class='LigaSiniestros' id='pendientedeale' href='/backend/Siniestros/Siniestros.php' >".$row['siniestroId']."</a>";
+                                }
+                            }
+                            }
+                        }
+                        ?>
 
                 </ul>
 
@@ -105,7 +204,38 @@
 
                 <ul class="siniestrosIds">
                     
-                    <a class="LigaSiniestros" href="#">@sini</a>
+                    <?php     
+
+                        $result = $connect->query($sql);
+
+                        if ($result->num_rows > 0) {
+                        while($row = $result->fetch_assoc()) {
+                        if(str_contains($row["siniestroEstado"], "Autorizado")){
+                            if($row["siniestroColor"] == "null" || $row["siniestroColor"] == 0 ){
+                                echo "<a class='LigaSiniestros' id='normal' href='/backend/Siniestros/Siniestros.php' >".$row['siniestroId']."</a>";
+                            }
+                            if($row["siniestroColor"] == 1 ){
+                                echo "<a class='LigaSiniestros' id='conqueja' href='/backend/Siniestros/Siniestros.php' >".$row['siniestroId']."</a>";
+                            }
+                            if($row["siniestroColor"] == 2 ){
+                                echo "<a class='LigaSiniestros' id='conmasde3meses' href='/backend/Siniestros/Siniestros.php' >".$row['siniestroId']."</a>";
+                            }
+                            if($row["siniestroColor"] == 3 ){
+                                echo "<a class='LigaSiniestros' id='problemaconseguro' href='/backend/Siniestros/Siniestros.php' >".$row['siniestroId']."</a>";
+                            }
+                            if($row["siniestroColor"] == 4 ){
+                                echo "<a class='LigaSiniestros' id='nnecesitafacturaormal' href='/backend/Siniestros/Siniestros.php' >".$row['siniestroId']."</a>";
+                            }
+                            if($row["siniestroColor"] == 5 ){
+                                echo "<a class='LigaSiniestros' id='conanticipoaproveedor' href='/backend/Siniestros/Siniestros.php' >".$row['siniestroId']."</a>";
+                            }
+                            if($row["siniestroColor"] == 6 ){
+                                echo "<a class='LigaSiniestros' id='pendientedeale' href='/backend/Siniestros/Siniestros.php' >".$row['siniestroId']."</a>";
+                            }
+                        }
+                        }
+                    }
+                    ?>
                     
                 </ul>
 
@@ -117,8 +247,39 @@
                 </div>
 
                 <ul class="siniestrosIds">
+
+                    <?php   
                     
-                    <a class="LigaSiniestros" href="#">@sini</a>
+                        $result = $connect->query($sql);
+                    
+                        if ($result->num_rows > 0) {
+                        while($row = $result->fetch_assoc()) {
+                        if(str_contains($row["siniestroEstado"], "espera")){
+                            if($row["siniestroColor"] == "null" || $row["siniestroColor"] == 0 ){
+                                echo "<a class='LigaSiniestros' id='normal' href='/backend/Siniestros/Siniestros.php' >".$row['siniestroId']."</a>";
+                            }
+                            if($row["siniestroColor"] == 1 ){
+                                echo "<a class='LigaSiniestros' id='conqueja' href='/backend/Siniestros/Siniestros.php' >".$row['siniestroId']."</a>";
+                            }
+                            if($row["siniestroColor"] == 2 ){
+                                echo "<a class='LigaSiniestros' id='conmasde3meses' href='/backend/Siniestros/Siniestros.php' >".$row['siniestroId']."</a>";
+                            }
+                            if($row["siniestroColor"] == 3 ){
+                                echo "<a class='LigaSiniestros' id='problemaconseguro' href='/backend/Siniestros/Siniestros.php' >".$row['siniestroId']."</a>";
+                            }
+                            if($row["siniestroColor"] == 4 ){
+                                echo "<a class='LigaSiniestros' id='nnecesitafacturaormal' href='/backend/Siniestros/Siniestros.php' >".$row['siniestroId']."</a>";
+                            }
+                            if($row["siniestroColor"] == 5 ){
+                                echo "<a class='LigaSiniestros' id='conanticipoaproveedor' href='/backend/Siniestros/Siniestros.php' >".$row['siniestroId']."</a>";
+                            }
+                            if($row["siniestroColor"] == 6 ){
+                                echo "<a class='LigaSiniestros' id='pendientedeale' href='/backend/Siniestros/Siniestros.php' >".$row['siniestroId']."</a>";
+                            }
+                        }
+                        }
+                    }
+                    ?>
                     
                 </ul>
 
@@ -130,8 +291,41 @@
                 </div>
 
                 <ul class="siniestrosIds">
-                    
-                    <a class="LigaSiniestros" href="#">@sini</a>
+
+                    <?php  
+
+                        $result = $connect->query($sql);
+
+                        if ($result->num_rows > 0) {   
+                            while($row = $result->fetch_assoc()) {
+                                if(str_contains($row["siniestroEstado"], "evidencia")){
+                                    if($row["siniestroColor"] == "null" || $row["siniestroColor"] == 0 ){
+                                        echo "<a class='LigaSiniestros' id='normal' href='/backend/Siniestros/Siniestros.php' >".$row['siniestroId']."</a>";
+                                    }
+                                    if($row["siniestroColor"] == 1 ){
+                                        echo "<a class='LigaSiniestros' id='conqueja' href='/backend/Siniestros/Siniestros.php' >".$row['siniestroId']."</a>";
+                                    }
+                                    if($row["siniestroColor"] == 2 ){
+                                        echo "<a class='LigaSiniestros' id='conmasde3meses' href='/backend/Siniestros/Siniestros.php' >".$row['siniestroId']."</a>";
+                                    }
+                                    if($row["siniestroColor"] == 3 ){
+                                        echo "<a class='LigaSiniestros' id='problemaconseguro' href='/backend/Siniestros/Siniestros.php' >".$row['siniestroId']."</a>";
+                                    }
+                                    if($row["siniestroColor"] == 4 ){
+                                        echo "<a class='LigaSiniestros' id='nnecesitafacturaormal' href='/backend/Siniestros/Siniestros.php' >".$row['siniestroId']."</a>";
+                                    }
+                                    if($row["siniestroColor"] == 5 ){
+                                        echo "<a class='LigaSiniestros' id='conanticipoaproveedor' href='/backend/Siniestros/Siniestros.php' >".$row['siniestroId']."</a>";
+                                    }
+                                    if($row["siniestroColor"] == 6 ){
+                                        echo "<a class='LigaSiniestros' id='pendientedeale' href='/backend/Siniestros/Siniestros.php' >".$row['siniestroId']."</a>";
+                                    }
+                                }
+
+                            }
+                        }
+
+                    ?>
                 
                 </ul>
 
@@ -155,6 +349,9 @@
 </div>
 <br />
 
-<?php 
+<?php
+
+    $connect->close();
     include $_SERVER['DOCUMENT_ROOT']."/shared/_footer.php";
+
 ?>
