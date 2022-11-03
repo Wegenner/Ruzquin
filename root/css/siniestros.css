@@ -19,6 +19,11 @@ ul {
     margin-bottom: 2px;
 }
 
+form{
+    margin: 0 !important;
+    padding: 0 !important;
+}
+
 .LigaSiniestros {
     color: white;
     background: #687e8c;
@@ -29,7 +34,6 @@ ul {
     padding: 0 -5px 0 -5px;
     text-align: center;
     line-height: 3;
-    border-radius: 0px;
     margin-bottom: 5px;
     border-radius: 8px;
 }
