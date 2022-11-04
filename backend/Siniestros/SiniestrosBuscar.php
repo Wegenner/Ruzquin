@@ -5,9 +5,10 @@
 
     if($_POST){
 
-        $MesBuscado = $_POST['mes'];  
+        $MesInicio = $_POST['mes'];  
+        $MesFin = $_POST['segundomes'];  
 
-        $sql = "SELECT ID,siniestroId,siniestroColor, siniestroAnticipo,siniestroEstado FROM siniestromodelo WHERE siniestroFecha BETWEEN '".$MesBuscado."-01 00:00:00' AND '".$MesBuscado."-28 00:00:00'";
+        $sql = "SELECT ID,siniestroId,siniestroColor, siniestroAnticipo,siniestroEstado FROM siniestromodelo WHERE siniestroFecha BETWEEN '".$MesInicio."-01 00:00:00' AND '".$MesFin."-01 00:00:00'";
     }else{
         $sql = "SELECT ID,siniestroId,siniestroColor, siniestroAnticipo,siniestroEstado FROM siniestromodelo WHERE siniestroFecha BETWEEN '2022-10-01 00:00:00' AND '2022-11-01 00:00:00'";
     }
@@ -32,7 +33,7 @@
                 </ul>
             </nav>
         </div>
-        <div class="col" style="text-align:end">
+        <div class="col" style="text-align:end; display:flex">
         <form action="/backend/Siniestros/SiniestrosResultados.php" method="POST">   
 
             <input type="text" name="id" style="border-radius:13px"/>
@@ -63,24 +64,14 @@
         </div>
 
         <div class="row justify-content-center">
-            <div class="col">
-
-                <button type="button" style="background-color:#687e8c; 
-                                            margin-top: 10px;
-                                            width: 120px;
-                                            line-height: 1.5;
-                                            border-radius: 3px"
-                class="btn btn-secondary"> Nuevo </button>
-
-            </div>
             <form action="/backend/Siniestros/SiniestrosBuscar.php" method="post">
-                <div class="col" style="align-content:flex-end">
+                <div style="align-content:flex-end; display:flex; ">
 
-                    <input type="month" name="mes" class="form-control" style="margin-top:10px" />
+                    <label for="mes" style="margin-top:13px"> Desde: </label>
+                    <input type="month" name="mes" id="mes" class="form-control" style="margin:9px" required/>
 
-                </div>
-
-                <div class="col" style="text-align:end">
+                    <label for="segundomes" style="margin-top:13px"> Hasta: </label>
+                    <input type="month" name="segundomes" id="segundomes" class="form-control" style="margin:9px" required/>
 
                     <input type="submit" style="width: 120px; line-height: 1.5; border-radius: 3px;margin-top:10px" value="Buscar" class="btn btn-primary DetallesSiniestros" /> 
             
@@ -95,230 +86,179 @@
 
     <h2 style="text-align : center">Total : <?php echo $result->num_rows ?></h2>
 
-    <div class="rounded container-fluid align-items-center">
+    <div class="align-items-center" style="display:flex">
 
-        <div class="row justify-content-center rounded" style="width: 100%;">
+        <div style="width: 100%;">
 
-            <div class="col-auto align-items-center columnasSiniestros" style="padding:0;width:15%;text-align:center">
+            <div class="titulosEstados">
+                <p style="margin-bottom:1rem;">Recepción</p>
 
-                <div class="titulosEstados">
-                    <p style="margin-bottom:1rem;">Recepción</p>
-                </div>
-
-                    <ul id="siniestrosIds">
+                    
+                    
+                    <?php 
+                        $result = $connect->query($sql);
+                            if ($result->num_rows > 0) {
+                            while($row = $result->fetch_assoc()) {
                         
-                      
-                        <?php 
-                            $result = $connect->query($sql);
-                                if ($result->num_rows > 0) {
-                                while($row = $result->fetch_assoc()) {
-                            
-                                    if(str_contains($row["siniestroEstado"], "Recepción")){
-                                        echo botonsiniestro($row);
-                                    }
-
+                                if(str_contains($row["siniestroEstado"], "Recepción")){
+                                    echo botonsiniestro($row);
                                 }
-                        ?>
-                    
-                    </ul>
 
-            </div>
-            <div class="col-auto align-items-center columnasSiniestros" style="padding:0;width:15%;text-align:center">
-                <div class="titulosEstados"> 
-                    <p>Visita</p>
-                </div>
-
-                <ul class="siniestrosIds">
-                        
-                    <?php
-
-                        $result = $connect->query($sql);
-
-                        while($row=$result->fetch_assoc()) {
-
-                            if(str_contains($row["siniestroEstado"], "Visita")){
-                                echo botonsiniestro($row);
                             }
-                        }
-
-
                     ?>
-                
-                </ul>
-
             </div>
 
-            <div class="col-auto align-items-center columnasSiniestros" style="padding:0;width:15%;text-align:center">
-                <div class="titulosEstados"> 
-                    <p>Presupuesto</p>
-                </div>
+            <div class="titulosEstados"> 
+                <p>Visita</p>
 
-                <ul class="siniestrosIds">
                     
-                    <?php
-
-                        $result = $connect->query($sql);
-
-                        while($row=$result->fetch_assoc()) {
-
-                            if(str_contains($row["siniestroEstado"], "Presupuesto")){
-                                echo botonsiniestro($row);
-                            }
-                        }
-
-
-                    ?>
-
-                </ul>
-
-            </div>
-
-            <div class="col-auto align-items-center columnasSiniestros" style="padding:0;width:15%;text-align:center">
-                <div class="titulosEstados"> 
-                    <p>Autorizado</p>
-                </div>
-
-                <ul class="siniestrosIds">
-                    
-                    <?php
+                <?php
 
                     $result = $connect->query($sql);
 
                     while($row=$result->fetch_assoc()) {
 
-                        if(str_contains($row["siniestroEstado"], "autori")){
+                        if(str_contains($row["siniestroEstado"], "Visita")){
+                            echo botonsiniestro($row);
+                        }
+                    }
+
+
+                ?>
+
+            </div>
+
+            <div class="titulosEstados"> 
+                <p>Presupuesto</p>
+
+                    
+                <?php
+
+                    $result = $connect->query($sql);
+
+                    while($row=$result->fetch_assoc()) {
+
+                        if(str_contains($row["siniestroEstado"], "Presupuesto")){
                             echo botonsiniestro($row);
                         }
                     }
 
 
                     ?>
-                    
-                </ul>
 
             </div>
 
-            <div class="col-auto align-items-center columnasSiniestros" style="padding:0;width:15%;text-align:center">
-                <div class="titulosEstados"> 
-                    <p>Espera</p>
-                </div>
+            <div class="titulosEstados"> 
+                <p>Autorizado</p>
 
-                <ul class="siniestrosIds">
-                    <?php
+                <?php
 
-                        $result = $connect->query($sql);
+                $result = $connect->query($sql);
 
-                        while($row=$result->fetch_assoc()) {
+                while($row=$result->fetch_assoc()) {
 
-                            if(str_contains($row["siniestroEstado"], "espera")){
-                                echo botonsiniestro($row);
-                            }
-                        }
+                    if(str_contains($row["siniestroEstado"], "autori")){
+                        echo botonsiniestro($row);
+                    }
+                }
 
 
-                    ?>            
-                </ul>
+                ?>
+
 
             </div>
 
-            <div class="col-auto align-items-center columnasSiniestros" style="padding:0;width:15%;text-align:center">
-                <div class="titulosEstados"> 
-                    <p>E. E.</p>
-                </div>
+            <div class="titulosEstados"> 
+                <p>Espera</p>
+                <?php
 
-                <ul class="siniestrosIds">
-                    
-                    <?php
+                    $result = $connect->query($sql);
 
-                        $result = $connect->query($sql);
+                    while($row=$result->fetch_assoc()) {
 
-                        while($row=$result->fetch_assoc()) {
-
-                            if(str_contains($row["siniestroEstado"], "evidencia")){
-                                echo botonsiniestro($row);
-                            }
+                        if(str_contains($row["siniestroEstado"], "espera")){
+                            echo botonsiniestro($row);
                         }
+                    }
 
 
-                    ?>
+                ?>            
+
+            </div>
+
+            <div class="titulosEstados"> 
+                <p>E. E.</p>
                 
-                </ul>
+                <?php
 
-            </div>
+                    $result = $connect->query($sql);
 
-            <div class="col-auto align-items-center columnasSiniestros" style="padding:0;width:15%;text-align:center">
-                <div class="titulosEstados"> 
-                    <p>Cancelado</p>
-                </div>
+                    while($row=$result->fetch_assoc()) {
 
-                <ul class="siniestrosIds">
-                        
-                    <?php
-
-                        $result = $connect->query($sql);
-
-                        while($row=$result->fetch_assoc()) {
-
-                            if(str_contains($row["siniestroEstado"], "Cancelado")){
-                                echo botonsiniestro($row);
-                            }
+                        if(str_contains($row["siniestroEstado"], "evidencia")){
+                            echo botonsiniestro($row);
                         }
+                    }
 
 
-                    ?>
-                    
-                </ul>
+                ?>
 
             </div>
 
-            <div class="col-auto align-items-center columnasSiniestros" style="padding:0;width:15%;text-align:center">
-                <div class="titulosEstados"> 
-                    <p>P. D.</p>
-                </div>
-
-                <ul class="siniestrosIds">
+            <div class="titulosEstados"> 
+                <p>Cancelado</p>
                     
-                    <?php
+                <?php
 
-                        $result = $connect->query($sql);
+                    $result = $connect->query($sql);
 
-                        while($row=$result->fetch_assoc()) {
+                    while($row=$result->fetch_assoc()) {
 
-                            if(str_contains($row["siniestroEstado"], "Pago")){
-                                echo botonsiniestro($row);
-                            }
+                        if(str_contains($row["siniestroEstado"], "Cancelado")){
+                            echo botonsiniestro($row);
                         }
+                    }
 
 
-                    ?>
-                    
-                </ul>
+                ?>
 
             </div>
 
-            <div class="col-auto align-items-center columnasSiniestros" style="padding:0;width:15%;text-align:center">
+            <div class="titulosEstados"> 
+                <p>P. D.</p>
+
+                <?php
+
+                    $result = $connect->query($sql);
+
+                    while($row=$result->fetch_assoc()) {
+
+                        if(str_contains($row["siniestroEstado"], "Pago")){
+                            echo botonsiniestro($row);
+                        }
+                    }
+
+
+                ?>
+
+            </div>
             
-                <div class="titulosEstados"> 
-                    <p>Facturación</p>
-                </div>
+            <div class="titulosEstados"> 
+                <p>Facturación</p>
 
-                <ul class="siniestrosIds">
-                    
-                    <?php
+                <?php
 
-                        $result = $connect->query($sql);
+                    $result = $connect->query($sql);
 
-                        while($row=$result->fetch_assoc()) {
+                    while($row=$result->fetch_assoc()) {
 
-                            if(str_contains($row["siniestroEstado"], "Facturación")){
-                                echo botonsiniestro($row);
-                            }
+                        if(str_contains($row["siniestroEstado"], "Facturación")){
+                            echo botonsiniestro($row);
                         }
+                    }
 
 
-                    ?>
-                    
-                </ul>
+                ?>
 
             </div>
 

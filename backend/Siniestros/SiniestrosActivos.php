@@ -12,7 +12,7 @@
 
 <div id="navSiniestros" class="container-fluid">
     <div class="row">
-        <div class="col">
+        <div class="col" sytle="align-items: start">
             <nav>
                 <ul class="nav">
                     <?php
@@ -23,18 +23,22 @@
                         $urlSiniestrosNav = "/backend/Siniestros/SiniestrosBuscar.php";
                         echo "<li><a href='$urlSiniestrosNav' class='menuLink' > Siniestros Buscar </a></li>"; 
                     ?>
+                    
                 </ul>
             </nav>
         </div>
-        <div class="col" style="text-align:end">
-            <input type="text" style="border-radius:13px;"/>
+        <div class="col" style="text-align:end; display:flex">
+        <form action="/backend/Siniestros/SiniestrosResultados.php" method="POST">   
 
-            <button type="button" class="btn btn-dark botonnav" style="border-radius: 20px !important"> Buscar </button>
+            <input type="text" name="id" style="border-radius:13px"/>
 
+            <input type="submit" class="btn btn-dark" style="border-radius: 20px !important" value="Buscar">
+
+        </form>
             <button type="button" style="background-color:#687e8c; 
                                             line-height: 1.5;
                                             border-radius: 16px"
-                class="btn btn-secondary botonnav"> Nuevo </button>
+                class="btn btn-secondary"> Nuevo </button>
         </div>
     </div>
 </div>
