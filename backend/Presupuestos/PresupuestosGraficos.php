@@ -88,7 +88,7 @@
             <br/>
 
             <p>Totales:  600</p>
-            <p>Cancelados:  150</p>
+            <p>Cancelados:  <input type="number" id="numero" value="300" readonly style="border: none;"/></p>
             <p>Facturados:  150</p>
             <p>Pago de daños:  150</p>
             <P>Activos:  150</p> <br>
@@ -119,7 +119,7 @@
         labels: labels,
         datasets: [{
             label: 'My First dataset',
-            data: [150, 150, 150,150],
+            data: [document.getElementById('numero').value, 150, 150,150],
             backgroundColor: [
                 'rgb(255, 51, 51)',
                 'rgb(51, 63, 255)',
