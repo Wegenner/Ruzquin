@@ -1,30 +1,16 @@
 <?php 
 
-    class Conexion{
-        private $host = "127.0.0.1";
-        private $user = "root";
-        private $password = "Wegenner1$";
-        private $db = "ruzquinmysql";
-        private $connect;
+    $host = "191.96.56.103";
+    $user = "u682385574_Wegenner";
+    $password = "Wegenner1$";
+    $db = "u682385574_Ruzquin";
+    $connect;
 
-        public function __construct()
-        {
+    $connect = new mysqli($host,$user,$password,$db);
 
-            $connectionString = "mysql:host=".$this->host.";dbname=".$this->db.";charset=utf8";
-
-            try {
-                $this->connect = new PDO($connectionString,$this->user,$this->password);
-                $this->connect->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-                echo "Conexion Exitosa";
-            } catch (Exception $e){
-                $this->connect ='Error de conexión';
-                echo "ERROR: ". $e->getMessage();
-            }
-
-        }
-
+    if ($connect->connect_error) {
+        die("Connection failed: " . $connect->connect_error);
     }
 
-    $connect = new Conexion();
 
 ?>

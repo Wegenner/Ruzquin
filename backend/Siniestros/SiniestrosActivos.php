@@ -1,10 +1,18 @@
 <?php 
+
     include $_SERVER['DOCUMENT_ROOT']."/shared/_header.php";
+    include $_SERVER['DOCUMENT_ROOT']."/backend/Database/connection.php"; 
+    include $_SERVER['DOCUMENT_ROOT']."/backend/Database/db_Functions.php"; 
+
+    $sql = "SELECT ID,siniestroId,siniestroColor, siniestroAnticipo,siniestroEstado FROM siniestromodelo WHERE (siniestroEstado != 'Cancelado')AND(siniestroEstado != 'Facturación')AND(siniestroEstado != 'Facturación ')AND(siniestroEstado != 'Facturacion')AND(siniestroEstado != 'Pago de daños')AND(siniestroFecha BETWEEN '2022-05-01 00:00:00' AND '2022-11-01 00:00:00')";
+
+    $result = $connect->query($sql);
+
 ?>
 
 <div id="navSiniestros" class="container-fluid">
     <div class="row">
-        <div class="col">
+        <div class="col" sytle="align-items: start">
             <nav>
                 <ul class="nav">
                     <?php
@@ -15,18 +23,22 @@
                         $urlSiniestrosNav = "/backend/Siniestros/SiniestrosBuscar.php";
                         echo "<li><a href='$urlSiniestrosNav' class='menuLink' > Siniestros Buscar </a></li>"; 
                     ?>
+                    
                 </ul>
             </nav>
         </div>
-        <div class="col" style="text-align:end">
-            <input type="text" style="border-radius:13px;"/>
+        <div class="col" style="text-align:end; display:flex">
+        <form action="/backend/Siniestros/SiniestrosResultados.php" method="POST">   
 
-            <button type="button" class="btn btn-dark botonnav" style="border-radius: 20px !important"> Buscar </button>
+            <input type="text" name="id" style="border-radius:13px"/>
 
+            <input type="submit" class="btn btn-dark" style="border-radius: 20px !important" value="Buscar">
+
+        </form>
             <button type="button" style="background-color:#687e8c; 
                                             line-height: 1.5;
                                             border-radius: 16px"
-                class="btn btn-secondary botonnav"> Nuevo </button>
+                class="btn btn-secondary"> Nuevo </button>
         </div>
     </div>
 </div>
@@ -39,7 +51,7 @@
         <div class="row">
             <div class="col" style="text-align:center">
 
-                <h1 style="margin-top:15px">Siniestros</h1>
+                <h1 style="margin-top:15px">Siniestros Activos (3 Meses)</h1>
                 
             </div>
         </div>
@@ -48,7 +60,7 @@
 
     <hr />
 
-    <h2 style="text-align : center">Total : @Model.Count()</h2>
+    <h2 style="text-align : center">Total : <?php echo $result->num_rows ?></h2>
 
     <div class="rounded container-fluid align-items-center">
 
@@ -62,24 +74,42 @@
 
                     <ul id="siniestrosIds">
                         
-                        <a class="LigaSiniestros" id="conqueja" href="/backend/Siniestros/Siniestros.php" >@sini</a>
-                        <a class="LigaSiniestros" id="conmasde3meses" href="/backend/Siniestros/Siniestros.php" >@sini2</a>
-                        <a class="LigaSiniestros" id="problemaconseguro" href="/backend/Siniestros/Siniestros.php" >@sini3</a>
-                        <a class="LigaSiniestros" id="necesitafactura" href="/backend/Siniestros/Siniestros.php" >@sini4</a>
-                        <a class="LigaSiniestros" id="conanticipoaproveedor" href="/backend/Siniestros/Siniestros.php" >@sini5</a>
-                        <a class="LigaSiniestros" id="pendientedeale" href="/backend/Siniestros/Siniestros.php" >@sini6</a>
-                    
-                    </ul>
+                        <?php 
+                            if ($result->num_rows > 0) {
+                            while($row = $result->fetch_assoc()) {
+                        
+                                if(str_contains($row["siniestroEstado"], "Recepción")){
+                                    echo botonsiniestro($row);
+                                }
 
-            </div>
-            <div class="col-auto align-items-center columnasSiniestros" style="padding:0;width:15%;text-align:center">
-                <div class="titulosEstados"> 
-                    <p>Visita</p>
-                </div>
+                            }
+                    ?>
 
-                <ul class="siniestrosIds">
-                    
-                        <a class="LigaSiniestros" href="#">@sini</a>
+
+</ul>
+
+    </div>
+    <div class='col-auto align-items-center columnasSiniestros' style='padding:0;width:15%;text-align:center'>
+        <div class='titulosEstados'> 
+            <p>Visita</p>
+        </div>
+
+        <ul class='siniestrosIds'>
+
+                        <?php
+
+                        $result = $connect->query($sql);
+
+                        while($row=$result->fetch_assoc()) {
+
+                            if(str_contains($row["siniestroEstado"], "Visita")){
+                                echo botonsiniestro($row);
+                            }
+                        }
+
+                        }
+
+                        ?>
                 
                 </ul>
 
@@ -91,8 +121,19 @@
                 </div>
 
                 <ul class="siniestrosIds">
-                    
-                    <a class="LigaSiniestros" href="#">@sini</a>
+                        <?php  
+                        
+                        $result = $connect->query($sql);
+                        
+                            if ($result->num_rows > 0) {
+                            while($row = $result->fetch_assoc()) {
+
+                            if(str_contains($row["siniestroEstado"], "Presupuesto")){
+                                echo botonsiniestro($row);
+                            }
+                            }
+                        }
+                        ?>
 
                 </ul>
 
@@ -105,7 +146,18 @@
 
                 <ul class="siniestrosIds">
                     
-                    <a class="LigaSiniestros" href="#">@sini</a>
+                    <?php     
+
+                        $result = $connect->query($sql);
+
+                        if ($result->num_rows > 0) {
+                        while($row = $result->fetch_assoc()) {
+                        if(str_contains($row["siniestroEstado"], "Autorizado")){
+                            echo botonsiniestro($row);
+                        }
+                        }
+                    }
+                    ?>
                     
                 </ul>
 
@@ -117,8 +169,19 @@
                 </div>
 
                 <ul class="siniestrosIds">
+
+                    <?php   
                     
-                    <a class="LigaSiniestros" href="#">@sini</a>
+                        $result = $connect->query($sql);
+                    
+                        if ($result->num_rows > 0) {
+                        while($row = $result->fetch_assoc()) {
+                        if(str_contains($row["siniestroEstado"], "espera")){
+                            echo botonsiniestro($row);
+                        }
+                        }
+                    }
+                    ?>
                     
                 </ul>
 
@@ -130,8 +193,21 @@
                 </div>
 
                 <ul class="siniestrosIds">
-                    
-                    <a class="LigaSiniestros" href="#">@sini</a>
+
+                    <?php  
+
+                        $result = $connect->query($sql);
+
+                        if ($result->num_rows > 0) {   
+                            while($row = $result->fetch_assoc()) {
+                                if(str_contains($row["siniestroEstado"], "evidencia")){
+                                    echo botonsiniestro($row);
+                                }
+
+                            }
+                        }
+
+                    ?>
                 
                 </ul>
 
@@ -155,6 +231,9 @@
 </div>
 <br />
 
-<?php 
+<?php
+
+    $connect->close();
     include $_SERVER['DOCUMENT_ROOT']."/shared/_footer.php";
+
 ?>

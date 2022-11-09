@@ -1,110 +1,168 @@
 <?php 
     include $_SERVER['DOCUMENT_ROOT']."/shared/_header.php";
-?>
+    include $_SERVER['DOCUMENT_ROOT']."/backend/Database/connection.php"; 
 
-<h1 style="text-align: center; padding-top:10px">Detalles - Siniestro random</h1>
+    if($_POST){
+        
+        $id = $_POST['id'];
+
+        $sqlsini = "SELECT * FROM siniestromodelo WHERE ID = ".$id;
+        
+        $resultsiniestro = $connect->query($sqlsini);
+
+        $sqlpres = "SELECT * FROM billingmodel WHERE ID = ".$id;
+
+        $resultpresupuesto = $connect->query($sqlpres);
+
+?>
+<div id="navSiniestros" class="container-fluid">
+    <div class="row">
+        <div class="col" sytle="align-items: start">
+            <nav>
+                <ul class="nav">
+                    <?php
+                        $urlSiniestrosNav = "/backend/Siniestros/SiniestrosActivos.php";
+                        echo "<li><a href='$urlSiniestrosNav' class='menuLink'> Siniestros Activos </a></li>"; 
+                    ?>
+                    <?php
+                        $urlSiniestrosNav = "/backend/Siniestros/SiniestrosBuscar.php";
+                        echo "<li><a href='$urlSiniestrosNav' class='menuLink' style='background: #2f698d'> Siniestros Buscar </a></li>"; 
+                    ?>
+                    
+                </ul>
+            </nav>
+        </div>
+        <div class="col" style="text-align:end; display:flex">
+        <form action="/backend/Siniestros/SiniestrosResultados.php" method="POST">   
+
+            <input type="text" name="id" style="border-radius:13px"/>
+
+            <input type="submit" class="btn btn-dark" style="border-radius: 20px !important" value="Buscar">
+
+        </form>
+            <button type="button" style="background-color:#687e8c; 
+                                            line-height: 1.5;
+                                            border-radius: 16px"
+                class="btn btn-secondary"> Nuevo </button>
+        </div>
+    </div>
+</div>
+<h1 style="text-align: center; padding-top:10px">Detalles - <?php while ($row = $resultsiniestro->fetch_assoc()){ echo $row['siniestroId']; } ?></h1>
 <p style="text-align: center"><b>10/11/2022</b> </p>
 <hr style="width:70%" />
 <div class="container" style="padding-top:10px">
-    <div class="row">
-        <div class="col">
-            <p><b> Nombre: </b> Siniestro Random </p>
-        </div>
-        <div class="col">
-            <p><b>Estado:</b>  Siniestro Random </p>
-        </div>
-    </div>
-    <div class="row">
-        <div class="col">
-            <p><b>Dirección:</b>  Siniestro Random </p>
-        </div>
-        <div class="col">
-            <p><b>Telefono del afectado:</b>  Siniestro Random </p>
-        </div>
-    </div>
-    <div class="row">
-        <div class="col">
-            <p><b>Aseguradora:</b>  Siniestro Random </p>
-        </div>
-        <div class="col">
-            <p><b>Proveedor:</b>  Siniestro Random </p>
-        </div>
-    </div>
-    <div class="row">
-        <div class="col">
-            <p><b>Creador:</b>  Siniestro Random </p>
-        </div>
-        <div class="col">
-            <p><b>Ultima Edición:</b>  Siniestro Random </p>
-        </div>
-    </div>
-    <div class="row">
 
-        <div class="col">
-            <p><b>Descripción:</b>  Siniestro Random </p>
+<?php 
+    $resultsiniestro = $connect->query($sqlsini);
+    while ($row = $resultsiniestro->fetch_assoc()){
+        echo "
+        <div class='row'>
+        <div class='col'>
+            <p><b> Nombre: </b> ".$row['siniestroNombre']." </p>
         </div>
-    </div>
-    <div class="row">
-        <div class="col">
-            <p><b>Presupuesto Autorizado:</b>  Siniestro Random </p>
+        <div class='col'>
+            <p><b>Estado:</b>  ".$row['siniestroEstado']." </p>
         </div>
-        <div class="col">
-            <p><b>Presupuesto Proveedor:</b>  Siniestro Random </p>
         </div>
-    </div>
-</div>
+        <div class='row'>
+        <div class='col'>
+            <p><b>Dirección:</b>  ".$row['siniestroDireccion']." </p>
+        </div>
+        <div class='col'>
+            <p><b>Telefono del afectado:</b>  ".$row['siniestroTelefono']." </p>
+        </div>
+        </div>
+        <div class='row'>
+        <div class='col'>
+            <p><b>Aseguradora:</b>  ".$row['siniestroAseguradora']." </p>
+        </div>
+        <div class='col'>
+            <p><b>Proveedor:</b>  ".$row['siniestroProveedor']." </p>
+        </div>
+        </div>
+        <div class='row'>
+        <div class='col'>
+            <p><b>Creador:</b>  ".$row['siniestroCreador']." </p>
+        </div>
+        <div class='col'>
+            <p><b>Ultima Edición:</b>  ".$row['siniestroUltimoEdit']." </p>
+        </div>
+        </div>
+        <div class='row'>
+        
+        <div class='col'>
+            <p><b>Descripción:</b>  ".$row['siniestroDescripcion']." </p>
+        </div>
+        </div>
+        </div>
         <br />
         <br />
+        
+        <div class='container'>
+        <a class='detalles' href='/backend/Siniestros/SiniestrosEditar.php'>Editar</a>
+        <br />
+        <br />
+        <a class='detalles' href='/backend/Siniestros/SiniestrosBorrar.php'>Borrar</a>
+        <br />
+        <br />
+        <a class='detalles' href='/backend/Siniestros/SiniestrosActivos.php'>Regresar</a>
+        </div>
+        <br />
+        <br />";
+    }
 
-<div class="container">
-    <a class="detalles" href="/backend/Siniestros/SiniestrosEditar.php">Editar</a>
-    <br />
-    <br />
-    <a class="detalles" href="/backend/Siniestros/SiniestrosBorrar.php">Borrar</a>
-    <br />
-    <br />
-    <a class="detalles" href="/backend/Siniestros/SiniestrosActivos.php">Regresar</a>
+?>
 </div>
-    <br />
-    <br />
-
 <div class="container">
 
-    <button type="button" style="
-                background-color:green; width: 100%;
-                margin-right: 0.625%;
-                text-align: center;
-                border-radius: 10px;" href="#" class="btn btn-secondary">Crear Presupuesto</button>
-    <br />
-    <br />
+    <?php 
 
-    <h1 style="text-align: center">Presupuesto</h1>
+        if($resultpresupuesto->num_rows <= 0 || is_null($resultpresupuesto)){
 
-    <hr />
-    <div class="container-fluid">
-        <div class="row">
-            <div class="col">
-                <p><b> PA : </b></p>
+            echo "<button type='button' style='
+            background-color:green; width: 100%;
+            margin-right: 0.625%;
+            text-align: center;
+            border-radius: 10px;' href='#' class='btn btn-secondary'>Crear Presupuesto</button>
+            <br />
+            <br />";
+
+        }else{
+            while ($row = $resultpresupuesto->fetch_assoc()){
+            echo "
+            <h1 style='text-align: center'>Presupuesto</h1>
+        
+            <hr />
+            <div class='container-fluid'>
+                <div class='row'>
+                    <div class='col'>
+                        <p><b> PA :".$row['presupuestoPrecioAutorizado']." </b></p>
+                    </div>
+                    <div class='col'>
+                        <p><b>PP : ".$row['presupuestoPrecioProveedor']."</b> </p>
+                    </div>
+                </div>
+                <div class='row'>
+                    <div class='col'>
+                        <p><b>Utilidad : ".$row['presupuestoUtilidad']."</b> </p>
+                    </div>
+                </div>
+                    <div class='row'>
+                    <div class='col'>
+                        <p><b>Fecha de terminio : ".$row['siniestroFechaTermino']."</b> </p>
+                    </div>
+                </div>
             </div>
-            <div class="col">
-                <p><b>PP :</b> </p>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col">
-                <p><b>Utilidad :</b> </p>
-            </div>
-        </div>
-            <div class="row">
-            <div class="col">
-                <p><b>Fecha de terminio :</b> </p>
-            </div>
-        </div>
-    </div>
-    <br />
-            <a class="detalles" href="/backend/Presupuestos/PresupuestosEditar.php">Editar</a>
-    <br />
-    <br />
+            <br />
+                    <a class='detalles' href='/backend/Presupuestos/PresupuestosEditar.php'>Editar</a>
+            <br />
+            <br />";
+            }
+        }
+
+
+    ?>
+
 
     <h1 style="text-align: center"> Ver: Evidencias y Documentos</h1>
 
@@ -135,5 +193,6 @@
 </div>
 
 <?php 
+    }
     include $_SERVER['DOCUMENT_ROOT']."/shared/_footer.php";
 ?>
