@@ -1,9 +1,9 @@
 <?php 
 
-    $host = "127.0.0.1";
-    $user = "root";
+    $host = "191.96.56.103";
+    $user = "u682385574_Wegenner";
     $password = "Wegenner1$";
-    $db = "ruzquinmysql";
+    $db = "u682385574_Ruzquin";
     $connect;
 
     $connect = new mysqli($host,$user,$password,$db);

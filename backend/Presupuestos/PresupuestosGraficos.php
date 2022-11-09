@@ -1,5 +1,10 @@
 <?php 
     include $_SERVER['DOCUMENT_ROOT']."/shared/_header.php";
+    include $_SERVER['DOCUMENT_ROOT']."/backend/Database/connection.php"; 
+
+    $sqlUtilidad = "SELECT SUM(presupuestoUtilidad) AS 'UtilidadNeta' FROM billingmodel WHERE (siniestroFecha BETWEEN '2021-01-01 00:00:00' AND '2022-01-01 00:00:00')";
+
+    $resultUtilidad = $connect->query($sqlUtilidad);
 ?>
 
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
@@ -93,7 +98,7 @@
             <p>Pago de daños:  150</p>
             <P>Activos:  150</p> <br>
             <P style="text-align:center; font-size: 30px">Margen de Utilidad: </p>
-            <p style="text-align: center; font-size: 30px">$ 1,000,000.00</p>
+            <p style="text-align: center; font-size: 30px">$ <?php echo $resultUtilidad; ?></p>
 
         </div>
         <div class="col" style="height:500px">
