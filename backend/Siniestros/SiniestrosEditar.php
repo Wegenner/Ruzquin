@@ -78,6 +78,14 @@
                 </select>
                 <span class="text-danger"></span>
             </div>
+            <div class="col-sml">
+                <div class="row form-check">
+                    <label  style="margin-bottom: 5px" for="defaultCheck1" class="control-label siniestrosLabels">Anticipo</label>
+                </div>
+                <div class="row form-check" style="text-align:center">
+                    <input type="checkbox"value="1" id="defaultCheck1" style="margin-top:20px">
+                </div>
+            </div>
         </div>
         <div class="row">
             <div class="col-auto">
@@ -142,6 +150,21 @@
                 <label style="margin-bottom: 5px" class="control-label siniestrosLabels">Fecha de Termino: </label>
                 <input class="form-control" type="date"/>
                 <span class="text-danger"></span>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col formularios">
+                <div class="form-group">
+                    <label for="exampleFormControlSelect1">Problemas a notar: </label>
+                    <select class="form-control" id="exampleFormControlSelect1">
+                    <option value="1">Nada</option>
+                    <option value="2">Con queja</option>
+                    <option value="3">Mas de 3 meses</option>
+                    <option value="4">Problemas con el seguro</option>
+                    <option value="5">Necesita factura</option>
+                    <option value="6">Pendiente Alejandro</option>
+                    </select>
+                </div>
             </div>
         </div>
 
