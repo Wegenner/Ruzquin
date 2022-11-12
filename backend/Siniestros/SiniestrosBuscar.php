@@ -14,6 +14,7 @@
     }
 
     $result = $connect->query($sql);
+    $row = $result->fetch_assoc();
 ?>
 
 <div id="navSiniestros" class="container-fluid">
@@ -92,19 +93,17 @@
 
             <div class="titulosEstados">
                 <p style="margin-bottom:1rem;">Recepción</p>
-
-                    
-                    
+ 
                     <?php 
-                        $result = $connect->query($sql);
-                            if ($result->num_rows > 0) {
-                            while($row = $result->fetch_assoc()) {
-                        
-                                if(str_contains($row["siniestroEstado"], "Recepción")){
-                                    echo botonsiniestro($row);
-                                }
-
+                        if ($result->num_rows > 0) {
+                            
+                        while($row = $result->fetch_assoc()) {
+                    
+                            if(str_contains($row["siniestroEstado"], "Recepción")){
+                                echo botonsiniestro($row);
                             }
+
+                        }
                     ?>
             </div>
 
@@ -114,9 +113,7 @@
                     
                 <?php
 
-                    $result = $connect->query($sql);
-
-                    while($row=$result->fetch_assoc()) {
+                    while($row = $result->fetch_assoc()) {
 
                         if(str_contains($row["siniestroEstado"], "Visita")){
                             echo botonsiniestro($row);
@@ -136,7 +133,7 @@
 
                     $result = $connect->query($sql);
 
-                    while($row=$result->fetch_assoc()) {
+                    while($row = $result->fetch_assoc()) {
 
                         if(str_contains($row["siniestroEstado"], "Presupuesto")){
                             echo botonsiniestro($row);
@@ -271,5 +268,7 @@
 <?php 
 
     }
+    
+    $connect->close();
     include $_SERVER['DOCUMENT_ROOT']."/shared/_footer.php";
 ?>

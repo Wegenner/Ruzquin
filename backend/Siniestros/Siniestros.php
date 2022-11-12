@@ -99,13 +99,15 @@
         <br />
         
         <div class='container'>
-        <a class='detalles' href='/backend/Siniestros/SiniestrosEditar.php'>Editar</a>
-        <br />
-        <br />
-        <a class='detalles' href='/backend/Siniestros/SiniestrosBorrar.php'>Borrar</a>
-        <br />
-        <br />
-        <a class='detalles' href='/backend/Siniestros/SiniestrosActivos.php'>Regresar</a>
+            <form action='/backend/Siniestros/SiniestrosEditar.php' method='POST'>
+                <input class='detalles' type='number' hidden name='getid' value='".$_POST['id']."' >
+                <input class='detalles' type='submit' value='Editar'>
+            </form>
+            <br />
+            <a class='detalles' href='/backend/Siniestros/SiniestrosBorrar.php'>Borrar</a>
+            <br />
+            <br />
+            <a class='detalles' href='/backend/Siniestros/SiniestrosActivos.php'>Regresar</a>
         </div>
         <br />
         <br />";

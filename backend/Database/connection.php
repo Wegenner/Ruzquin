@@ -6,7 +6,12 @@
     $db = "u682385574_Ruzquin";
     $connect;
 
-    $connect = new mysqli($host,$user,$password,$db);
+    $host1 = "localhost";
+    $user1 = "root";
+    $password1 = "Wegenner1$";
+    $db1 = "ruzquinmysql";
+
+    $connect = new mysqli($host1,$user1,$password1,$db1);
 
     if ($connect->connect_error) {
         die("Connection failed: " . $connect->connect_error);
