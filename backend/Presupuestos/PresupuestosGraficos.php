@@ -7,8 +7,6 @@
     $resultUtilidad = $connect->query($sqlUtilidad);
 ?>
 
-<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-
 <div id="navSiniestros" class="container-fluid">
     <div class="row">
         <div class="col">
@@ -153,6 +151,7 @@
     );
 </script>
 
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
 <?php 
     include $_SERVER['DOCUMENT_ROOT']."/shared/_footer.php";

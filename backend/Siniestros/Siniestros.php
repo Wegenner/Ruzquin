@@ -87,13 +87,15 @@
                 <input class='detalles' type='submit' value='Editar'>
             </form>
             <br />
-            <a class='detalles' href='/backend/Siniestros/SiniestrosBorrar.php'>Borrar</a>
-            <br />
+            <form action='/backend/Database/preguntaprevia.php' method='POST'>
+                <input class='detalles' type='number' hidden name='idsiniestro' value='".$_POST['id']."' >
+                <input class='detalles' value='Eliminar' type='submit'>
+            </form>
             <br />
             <a class='detalles' href='/backend/Siniestros/SiniestrosActivos.php'>Regresar</a>
         </div>
         <br />
-        <br />";
+        <br />";    
     }
 
 ?>
