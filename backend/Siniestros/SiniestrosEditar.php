@@ -9,29 +9,27 @@
         
         $id = $_POST['id'];
 
-        echo $_POST['SiniestroFechaEnvioPresupuesto'];
-
         if(!isset($_POST['siniestroAnticipo'])){
             $_POST['siniestroAnticipo'] = 0;
         }else{
             $_POST['siniestroAnticipo'] = 1;
         }
-        if(!isset($_POST['SiniestroFechaEnvioPresupuesto']) || $_POST['SiniestroFechaEnvioPresupuesto'] == ""){
+        if(!isset($_POST['SiniestroFechaEnvioPresupuesto']) || $_POST['SiniestroFechaEnvioPresupuesto'] == "" || $_POST['SiniestroFechaEnvioPresupuesto'] == "1970-01-01"){
             $_POST['SiniestroFechaEnvioPresupuesto'] = "null";
         }else{
             $_POST['SiniestroFechaEnvioPresupuesto'] = "'".$_POST['SiniestroFechaEnvioPresupuesto'] ."'";
         }
-        if(!isset($_POST['SiniestroFechaPresupuestoAutorizado'])|| $_POST['SiniestroFechaPresupuestoAutorizado'] == ""){
+        if(!isset($_POST['SiniestroFechaPresupuestoAutorizado'])|| $_POST['SiniestroFechaPresupuestoAutorizado'] == "" || $_POST['SiniestroFechaPresupuestoAutorizado'] == "1970-01-01"){
             $_POST['SiniestroFechaPresupuestoAutorizado'] = "null";
         }else{
             $_POST['SiniestroFechaPresupuestoAutorizado'] = "'".$_POST['SiniestroFechaPresupuestoAutorizado'] ."'";
         }
-        if(!isset($_POST['SiniestroFechaReparacion'])|| $_POST['SiniestroFechaReparacion'] == ""){
+        if(!isset($_POST['SiniestroFechaReparacion'])|| $_POST['SiniestroFechaReparacion'] == "" || $_POST['SiniestroFechaReparacion'] == "1970-01-01"){
             $_POST['SiniestroFechaReparacion'] = "null";
         }else{
             $_POST['SiniestroFechaReparacion'] = "'".$_POST['SiniestroFechaReparacion'] ."'";
         }
-        if(!isset($_POST['siniestroFechaTermino'])|| $_POST['siniestroFechaTermino'] == ""){
+        if(!isset($_POST['siniestroFechaTermino'])|| $_POST['siniestroFechaTermino'] == "" || $_POST['siniestroFechaTermino'] == "1970-01-01"){
             $_POST['siniestroFechaTermino'] = "null";
         }else{
             $_POST['siniestroFechaTermino'] = "'".$_POST['siniestroFechaTermino'] ."'";
@@ -40,11 +38,11 @@
         $sqlupdate = "UPDATE siniestromodelo SET 
         siniestroId ='".filtrodedatos($_POST['siniestroId'])."',
         siniestroIdSecundario ='".filtrodedatos($_POST['siniestroIdSecundario'])."',
-        SiniestroFechaEnvioPresupuesto =".filtrodedatos($_POST['SiniestroFechaEnvioPresupuesto']).",
-        siniestroFecha ='".filtrodedatos($_POST['siniestroFecha'])."',
-        SiniestroFechaPresupuestoAutorizado =".filtrodedatos($_POST['SiniestroFechaPresupuestoAutorizado']).",
-        SiniestroFechaReparacion = ".filtrodedatos($_POST['SiniestroFechaReparacion']).",
-        siniestroFechaTermino =".filtrodedatos($_POST['siniestroFechaTermino']).",
+        SiniestroFechaEnvioPresupuesto =".$_POST['SiniestroFechaEnvioPresupuesto'].",
+        siniestroFecha ='".$_POST['siniestroFecha']."',
+        SiniestroFechaPresupuestoAutorizado =".$_POST['SiniestroFechaPresupuestoAutorizado'].",
+        SiniestroFechaReparacion = ".$_POST['SiniestroFechaReparacion'].",
+        siniestroFechaTermino =".$_POST['siniestroFechaTermino'].",
         siniestroNombre = '".filtrodedatos($_POST['siniestroNombre'])."',
         siniestroDireccion = '".filtrodedatos($_POST['siniestroDireccion'])."',
         siniestroTelefono = ".filtrodedatos($_POST['siniestroTelefono']).",
