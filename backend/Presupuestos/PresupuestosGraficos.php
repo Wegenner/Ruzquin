@@ -2,12 +2,45 @@
     include $_SERVER['DOCUMENT_ROOT']."/shared/_header.php";
     include $_SERVER['DOCUMENT_ROOT']."/backend/Database/connection.php"; 
 
+    $MesFin = date_create("today");
+    $MesInicio = date_create("today")->modify("-1 month");
 
+    $MesFin = $MesFin->format('Y-m-d');
+    $MesInicio = $MesInicio->format('Y-m-d');
 
-    $sqlUtilidad = "SELECT SUM(presupuestoUtilidad) AS 'UtilidadNeta' FROM billingmodel WHERE (siniestroFecha BETWEEN '2021-01-01 00:00:00' AND '2022-01-01 00:00:00')";
+    if($_POST){
 
-    $resultUtilidad = $connect->query($sqlUtilidad);
-    $resultUtilidad = $resultUtilidad->fetch_assoc();
+        $MesInicio = $_POST['mes'];  
+        $MesFin = $_POST['segundomes'];  
+
+        $sqlUtilidad = "SELECT SUM(presupuestoUtilidad) AS 'UtilidadNeta' FROM billingmodel WHERE (siniestroFecha BETWEEN '".$MesInicio."-01 00:00:00' AND '".$MesFin."-01 00:00:00')";
+        $sqlTotales = "SELECT COUNT(ID) AS 'totales' FROM siniestromodelo WHERE (siniestroFecha BETWEEN '".$MesInicio."-01 00:00:00' AND '".$MesFin."-01 00:00:00')"; 
+        $sqlCancelados = "SELECT COUNT(ID) AS 'Cancelados' FROM siniestromodelo WHERE siniestroEstado LIKE '%cance%' AND (siniestroFecha BETWEEN '".$MesInicio."-01 00:00:00' AND '".$MesFin."-01 00:00:00')";
+        $sqlFacturados = "SELECT COUNT(ID) AS 'Facturados' FROM siniestromodelo WHERE siniestroEstado LIKE '%Factura%' AND (siniestroFecha BETWEEN '".$MesInicio."-01 00:00:00' AND '".$MesFin."-01 00:00:00')";
+        $sqlPagodedaños = "SELECT COUNT(ID) AS 'Daños' FROM siniestromodelo WHERE siniestroEstado LIKE '%Pago%' AND (siniestroFecha BETWEEN '".$MesInicio."-01 00:00:00' AND '".$MesFin."-01 00:00:00')";
+
+        $resultUtilidad = $connect->query($sqlUtilidad)->fetch_assoc();
+        $resultTotales = $connect->query($sqlTotales)->fetch_assoc();
+        $resultCancelados = $connect->query($sqlCancelados)->fetch_assoc();
+        $resultFacturados = $connect->query($sqlFacturados)->fetch_assoc();
+        $resultPagoDaños = $connect->query($sqlPagodedaños)->fetch_assoc();
+
+    }else{
+
+        $sqlUtilidad = "SELECT SUM(presupuestoUtilidad) AS 'UtilidadNeta' FROM billingmodel WHERE (siniestroFecha BETWEEN '".$MesInicio."-01 00:00:00' AND '".$MesFin."-01 00:00:00')";
+        $sqlTotales = "SELECT COUNT(ID) AS 'totales' FROM siniestromodelo WHERE (siniestroFecha BETWEEN '".$MesInicio." -01 00:00:00' AND '".$MesFin." -01 00:00:00')"; 
+        $sqlCancelados = "SELECT COUNT(ID) AS 'Cancelados' FROM siniestromodelo WHERE siniestroEstado LIKE '%cance%' AND (siniestroFecha BETWEEN '".$MesInicio." -01 00:00:00' AND '".$MesFin." -01 00:00:00')";
+        $sqlFacturados = "SELECT COUNT(ID) AS 'Facturados' FROM siniestromodelo WHERE siniestroEstado LIKE '%Factura%' AND (siniestroFecha BETWEEN '".$MesInicio." -01 00:00:00' AND '".$MesFin." -01 00:00:00')";
+        $sqlPagodedaños = "SELECT COUNT(ID) AS 'Daños' FROM siniestromodelo WHERE siniestroEstado LIKE '%Pago%' AND (siniestroFecha BETWEEN '".$MesInicio." -01 00:00:00' AND '".$MesFin." -01 00:00:00')";
+
+        $resultUtilidad = $connect->query($sqlUtilidad)->fetch_assoc();
+        $resultTotales = $connect->query($sqlTotales)->fetch_assoc();
+        $resultCancelados = $connect->query($sqlCancelados)->fetch_assoc();
+        $resultFacturados = $connect->query($sqlFacturados)->fetch_assoc();
+        $resultPagoDaños = $connect->query($sqlPagodedaños)->fetch_assoc();
+
+    }
+
     $fmt = new NumberFormatter( 'es_MX', NumberFormatter::CURRENCY );
 ?>
 
@@ -38,7 +71,7 @@
     <div class="row justify-content-center">
 
         <div class="col">
-            <h1 style="text-align: center">Balance - 05 / 2022</h1>
+            <h1 style="text-align: center">Balance: <?PHP echo $MesInicio." a ".$MesFin;?></h1>
         </div>
 
     </div>
@@ -77,13 +110,13 @@
 
             <br/>
 
-            <p>Totales:  600</p>
-            <p>Cancelados:  <input type="number" id="numero" value="300" readonly style="border: none;"/></p>
-            <p>Facturados:  150</p>
-            <p>Pago de daños:  150</p>
-            <P>Activos:  150</p> <br>
+            <p>Totales:<input type="number" id="totales" value="<?php echo $resultTotales['totales']; ?>" readonly style="border: none;"/> </p>
+            <p>Cancelados:  <input type="number" id="cancelados" value="<?php echo $resultCancelados['Cancelados']; ?>" readonly style="border: none;"/></p>
+            <p>Facturados:  <input type="number" id="facturados" value="<?php echo $resultFacturados['Facturados']; ?>" readonly style="border: none;"/></p>
+            <p>Pago de daños:  <input type="number" id="daños" value="<?php echo $resultPagoDaños['Daños']; ?>" readonly style="border: none;"/></p>
+            <P>Activos:  <input type="number" id="activos" value="<?php echo $resultTotales['totales'] - $resultCancelados['Cancelados'] - $resultFacturados['Facturados'] - $resultPagoDaños['Daños']; ?>" readonly style="border: none;"/></p> <br>
             <P style="text-align:center; font-size: 30px">Margen de Utilidad: </p>
-            <p style="text-align: center; font-size: 30px"> <?php echo $fmt->formatCurrency(floatval($resultUtilidad['UtilidadNeta']), "MXN"); ?></p>
+            <p style="text-align: center; font-size: 30px"><?php echo $fmt->formatCurrency(floatval($resultUtilidad['UtilidadNeta']), "MXN"); ?></p>
 
         </div>
         <div class="col" style="height:500px">
@@ -97,19 +130,21 @@
 
 <!-- Sección Chart.js -->
 
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
 <script>
     const labels = [
         'Cancelados',
         'Facturados',
         'Pago de daños',
-        'Otros',
+        'Activos',
     ];
 
     const data = {
         labels: labels,
         datasets: [{
             label: 'My First dataset',
-            data: [document.getElementById('numero').value, 150, 150,150],
+            data: [document.getElementById('cancelados').value, document.getElementById('facturados').value,document.getElementById('daños').value,document.getElementById('activos').value],
             backgroundColor: [
                 'rgb(255, 51, 51)',
                 'rgb(51, 63, 255)',
@@ -137,8 +172,6 @@
     config
     );
 </script>
-
-<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
 <?php 
     include $_SERVER['DOCUMENT_ROOT']."/shared/_footer.php";
