@@ -2,38 +2,35 @@
     include $_SERVER['DOCUMENT_ROOT']."/shared/_header.php";
     include $_SERVER['DOCUMENT_ROOT']."/backend/Database/connection.php"; 
 
+
+
     $sqlUtilidad = "SELECT SUM(presupuestoUtilidad) AS 'UtilidadNeta' FROM billingmodel WHERE (siniestroFecha BETWEEN '2021-01-01 00:00:00' AND '2022-01-01 00:00:00')";
 
     $resultUtilidad = $connect->query($sqlUtilidad);
+    $resultUtilidad = $resultUtilidad->fetch_assoc();
+    $fmt = new NumberFormatter( 'es_MX', NumberFormatter::CURRENCY );
 ?>
 
-<div id="navSiniestros" class="container-fluid">
-    <div class="row">
-        <div class="col">
-            <nav>
-                <ul class="nav">
-                    <?php
-                        $urlPresupuestosNav = "/backend/Presupuestos/PresupuestosTodos.php";
-                        echo "<li><a href='$urlPresupuestosNav' class='menuLink'> Todos </a></li>"; 
-                    ?>
-                    <?php
-                        $urlPresupuestosNav = "/backend/Presupuestos/PresupuestosGraficos.php";
-                        echo "<li><a href='$urlPresupuestosNav' class='menuLink' style='background: #2f698d'> Dashboard </a></li>"; 
-                    ?>
-                    <?php
-                        $urlPresupuestosNav = "/backend/Presupuestos/PresupuestosBusqueda.php";
-                        echo "<li><a href='$urlPresupuestosNav' class='menuLink'> Buscar </a></li>"; 
-                    ?>
-                </ul>
-            </nav>
-        </div>
-        <div class="col" style="text-align:end">
-            <input type="text" style="border-radius:13px;"/>
 
-            <button type="button" class="btn btn-dark" style="border-radius: 20px !important"> Buscar </button>
-        </div>
-    </div>
-</div>
+<nav class="navbar navbar-light justify-content-between" style="background-color: #7f8e9d;">
+    <ul class="nav">
+        <?php
+            $urlPresupuestosNav = "/backend/Presupuestos/PresupuestosTodos.php";
+            echo "<li><a href='$urlPresupuestosNav' class='menuLink'> Todos </a></li>"; 
+        ?>
+        <?php
+            $urlPresupuestosNav = "/backend/Presupuestos/PresupuestosGraficos.php";
+            echo "<li><a href='$urlPresupuestosNav' class='menuLink' style='background: #2f698d'> Dashboard </a></li>"; 
+        ?>
+        <?php
+            $urlPresupuestosNav = "/backend/Presupuestos/PresupuestosBusqueda.php";
+            echo "<li><a href='$urlPresupuestosNav' class='menuLink'> Buscar </a></li>"; 
+        ?>
+    </ul>
+</nav>
+
+
+
 
 <!-- Inicio de los graficos -->
 
@@ -49,35 +46,25 @@
 </div>
 
 <div class="container">
-    <div class="row">
-        <div class="col" style="width: 50%">
-            <form action="BalanceMes.php" style="text-align:center">
+    <div class="container">
+        <div class="row justify-content-center">
+            <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>" method="post">
+                <div style="align-content:flex-end; display:flex; ">
 
-                <h3>Busqueda por mes:</h3>
+                    <label for="mes" style="margin-top:13px"> Desde: </label>
+                    <input type="month" name="mes" id="mes" class="form-control" style="margin:9px" required/>
 
-                <input type="month" name="mes" class="form-control" />
+                    <label for="segundomes" style="margin-top:13px"> Hasta: </label>
+                    <input type="month" name="segundomes" id="segundomes" class="form-control" style="margin:9px" required/>
 
-                <br/>
-
-                <input type="submit" style="width: 120px; line-height: 1.5; border-radius: 3px; margin-top: -12px" value="Buscar" class="btn btn-primary DetallesSiniestros" /> 
-
-            </form>
-        </div>
-        <div class="col" style="width: 50%">
-            <form action="BalanceAnual.php" style="text-align:center">
-
-                <h3>Busqueda por año:</h3>
+                    <input type="submit" style="width: 120px; line-height: 1.5; border-radius: 3px;margin-top:10px" value="Buscar" class="btn btn-primary DetallesSiniestros" /> 
             
-                <input type="year" name="ano" class="form-control" />
-
-                <br/>
-
-                <input type="submit" style="width: 120px; line-height: 1.5; border-radius: 3px; margin-top: -12px" value="Buscar" class="btn btn-primary DetallesSiniestros" /> 
-
+                </div>
             </form>
+            
         </div>
+
     </div>
-</div>
 
 <hr/>
 <br/>
@@ -96,7 +83,7 @@
             <p>Pago de daños:  150</p>
             <P>Activos:  150</p> <br>
             <P style="text-align:center; font-size: 30px">Margen de Utilidad: </p>
-            <p style="text-align: center; font-size: 30px">$ <?php echo $resultUtilidad; ?></p>
+            <p style="text-align: center; font-size: 30px"> <?php echo $fmt->formatCurrency(floatval($resultUtilidad['UtilidadNeta']), "MXN"); ?></p>
 
         </div>
         <div class="col" style="height:500px">

@@ -47,7 +47,7 @@
         </div>
 
         <div class="row justify-content-center">
-            <form action="/backend/Siniestros/SiniestrosBuscar.php" method="post">
+            <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>" method="post">
                 <div style="align-content:flex-end; display:flex; ">
 
                     <label for="mes" style="margin-top:13px"> Desde: </label>
