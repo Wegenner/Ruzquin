@@ -3,38 +3,67 @@
 
     include $_SERVER['DOCUMENT_ROOT']."/backend/Database/connection.php"; 
 
+    include $_SERVER['DOCUMENT_ROOT']."/backend/Database/db_Functions.php";
+
     if(isset($_POST['id'])){
         
         $id = $_POST['id'];
 
+        echo $_POST['SiniestroFechaEnvioPresupuesto'];
+
+        if(!isset($_POST['siniestroAnticipo'])){
+            $_POST['siniestroAnticipo'] = 0;
+        }else{
+            $_POST['siniestroAnticipo'] = 1;
+        }
+        if(!isset($_POST['SiniestroFechaEnvioPresupuesto']) || $_POST['SiniestroFechaEnvioPresupuesto'] == ""){
+            $_POST['SiniestroFechaEnvioPresupuesto'] = "null";
+        }else{
+            $_POST['SiniestroFechaEnvioPresupuesto'] = "'".$_POST['SiniestroFechaEnvioPresupuesto'] ."'";
+        }
+        if(!isset($_POST['SiniestroFechaPresupuestoAutorizado'])|| $_POST['SiniestroFechaPresupuestoAutorizado'] == ""){
+            $_POST['SiniestroFechaPresupuestoAutorizado'] = "null";
+        }else{
+            $_POST['SiniestroFechaPresupuestoAutorizado'] = "'".$_POST['SiniestroFechaPresupuestoAutorizado'] ."'";
+        }
+        if(!isset($_POST['SiniestroFechaReparacion'])|| $_POST['SiniestroFechaReparacion'] == ""){
+            $_POST['SiniestroFechaReparacion'] = "null";
+        }else{
+            $_POST['SiniestroFechaReparacion'] = "'".$_POST['SiniestroFechaReparacion'] ."'";
+        }
+        if(!isset($_POST['siniestroFechaTermino'])|| $_POST['siniestroFechaTermino'] == ""){
+            $_POST['siniestroFechaTermino'] = "null";
+        }else{
+            $_POST['siniestroFechaTermino'] = "'".$_POST['siniestroFechaTermino'] ."'";
+        }
+
         $sqlupdate = "UPDATE siniestromodelo SET 
-        siniestroId =".$_POST['siniestroId'].",
-        siniestroIdSecundario =".$_POST['siniestroIdSecundario'].",
-        SiniestroFechaEnvioPresupuesto =".$_POST['SiniestroFechaEnvioPresupuesto'].",
-        siniestroFecha =".$_POST['siniestroFecha'].",
-        SiniestroFechaPresupuestoAutorizado =".$_POST['SiniestroFechaPresupuestoAutorizado'].",
-        SiniestroFechaReparacion = ".$_POST['SiniestroFechaReparacion'].",
-        siniestroFechaTermino = ".$_POST['siniestroFechaTermino'].",
-        siniestroNombre = ".$_POST['siniestroNombre'].",
-        siniestroDireccion = ".$_POST['siniestroDireccion'].",
-        siniestroTelefono = ".$_POST['siniestroTelefono'].",
-        siniestroEstado = ".$_POST['siniestroEstado'].",
-        siniestroEstadoSecundario = ".$_POST['siniestroEstadoSecundario'].",
-        siniestroDescripcion = ".$_POST['siniestroDescripcion'].",
-        siniestroProveedor = ".$_POST['siniestroProveedor'].",
-        siniestroAseguradora = ".$_POST['siniestroAseguradora'].",
-        siniestroComentarioGeneral = ".$_POST['siniestroComentarioGeneral'].",
-        siniestroCreador = ".$_POST['siniestroCreador'].",
-        siniestroUltimoEdit = ".$_POST['siniestroUltimoEdit'].",
-        siniestroNumeroFactura = ".$_POST['siniestroNumeroFactura'].",
-        siniestrosArchivos =".$_POST['siniestrosArchivos'].",
-        siniestroColor =".$_POST['siniestroColor'].",
-        siniestroAnticipo =".$_POST['siniestroAnticipo'].",
+        siniestroId ='".filtrodedatos($_POST['siniestroId'])."',
+        siniestroIdSecundario ='".filtrodedatos($_POST['siniestroIdSecundario'])."',
+        SiniestroFechaEnvioPresupuesto =".filtrodedatos($_POST['SiniestroFechaEnvioPresupuesto']).",
+        siniestroFecha ='".filtrodedatos($_POST['siniestroFecha'])."',
+        SiniestroFechaPresupuestoAutorizado =".filtrodedatos($_POST['SiniestroFechaPresupuestoAutorizado']).",
+        SiniestroFechaReparacion = ".filtrodedatos($_POST['SiniestroFechaReparacion']).",
+        siniestroFechaTermino =".filtrodedatos($_POST['siniestroFechaTermino']).",
+        siniestroNombre = '".filtrodedatos($_POST['siniestroNombre'])."',
+        siniestroDireccion = '".filtrodedatos($_POST['siniestroDireccion'])."',
+        siniestroTelefono = ".filtrodedatos($_POST['siniestroTelefono']).",
+        siniestroEstado = '".filtrodedatos($_POST['siniestroEstado'])."',
+        siniestroEstadoSecundario = '".filtrodedatos($_POST['siniestroEstadoSecundario'])."',
+        siniestroDescripcion = '".filtrodedatos($_POST['siniestroDescripcion'])."',
+        siniestroProveedor = '".filtrodedatos($_POST['siniestroProveedor'])."',
+        siniestroAseguradora = '".filtrodedatos($_POST['siniestroAseguradora'])."',
+        siniestroComentarioGeneral = '".filtrodedatos($_POST['siniestroComentarioGeneral'])."',
+        siniestroCreador = '".filtrodedatos($_POST['siniestroCreador'])."',
+        siniestroUltimoEdit = '".filtrodedatos($_POST['siniestroUltimoEdit'])."',
+        siniestroColor =".filtrodedatos($_POST['siniestroColor']).",
+        siniestroAnticipo =".filtrodedatos($_POST['siniestroAnticipo'])."
         WHERE ID = ".$id;
         
+        echo $sqlupdate;
 
         if($connect->query($sqlupdate) === TRUE){
-            header("Location: /backend/Siniestros/SiniestrosEditar.php?getid=".$_POST['siniestroId']."",true,303);
+            header("Location: /backend/Siniestros/SiniestrosEditar.php?getid=".$id,true,303);
             die();
         }
 
@@ -43,7 +72,7 @@
 
     if(isset($_POST['getid'])){
 
-        $id = $_POST['getid'];
+        $id = filtrodedatos($_POST['getid']);
 
         $Sqlquery = "SELECT * FROM siniestromodelo WHERE ID = ".$id." LIMIT 1";
 
@@ -62,7 +91,7 @@
 <hr style="width: 70%"/>
 
 <div class="container">
-    <form action='/backend/Siniestros/Siniestros.php' method='POST'>
+    <form action='/backend/Siniestros/SiniestrosEditar.php' method='POST'>
         <div asp-validation-summary="ModelOnly" class="text-danger"></div>
         <input type="hidden" />
 
@@ -108,15 +137,8 @@
                 <label  style="margin-bottom: 5px" class="control-label siniestrosLabels">Estado Actual</label>
 
                 <select name="siniestroEstado" value="<?php echo $resultado['siniestroEstado']; ?>">
-                    <option>Recepción</option>
-                    <option>Visita</option>
-                    <option>Presupuesto</option>
-                    <option>Autorizado</option>
-                    <option>En espera</option>
-                    <option>Envio de Evidencia</option>
-                    <option>Cancelado</option>
-                    <option>Pago de daños</option>
-                    <option>Facturación</option>
+                
+                    <?php echo selectestado($resultado); ?>
 
                 </select>
                 <span class="text-danger"></span>
@@ -134,7 +156,7 @@
                 <label  style="margin-bottom: 5px" class="control-label siniestrosLabels">Proveedor</label>
 
                 <select name="siniestroProveedor" value="<?php echo $resultado['siniestroProveedor']; ?>">
-                    <option>@item.UserName</option>
+                    <?php echo selectUsuario($resultado); ?>
                 </select>
                 <span class="text-danger"></span>
             </div>
@@ -143,7 +165,7 @@
                     <label for="anticipprov" style="margin: 0; margin-top:10px" class="control-label" >Anticipo a proveedor</label>
                 </div>
                 <div class="row form-check" style="text-align:center">
-                    <input type="checkbox" value="1" id="anticipprov" name="siniestroAnticipo" style="margin-top:20px" value="<?php echo $resultado['siniestroAnticipo']; ?>">
+                    <input type="checkbox" value="1" id="anticipprov" name="siniestroAnticipo" style="margin-top:20px" value="<?php if($resultado['siniestroAnticipo'] == 1){ echo "checked"; }; ?>" <?php if($resultado['siniestroAnticipo'] == 1){ echo "checked"; } else { echo "uncheked";}; ?>>
                 </div>
             </div>
         </div>
@@ -178,12 +200,9 @@
                 <div class="form-group">
                     <label for="exampleFormControlSelect1">Problemas a notar: </label>
                     <select class="form-control" id="exampleFormControlSelect1" default_value="<?php echo $resultado['siniestroColor']; ?>" name="siniestroColor">
-                        <option value="0">Nada</option>
-                        <option value="1">Con queja</option>
-                        <option value="2">Mas de 3 meses</option>
-                        <option value="3">Problemas con el seguro</option>
-                        <option value="4">Necesita factura</option>
-                        <option value="5">Pendiente Alejandro</option>
+
+                        <?php echo selectproblema($resultado); ?>
+
                     </select>
                 </div>
             </div>
@@ -231,21 +250,23 @@
 
         <br />
 
-        <div class="form-group" style="text-align: right;">
-            <form action='/backend/Siniestros/SiniestrosEditar.php' method='POST'>
-                <input class='detalles' type='number' hidden name='id' value="<?PHP echo $POST['getid'] ?>" >
-                <input class='detalles' value="Guardar" type='submit'>
-            </form>
-
-            <br />
-            <br />
-            <a class="detalles" href="/backend/Siniestros/Siniestros.php">Regresar</a>
-            <br />
-            <br />
-            <a class="detalles" href="#">Borrar</a>
-        </div>
+        <input class='detalles' type='number' hidden name='id' value="<?PHP echo $_POST['getid']; ?>" >
+        <input class='detalles' value="Guardar" type='submit'>
 
     </form>
+</div>
+<div class="container form-group" style="text-align: right;">
+
+    <br />
+    <br />
+    <form action='/backend/Siniestros/SiniestrosEditar.php' method='POST'>
+        <input class='detalles' type='number' hidden name='id' value="<?PHP echo $_POST['getid']; ?>" >
+        <input class='detalles' value="Regresar" type='submit'>
+    </form>
+    <br />
+    <br />
+    <a class="detalles" href="#">Borrar</a>
+
 </div>
 
 <?php 
@@ -253,5 +274,6 @@
             echo "Error de conección";
         }
     }
+
     include $_SERVER['DOCUMENT_ROOT']."/shared/_footer.php";
 ?>

@@ -10,38 +10,21 @@
 
 ?>
 
-<div id="navSiniestros" class="container-fluid">
-    <div class="row">
-        <div class="col" sytle="align-items: start">
-            <nav>
-                <ul class="nav">
-                    <?php
-                        $urlSiniestrosNav = "/backend/Siniestros/SiniestrosActivos.php";
-                        echo "<li><a href='$urlSiniestrosNav' class='menuLink' style='background: #2f698d'> Siniestros Activos </a></li>"; 
-                    ?>
-                    <?php
-                        $urlSiniestrosNav = "/backend/Siniestros/SiniestrosBuscar.php";
-                        echo "<li><a href='$urlSiniestrosNav' class='menuLink' > Siniestros Buscar </a></li>"; 
-                    ?>
-                    
-                </ul>
-            </nav>
-        </div>
-        <div class="col" style="text-align:end; display:flex">
-        <form action="/backend/Siniestros/SiniestrosResultados.php" method="POST">   
 
-            <input type="text" name="id" style="border-radius:13px"/>
+<nav class="navbar navbar-light justify-content-between" style="background-color: #7f8e9d;">
+    <ul class="nav">
+        <?php
+            $urlSiniestrosNav = "/backend/Siniestros/SiniestrosActivos.php";
+            echo "<li><a href='$urlSiniestrosNav' class='menuLink' style='background: #2f698d'> Siniestros Activos </a></li>"; 
+        ?>
+        <?php
+            $urlSiniestrosNav = "/backend/Siniestros/SiniestrosBuscar.php";
+            echo "<li><a href='$urlSiniestrosNav' class='menuLink' > Siniestros Buscar </a></li>"; 
+        ?>
+        
+    </ul>
+</nav>
 
-            <input type="submit" class="btn btn-dark" style="border-radius: 20px !important" value="Buscar">
-
-        </form>
-            <button type="button" style="background-color:#687e8c; 
-                                            line-height: 1.5;
-                                            border-radius: 16px"
-                class="btn btn-secondary"> Nuevo </button>
-        </div>
-    </div>
-</div>
 
 <!-- Fin del nav de siniestros e inicio de la pagina -->
 
