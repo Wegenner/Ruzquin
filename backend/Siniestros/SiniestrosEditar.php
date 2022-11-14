@@ -257,13 +257,16 @@
 
     <br />
     <br />
-    <form action='/backend/Siniestros/SiniestrosEditar.php' method='POST'>
+    <form action='/backend/Siniestros/Siniestros.php' method='POST'>
         <input class='detalles' type='number' hidden name='id' value="<?PHP echo $_POST['getid']; ?>" >
         <input class='detalles' value="Regresar" type='submit'>
     </form>
     <br />
     <br />
-    <a class="detalles" href="#">Borrar</a>
+    <form action='/backend/Database/preguntaprevia.php' method='POST'>
+        <input class='detalles' type='number' hidden name='idsiniestro' value="<?PHP echo $_POST['getid']; ?>" >
+        <input class='detalles' value="Regresar" type='submit'>
+    </form>
 
 </div>
 

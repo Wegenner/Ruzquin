@@ -5,14 +5,16 @@
 
     if(isset($_POST['idsiniestro'])){ 
         echo "funciona ";
-
-        $sqlsininfo = "SELECT ID, siniestroNombre FROM siniestromodelo WHERE ID =".filtrodedatos($_POST['idsiniestro'])." LIMIT 1";
+        $id = $_POST['idsiniestro'];
+        $sqlsininfo = "SELECT ID, siniestroId, siniestroNombre FROM siniestromodelo WHERE ID =".$id." LIMIT 1";
+        echo $sqlsininfo;
         $result = $connect->query($sqlsininfo);
+        $result = $result->fetch_assoc();
 ?>
     <div class="container-fluid">
 
         <h1 style="text-align:center; margin: 5px"> ¿Estas seguro que deseas eliminar este siniestro? </h1>
-        <h2 style="text-align:center; margin: 5px"> <?php echo $result['siniestroNombre']; ?> </h2>
+        <h2 style="text-align:center; margin: 5px"> <?php echo  $result['siniestroNombre']." - ".$result['siniestroId']; ?> </h2>
         <hr style="width:70%"/>
         <br>
 
