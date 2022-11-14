@@ -1,31 +1,22 @@
 <?php 
     include $_SERVER['DOCUMENT_ROOT']."/shared/_header.php";
+    include $_SERVER['DOCUMENT_ROOT']."/backend/Database/connection.php";
+
+    $sqlusuarios = "SELECT * FROM usuarios";
+
+    $lista = $connect->query($sqlusuarios);
 ?>
 
-<div id="navSiniestros" class="container-fluid">
-    <div class="row">
-        <div class="col">
-            <nav>
-                <ul class="nav">
-                    <?php
-                        $urlPresupuestosNav = "/backend/Usuarios/UsuariosTodos.php";
-                        echo "<li><a href='$urlPresupuestosNav' class='menuLink' style='background: #2f698d'> Todos </a></li>"; 
-                    ?>
-                </ul>
-            </nav>
-        </div>
-        <div class="col" style="text-align:end">
-            <input type="text" style="border-radius:13px;"/>
 
-            <button type="button" class="btn btn-dark" style="border-radius: 20px !important"> Buscar </button>
+<nav class="navbar navbar-light justify-content-between" style="background-color: #7f8e9d;">
+    <ul class="nav">
+        <?php
+            $urlPresupuestosNav = "/backend/Usuarios/UsuariosTodos.php";
+            echo "<li><a href='$urlPresupuestosNav' class='menuLink' style='background: #2f698d'> Todos </a></li>"; 
+        ?>
+    </ul>
+</nav>
 
-            <a href="/backend/Usuarios/UsuariosCrear.php" style="background-color:#687e8c; 
-                                            line-height: 1.5;
-                                            border-radius: 16px"
-                class="btn btn-secondary"> Nuevo </a>
-        </div>
-    </div>
-</div>
 
 <!-- Aqui comienza la pagina -->
 
@@ -37,37 +28,32 @@
             <th scope="col">#</th>
             <th scope="col">Nombre</th>
             <th scope="col">Rol</th>
-            <th scope="col">Detalles</th>
+            <th scope="col" style="text-align:center">Acciones</th>
             </tr>
         </thead>
         <tbody>
-            <tr>
-            <th scope="row">1</th>
-            <td>Edain</td>
-            <td>Externa</td>
-            <td>
-                <a href="/backend/Usuarios/UsuariosEditar.php" class="btn btn-primary" style="padding:5px; margin:0px;"> Detalles</a>
-                <a href="/backend/Usuarios/UsuariosEliminar.php" class="btn btn-danger" style="padding:5px; margin:0px;"> Eliminar</a>
-            </td>
-            </tr>
-            <tr>
-            <th scope="row">2</th>
-            <td>Alejandro</td>
-            <td>Administrador</td>
-            <td>
-                <a href="/backend/Usuarios/UsuariosEditar.php" class="btn btn-primary" style="padding:5px; margin:0px;"> Detalles</a>
-                <a href="/backend/Usuarios/UsuariosEliminar.php" class="btn btn-danger" style="padding:5px; margin:0px;"> Eliminar</a>
-            </td>
-            </tr>
-            <tr>
-            <th scope="row">3</th>
-            <td>Bladimir</td>
-            <td>Gerente</td>
-            <td>
-                <a href="/backend/Usuarios/UsuariosEditar.php" class="btn btn-primary" style="padding:5px; margin:0px;"> Detalles</a>
-                <a href="/backend/Usuarios/UsuariosEliminar.php" class="btn btn-danger" style="padding:5px; margin:0px;"> Eliminar</a>
-            </td>
-            </tr>
+            <?php 
+                $lugar = 0;
+                while($row = $lista->fetch_assoc()){
+            ?>
+                <tr>
+                    <th scope="row"> <?php echo $lugar; $lugar += 1; ?></th>
+                    <td style="display:inline-block"><?php echo $row['UserName'];?></td>
+                    <td><?php echo $row['UserRoles'];?></td>
+                    <td>
+                    <form style="display:inline-block" action='/backend/Usuarios/UsuariosEditar.php' method='POST'>
+                        <input class='detalles' type='number' hidden name='idusuario' value="<?PHP echo $row['ID']; ?>" >
+                        <input class='btn btn-primary' value="Detalles" type='submit'>
+                    </form>
+                    <form style="display:inline-block" action='/backend/Database/preguntaprevia.php' method='POST'>
+                        <input class='detalles' type='number' hidden name='idusuario' value="<?PHP echo $row['ID']; ?>" >
+                        <input class='btn btn-danger' value="Eliminar" type='submit'>
+                    </form>
+                    </td>
+                </tr>
+            <?php 
+                }
+            ?>
         </tbody>
     </table>
 </div>

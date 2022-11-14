@@ -30,7 +30,7 @@
     <?php
         $index = "/index.php";
         $urlSiniestrosNav = "/root/imagenes/LOGO.png";
-        echo "<a href='$index'><img src='$urlSiniestrosNav' width='50px'> </a>"; 
+        echo "<a href='$index' style='margin-right:10px'><img src='$urlSiniestrosNav' width='50px'> </a>"; 
     ?>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
@@ -55,9 +55,12 @@
         echo "<li><a href='$urlSiniestrosNav' class='menuLink'> Avisos </a></li>"; 
     ?>
     </ul>
-    <form class="form-inline my-2 my-lg-0">
-      <input class="form-control mr-sm-2" type="search" placeholder="Search">
-      <button class="btn LoginLink" href="/backend/Sistema/SistemaLogin.php" type="submit">Search</button>
+    <form action="/backend/Siniestros/SiniestrosResultados.php" method="POST">   
+
+      <input type="text" name="id" style="border-radius:13px"/>
+
+      <input type="submit" class="btn btn-dark" style="border-radius: 20px !important" value="Buscar">
+
     </form>
   </div>
 </nav>
