@@ -19,9 +19,8 @@
     if(isset($_POST['idusuario'])){
 
         $sqlusuario = "DELETE FROM usuarios WHERE ID =".filtrodedatos($_POST['idusuario']);
-        $sqlrol = "DELETE FROM userrole WHERE UserId =".filtrodedatos($_POST['idusuario']);
 
-        if($resultado = $connect->query($sqlusuario) & $resultado = $connect->query($sqlrol)){
+        if($resultado = $connect->query($sqlusuario)){
             header("Location: /backend/Usuarios/UsuariosTodos.php",true,303);
             die();
         } else {
