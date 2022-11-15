@@ -13,6 +13,8 @@
         <?php
             $urlPresupuestosNav = "/backend/Usuarios/UsuariosTodos.php";
             echo "<li><a href='$urlPresupuestosNav' class='menuLink' style='background: #2f698d'> Todos </a></li>"; 
+            $urlPresupuestosNav = "/backend/Usuarios/UsuariosCrear.php";
+            echo "<li><a href='$urlPresupuestosNav' class='menuLink'> Nuevo </a></li>"; 
         ?>
     </ul>
 </nav>

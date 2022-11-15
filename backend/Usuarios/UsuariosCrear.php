@@ -2,6 +2,17 @@
     include $_SERVER['DOCUMENT_ROOT']."/shared/_header.php";
 ?>
 
+<nav class="navbar navbar-light justify-content-between" style="background-color: #7f8e9d;">
+    <ul class="nav">
+        <?php
+            $urlPresupuestosNav = "/backend/Usuarios/UsuariosTodos.php";
+            echo "<li><a href='$urlPresupuestosNav' class='menuLink' > Todos </a></li>"; 
+            $urlPresupuestosNav = "/backend/Usuarios/UsuariosCrear.php";
+            echo "<li><a href='$urlPresupuestosNav' class='menuLink' style='background: #2f698d'> Nuevo </a></li>"; 
+        ?>
+    </ul>
+</nav>
+
 <div class="container" style="display:flex;align-items:center;flex-direction:column">
 
     <h1 style="margin-top:20px"> Registro de nuevo usuario</h1>

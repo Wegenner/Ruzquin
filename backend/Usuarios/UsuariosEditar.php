@@ -60,7 +60,7 @@
             <input type="submit" value="Guardar" class="btn btn-primary" style="width:100%; border-radius:7px; padding: 0.5rem 0 0.5rem 0;" />
             <br />
             <br />
-            <a class="detalles">Regresar a la lista</a>
+            <a class="detalles" href="/backend/Usuarios/UsuariosTodos.php">Regresar a la lista</a>
         </div>
     </form>
 </div>
