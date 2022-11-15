@@ -4,7 +4,13 @@
     include $_SERVER['DOCUMENT_ROOT']."/backend/Database/connection.php"; 
     include $_SERVER['DOCUMENT_ROOT']."/backend/Database/db_Functions.php"; 
 
-    $sql = "SELECT ID,siniestroId,siniestroColor, siniestroAnticipo,siniestroEstado FROM siniestromodelo WHERE (siniestroEstado != 'Cancelado')AND(siniestroEstado != 'Facturación')AND(siniestroEstado != 'Facturación ')AND(siniestroEstado != 'Facturacion')AND(siniestroEstado != 'Pago de daños')AND(siniestroFecha BETWEEN '2022-05-01 00:00:00' AND '2022-11-01 00:00:00')";
+    $MesFin = date_create("today");
+    $MesInicio = date_create("today")->modify("-3 month");
+
+    $MesFin = $MesFin->format('Y-m-d');
+    $MesInicio = $MesInicio->format('Y-m-d');
+
+    $sql = "SELECT ID,siniestroId,siniestroColor, siniestroAnticipo,siniestroEstado FROM siniestromodelo WHERE (siniestroEstado != 'Cancelado')AND(siniestroEstado != 'Facturación')AND(siniestroEstado != 'Facturación ')AND(siniestroEstado != 'Facturacion')AND(siniestroEstado != 'Pago de daños')AND(siniestroFecha BETWEEN '".$MesInicio." 00:00:00' AND '".$MesFin." 00:00:00')";
 
     $result = $connect->query($sql);
 
