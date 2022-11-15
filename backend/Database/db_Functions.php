@@ -258,4 +258,25 @@ function filtrodedatos($data) {
         return $data;
 }
 
+function rol($number){
+        if($number == "1"){
+                return "Administrador";
+        }
+        if($number == "2"){
+                return "Gerente";
+        }
+        if($number == "3"){
+                return "Supervisor";
+        }
+        if($number == "4"){
+                return "Oficina";
+        }
+        if($number == "5"){
+                return "Proveedor";
+        }
+        if($number == "6"){
+                return "Desarrollo";
+        }
+}
+
 ?>
