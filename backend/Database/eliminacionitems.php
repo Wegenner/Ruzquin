@@ -22,7 +22,7 @@
         $sqlrol = "DELETE FROM userrole WHERE UserId =".filtrodedatos($_POST['idusuario']);
 
         if($resultado = $connect->query($sqlusuario) & $resultado = $connect->query($sqlrol)){
-            header("Location: /backend/Siniestros/SiniestrosActivos.php",true,303);
+            header("Location: /backend/Usuarios/UsuariosTodos.php",true,303);
             die();
         } else {
             echo "error";

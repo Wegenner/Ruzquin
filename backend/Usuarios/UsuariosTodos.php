@@ -1,6 +1,7 @@
 <?php 
     include $_SERVER['DOCUMENT_ROOT']."/shared/_header.php";
     include $_SERVER['DOCUMENT_ROOT']."/backend/Database/connection.php";
+    include $_SERVER['DOCUMENT_ROOT']."/backend/Database/db_Functions.php";
 
     $sqlusuarios = "SELECT * FROM usuarios";
 
@@ -41,7 +42,7 @@
                 <tr>
                     <th scope="row"> <?php echo $lugar; $lugar += 1; ?></th>
                     <td style="display:inline-block"><?php echo $row['UserName'];?></td>
-                    <td><?php echo $row['UserRoles'];?></td>
+                    <td><?php echo rol($row['UserRoles']);?></td>
                     <td>
                     <form style="display:inline-block" action='/backend/Usuarios/UsuariosEditar.php' method='POST'>
                         <input class='detalles' type='number' hidden name='idusuario' value="<?PHP echo $row['ID']; ?>" >

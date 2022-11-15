@@ -1,5 +1,19 @@
 <?php 
     include $_SERVER['DOCUMENT_ROOT']."/shared/_header.php";
+    include $_SERVER['DOCUMENT_ROOT']."/backend/Database/connection.php";
+
+    if($_POST){
+
+        $_POST['contraseña'] = password_hash($_POST['contraseña'], PASSWORD_DEFAULT);
+
+        $sqlususario = "INSERT INTO usuarios (UserName, UserPhone, UserEmail, UserRoles, UserPassword) VALUES ('".$_POST['name']."', ".$_POST['telefono'].",'".$_POST['correo']."',".$_POST['rol'].",'".$_POST['contraseña']."')";
+        
+        if($result = $connect->query($sqlususario)){
+            header('Location: UsuariosTodos.php',true,303);
+            die();
+        }
+
+    }
 ?>
 
 <nav class="navbar navbar-light justify-content-between" style="background-color: #7f8e9d;">
@@ -18,19 +32,19 @@
     <h1 style="margin-top:20px"> Registro de nuevo usuario</h1>
     <hr class="line">
 
-    <form action="/backend/Database/login.php" name="Login" method="post">
+    <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>" method="post">
         <div class="form">   
             <input class="form__input" autocomplete="Nombre de Usuario" 
             aria-required="true" type="text" data-val="true" 
             data-val-required="El nombe es requerido." 
-            id="Input_Name" name="Name" value="">
+            id="Input_Name" name="name" value="">
                 
             <label class="form__label" for="Input_Name">Nombre de usuario</label>
         </div>
 
         <div class="form">  
             <input class="form__input" autocomplete="Contraseña de Usuario" 
-            aria-required="true" type="text" data-val="true" 
+            aria-required="true" type="phone" data-val="true" 
             id="telefono" name="telefono" value="">
             
             <label class="form__label" for="telefono">Telefono</label>
@@ -38,7 +52,7 @@
 
         <div class="form">  
             <input class="form__input" autocomplete="Contraseña de Usuario" 
-            aria-required="true" type="password" data-val="true" 
+            aria-required="true" type="email" data-val="true" 
             data-val-required="La contraseña es requerido." 
             id="correo" name="correo" value="">
 
@@ -49,11 +63,11 @@
 
             <select class="form__input" id="rol" name="rol">
                 <option selected></option>
-                <option value="1">Admin</option>
+                <option value="1">Administrador</option>
                 <option value="2">Gerente</option>
                 <option value="3">Supervisor</option>
                 <option value="4">Oficina</option>
-                <option value="5">Proveedores</option>
+                <option value="5">Proveedor</option>
                 <option value="6">Desarrollo</option>
             </select>
             
@@ -64,7 +78,7 @@
             <input class="form__input" autocomplete="Contraseña de Usuario" 
             aria-required="true" type="password" data-val="true" 
             data-val-required="La contraseña es requerido." 
-            id="Input_Password" name="Password" value="">
+            id="Input_Password" name="contraseña" value="">
             
             <label class="form__label" for="Input_Password">Contraseña</label>
         </div>
