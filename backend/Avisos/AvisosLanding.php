@@ -40,7 +40,7 @@
             if($lista = $connect->query($sqlavisos)){
                 while($row = $lista->fetch_assoc()){
                     
-                    $date = date("d-m-Y", strtotime($row['fechaaviso']));
+                    $date = date("d-m-Y h:i:sa", strtotime($row['fechaaviso']));
 
                     if($aux == 0){
                         
