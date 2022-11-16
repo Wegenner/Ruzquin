@@ -13,11 +13,11 @@
         $MesInicio = $_POST['mes'];  
         $MesFin = $_POST['segundomes'];  
 
-        $sqlUtilidad = "SELECT SUM(presupuestoUtilidad) AS 'UtilidadNeta' FROM billingmodel WHERE (siniestroFecha BETWEEN '".$MesInicio."-01 00:00:00' AND '".$MesFin."-01 00:00:00')";
-        $sqlTotales = "SELECT COUNT(ID) AS 'totales' FROM siniestromodelo WHERE (siniestroFecha BETWEEN '".$MesInicio."-01 00:00:00' AND '".$MesFin."-01 00:00:00')"; 
-        $sqlCancelados = "SELECT COUNT(ID) AS 'Cancelados' FROM siniestromodelo WHERE siniestroEstado LIKE '%cance%' AND (siniestroFecha BETWEEN '".$MesInicio."-01 00:00:00' AND '".$MesFin."-01 00:00:00')";
-        $sqlFacturados = "SELECT COUNT(ID) AS 'Facturados' FROM siniestromodelo WHERE siniestroEstado LIKE '%Factura%' AND (siniestroFecha BETWEEN '".$MesInicio."-01 00:00:00' AND '".$MesFin."-01 00:00:00')";
-        $sqlPagodedaños = "SELECT COUNT(ID) AS 'Daños' FROM siniestromodelo WHERE siniestroEstado LIKE '%Pago%' AND (siniestroFecha BETWEEN '".$MesInicio."-01 00:00:00' AND '".$MesFin."-01 00:00:00')";
+        $sqlUtilidad = "SELECT SUM(presupuestoUtilidad) AS 'UtilidadNeta' FROM billingmodel WHERE (siniestroFecha BETWEEN '".$MesInicio."-01' AND '".$MesFin."-01')";
+        $sqlTotales = "SELECT COUNT(ID) AS 'totales' FROM siniestromodelo WHERE (siniestroFecha BETWEEN '".$MesInicio."-01' AND '".$MesFin."-01')"; 
+        $sqlCancelados = "SELECT COUNT(ID) AS 'Cancelados' FROM siniestromodelo WHERE siniestroEstado LIKE '%cance%' AND (siniestroFecha BETWEEN '".$MesInicio."-01' AND '".$MesFin."-01')";
+        $sqlFacturados = "SELECT COUNT(ID) AS 'Facturados' FROM siniestromodelo WHERE siniestroEstado LIKE '%Factura%' AND (siniestroFecha BETWEEN '".$MesInicio."-01' AND '".$MesFin."-01')";
+        $sqlPagodedaños = "SELECT COUNT(ID) AS 'Daños' FROM siniestromodelo WHERE siniestroEstado LIKE '%Pago%' AND (siniestroFecha BETWEEN '".$MesInicio."-01' AND '".$MesFin."-01')";
 
         $resultUtilidad = $connect->query($sqlUtilidad)->fetch_assoc();
         $resultTotales = $connect->query($sqlTotales)->fetch_assoc();
@@ -27,11 +27,11 @@
 
     }else{
 
-        $sqlUtilidad = "SELECT SUM(presupuestoUtilidad) AS 'UtilidadNeta' FROM billingmodel WHERE (siniestroFecha BETWEEN '".$MesInicio."-01 00:00:00' AND '".$MesFin."-01 00:00:00')";
-        $sqlTotales = "SELECT COUNT(ID) AS 'totales' FROM siniestromodelo WHERE (siniestroFecha BETWEEN '".$MesInicio." -01 00:00:00' AND '".$MesFin." -01 00:00:00')"; 
-        $sqlCancelados = "SELECT COUNT(ID) AS 'Cancelados' FROM siniestromodelo WHERE siniestroEstado LIKE '%cance%' AND (siniestroFecha BETWEEN '".$MesInicio." -01 00:00:00' AND '".$MesFin." -01 00:00:00')";
-        $sqlFacturados = "SELECT COUNT(ID) AS 'Facturados' FROM siniestromodelo WHERE siniestroEstado LIKE '%Factura%' AND (siniestroFecha BETWEEN '".$MesInicio." -01 00:00:00' AND '".$MesFin." -01 00:00:00')";
-        $sqlPagodedaños = "SELECT COUNT(ID) AS 'Daños' FROM siniestromodelo WHERE siniestroEstado LIKE '%Pago%' AND (siniestroFecha BETWEEN '".$MesInicio." -01 00:00:00' AND '".$MesFin." -01 00:00:00')";
+        $sqlUtilidad = "SELECT SUM(presupuestoUtilidad) AS 'UtilidadNeta' FROM billingmodel WHERE (siniestroFecha BETWEEN '".$MesInicio."-01' AND '".$MesFin."-01')";
+        $sqlTotales = "SELECT COUNT(ID) AS 'totales' FROM siniestromodelo WHERE (siniestroFecha BETWEEN '".$MesInicio." -01' AND '".$MesFin." -01')"; 
+        $sqlCancelados = "SELECT COUNT(ID) AS 'Cancelados' FROM siniestromodelo WHERE siniestroEstado LIKE '%cance%' AND (siniestroFecha BETWEEN '".$MesInicio." -01' AND '".$MesFin." -01')";
+        $sqlFacturados = "SELECT COUNT(ID) AS 'Facturados' FROM siniestromodelo WHERE siniestroEstado LIKE '%Factura%' AND (siniestroFecha BETWEEN '".$MesInicio." -01' AND '".$MesFin." -01')";
+        $sqlPagodedaños = "SELECT COUNT(ID) AS 'Daños' FROM siniestromodelo WHERE siniestroEstado LIKE '%Pago%' AND (siniestroFecha BETWEEN '".$MesInicio." -01' AND '".$MesFin." -01')";
 
         $resultUtilidad = $connect->query($sqlUtilidad)->fetch_assoc();
         $resultTotales = $connect->query($sqlTotales)->fetch_assoc();

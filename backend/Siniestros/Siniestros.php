@@ -31,7 +31,7 @@
 </nav>
 
 <h1 style="text-align: center; padding-top:10px">Detalles - <?php while ($row = $resultsiniestro->fetch_assoc()){ echo $row['siniestroId']; } ?></h1>
-<p style="text-align: center"><b><?php while ($row = $resultsiniestro->fetch_assoc()){ echo date("d-m-Y", strtotime($resultado['siniestroFecha']));} ?></b> </p>
+<p style="text-align: center"><b><?php $resultsiniestro = $connect->query($sqlsini); while ($row = $resultsiniestro->fetch_assoc()){ echo date("d-m-Y", strtotime($row['siniestroFecha']));} ?></b> </p>
 <hr style="width:70%" />
 <div class="container" style="padding-top:10px">
 

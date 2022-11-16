@@ -28,4 +28,16 @@
         }
     }
 
+    if(isset($_POST['idpresu'])){
+
+        $sqlusuario = "DELETE FROM billingmodel WHERE ID =".filtrodedatos($_POST['idpresu']);
+
+        if($resultado = $connect->query($sqlusuario)){
+            header("Location: /backend/Presupuestos/PresupuestosTodos.php",true,303);
+            die();
+        } else {
+            echo "error";
+        }
+    }
+
 ?>

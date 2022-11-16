@@ -7,15 +7,21 @@
 
         $id = $_POST['id'];
 
+        if(!isset($_POST['siniestroFechaTermino']) || $_POST['siniestroFechaTermino'] == "" || $_POST['siniestroFechaTermino'] == "1970-01-01"){
+            $_POST['siniestroFechaTermino'] = "null";
+        }else{
+            $_POST['siniestroFechaTermino'] = "'".$_POST['siniestroFechaTermino'] ."'";
+        }
+        
         $sqlupdate = "UPDATE billingmodel SET 
         siniestroId ='".filtrodedatos($_POST['siniestroId'])."',
         presupuesto ='".filtrodedatos($_POST['presupuesto'])."',
         presupuestoPrecioAutorizado =".$_POST['presupuestoPrecioAutorizado'].",
         presupuestoPrecioProveedor ='".$_POST['presupuestoPrecioProveedor']."',
         presupuestoUtilidad =".$_POST['presupuestoUtilidad'].",
-        siniestroFechaTermino = '".$_POST['siniestroFechaTermino']."',
+        siniestroFechaTermino = ".$_POST['siniestroFechaTermino'].",
         presupuestoAnticipoProveedor ='".$_POST['presupuestoAnticipoProveedor']."'
-        WHERE IDdbsiniestro = ".$id;
+        WHERE ID = ".$id;
 
         if($result = $connect->query($sqlupdate)){
             header('location: /backend/Presupuestos/PresupuestosGraficos.php',true,303);
@@ -26,8 +32,6 @@
 
     $id = $_POST['getid'];
 
-    echo $id;
-
     $sqlsini = "SELECT * FROM siniestromodelo WHERE ID = '".$id."' LIMIT 1";
 
     $sqlpres = "SELECT * FROM billingmodel WHERE IDdbsiniestro = '".$id."' LIMIT 1";
@@ -35,6 +39,7 @@
     $resultpresupuesto = $connect->query($sqlpres)->fetch_assoc();
 
     $resultsiniestro = $connect->query($sqlsini)->fetch_assoc();
+
 ?>
 
 <div class="container">
@@ -45,7 +50,7 @@
 
     <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>" method="POST">
 
-        <input readonly name="id" value="<?php echo $resultsiniestro['ID']; ?>" class="form-control" />
+        <input readonly name="id" value="<?php echo $resultpresupuesto['ID']; ?>" class="form-control" />
 
         <br/>
 
@@ -80,7 +85,7 @@
                     <label class="control-label">Precio Proveedor</label>
                 </div>
                 <div class="col">
-                    <input name="" class="form-control" value="<?php echo $resultpresupuesto['presupuestoPrecioProveedor']; ?>" type="text" />
+                    <input name="presupuestoPrecioProveedor" class="form-control" value="<?php echo $resultpresupuesto['presupuestoPrecioProveedor']; ?>" type="text" />
                     <span class="text-danger"></span>
                 </div>
         </div>
@@ -89,7 +94,7 @@
                     <label  class="control-label">Proveedor</label>
                 </div>
                 <div class="col">
-                    <input name="presupuestoPrecioProveedor" value="<?php echo $resultpresupuesto['siniestroProveedor']; ?>" readonly class="form-control" type="text" />
+                    <input name="siniestroProveedor" value="<?php echo $resultpresupuesto['siniestroProveedor']; ?>" readonly class="form-control" type="text" />
                     <span class="text-danger"></span>
                 </div>
 
@@ -127,7 +132,7 @@
 
 <div class="container">
     <br/>
-    <a class="detalles" href="/backend/Siniestros/SiniestrosActivos.php">Regresar</a>
+    <a class="detalles" href="/backend/Presupuestos/PresupuestosTodos.php">Regresar</a>
     <br/>
     <br/>
     <a class="detalles" href="/backend/Presupuestos/PresupuestosGraficos.php">Presupuestos</a>

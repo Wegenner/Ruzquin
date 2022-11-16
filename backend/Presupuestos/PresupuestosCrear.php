@@ -5,8 +5,14 @@
 
     if(isset($_POST['siniestroId'])){
 
+        if(!isset($_POST['siniestroFechaTermino']) || $_POST['siniestroFechaTermino'] == "" || $_POST['siniestroFechaTermino'] == "1970-01-01"){
+            $_POST['siniestroFechaTermino'] = "null";
+        }else{
+            $_POST['siniestroFechaTermino'] = "'".$_POST['siniestroFechaTermino'] ."'";
+        }
+
         $sqlpresupuestocreado = "INSERT INTO billingmodel (siniestroId, siniestroFecha, IDdbsiniestro, presupuesto, presupuestoPrecioAutorizado, presupuestoPrecioProveedor, siniestroProveedor, presupuestoUtilidad, siniestroFechaTermino, presupuestoAnticipoProveedor) 
-                                VALUES ('".$_POST['siniestroId']."','".$_POST['siniestroFecha']."','".$_POST['IDdbsiniestro']."','".$_POST['presupuesto']."','".$_POST['presupuestoPrecioAutorizado']."','".$_POST['presupuestoPrecioProveedor']."','".$_POST['siniestroProveedor']."','".$_POST['presupuestoUtilidad']."','".$_POST['siniestroFechaTermino']."','".$_POST['presupuestoAnticipoProveedor']."') ";
+                                VALUES ('".$_POST['siniestroId']."','".$_POST['siniestroFecha']."','".$_POST['IDdbsiniestro']."','".$_POST['presupuesto']."','".$_POST['presupuestoPrecioAutorizado']."','".$_POST['presupuestoPrecioProveedor']."','".$_POST['siniestroProveedor']."','".$_POST['presupuestoUtilidad']."',".$_POST['siniestroFechaTermino'].",'".$_POST['presupuestoAnticipoProveedor']."') ";
 
         echo $sqlpresupuestocreado;
 
@@ -25,12 +31,16 @@
 
 ?>
 
+<h4 style="text-align:center; margin-top:20px"> Presupuesto  -  <?php echo $resultsiniestro['siniestroId']; ?></h4>
+
+<hr />
+
 <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>" method="POST">
 
     <br/>
     <div class="container">
-            <input name="IDdbsiniestro" readonly value="<?php echo $siniestroId;?>" class="form-control" />
-            <input name="siniestroFecha" readonly value="<?php echo $resultsiniestro['siniestroFecha'];?>" class="form-control" />
+            <input name="IDdbsiniestro" readonly hidden value="<?php echo $siniestroId;?>" class="form-control" />
+            <input name="siniestroFecha" readonly hidden value="<?php echo $resultsiniestro['siniestroFecha'];?>" class="form-control" />
 
         <div class="row" style="margin-bottom: 10px">
                 <div class="col form-group">
@@ -106,14 +116,14 @@
         </div>
         <br/>
         <div class="row" style="margin-bottom: 2px; margin-top: 5px">
-                <div class="form-group">
+                <div class="container">
                     <input type="submit" value="Guardar" class="btn btn-primary" style="width:100%" />  
                 </div>
         </div>
     </div>
 </form>
 
-<div>
+<div class="container">
 <button type="button" style="
                     background-color:#687e8c; 
                     width: 100%;

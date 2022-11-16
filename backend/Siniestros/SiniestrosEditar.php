@@ -59,7 +59,7 @@
         WHERE ID = ".$id;
 
         if($connect->query($sqlupdate) === TRUE){
-            header("Location: /backend/Siniestros/SiniestrosEditar.php?getid=".$id,true,303);
+            header("Location: /backend/Siniestros/SiniestrosActivos.php",true,303);
             die();
         }
 

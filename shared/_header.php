@@ -28,7 +28,7 @@
 
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
     <?php
-        $index = "/index.php";
+        $index = "/backend/Siniestros/SiniestrosActivos.php";
         $urlSiniestrosNav = "/root/imagenes/LOGO.png";
         echo "<a href='$index' style='margin-right:10px'><img src='$urlSiniestrosNav' width='50px'> </a>"; 
     ?>
