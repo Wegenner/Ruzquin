@@ -79,6 +79,10 @@
             $resultado = $resultado->fetch_assoc();
 
             $newDate = date("Y-m-d", strtotime($resultado['siniestroFecha'])); 
+            $newDate2 = date("Y-m-d", strtotime($resultado['SiniestroFechaEnvioPresupuesto'])); 
+            $newDate3 = date("Y-m-d", strtotime($resultado['SiniestroFechaPresupuestoAutorizado'])); 
+            $newDate4 = date("Y-m-d", strtotime($resultado['SiniestroFechaReparacion'])); 
+            $newDate5 = date("Y-m-d", strtotime($resultado['siniestroFechaTermino'])); 
 
 ?>
 
@@ -132,7 +136,7 @@
 
                 <select name="siniestroEstado" value="<?php echo $resultado['siniestroEstado']; ?>">
                 
-                    <?php echo selectestado($resultado); ?>
+                    <?php echo $aux = selectestado($resultado); ?>
 
                 </select>
                 <span class="text-danger"></span>
@@ -213,7 +217,7 @@
         <div class="row">
             <div class="col formularios">
                 <label style="margin-bottom: 5px" class="control-label siniestrosLabels">Fecha de Envío del presupuesto: </label>
-                <input class="form-control" type="date" value="<?php echo date("Y-m-d", strtotime($resultado['SiniestroFechaEnvioPresupuesto'])); ?>" name="SiniestroFechaEnvioPresupuesto"/>
+                <input class="form-control" type="date" <?php echo "value='".$newDate2."'"; ?> name="SiniestroFechaEnvioPresupuesto"/>
                 <span class="text-danger"></span>
             </div>
         </div>
@@ -221,7 +225,7 @@
         <div class="row">
             <div class="col formularios">
                 <label style="margin-bottom: 5px" class="control-label siniestrosLabels">Fecha de Autorización del presupuesto: </label>
-                <input  class="form-control" type="date" name="SiniestroFechaPresupuestoAutorizado" value="<?php echo date("Y-m-d", strtotime($resultado['SiniestroFechaPresupuestoAutorizado'])); ?>" />
+                <input  class="form-control" type="date" name="SiniestroFechaPresupuestoAutorizado" <?php echo "value='".$newDate3."'"; ?> />
                 <span class="text-danger"></span>
             </div>
         </div>
@@ -229,7 +233,7 @@
         <div class="row">
             <div class="col formularios">
                 <label style="margin-bottom: 5px" class="control-label siniestrosLabels">Fecha de Reparación: </label>
-                <input class="form-control" type="date" value="<?php echo date("Y-m-d", strtotime($resultado['SiniestroFechaReparacion'])); ?>" name="SiniestroFechaReparacion" />
+                <input class="form-control" type="date" <?php echo "value='".$newDate4."'"; ?> name="SiniestroFechaReparacion" />
                 <span class="text-danger"></span>
             </div>
         </div>
@@ -237,7 +241,7 @@
         <div class="row">
             <div class="col formularios">
                 <label style="margin-bottom: 5px" class="control-label siniestrosLabels">Fecha de Termino: </label>
-                <input class="form-control" type="date" value="<?php echo date("Y-m-d", strtotime($resultado['siniestroFechaTermino'])); ?>" name="siniestroFechaTermino"/>
+                <input class="form-control" type="date" <?php echo "value='".$newDate5."'"; ?> name="siniestroFechaTermino"/>
                 <span class="text-danger"></span>
             </div>
         </div>
