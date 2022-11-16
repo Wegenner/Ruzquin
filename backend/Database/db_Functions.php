@@ -201,6 +201,18 @@ function selectestado($row){
                         <option selected>Facturación</option>";
             }
 
+            return "
+            <option selected> ".$row["siniestroEstado"]." </option>
+            <option>Recepción</option>
+            <option>Visita</option>
+            <option>Presupuesto</option>
+            <option>Autorizado</option>
+            <option>En espera</option>
+            <option>Envio de Evidencia</option>
+            <option>Cancelado</option>
+            <option>Pago de daños</option>
+            <option>Facturación</option>";
+
 }
 
 function selectUsuario($row){
