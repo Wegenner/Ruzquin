@@ -7,7 +7,7 @@
 
         $IdBuscado = filtrodedatos($_POST['id']);  
 
-        $sql = "SELECT * FROM siniestromodelo WHERE siniestroId = ".$IdBuscado;
+        $sql = "SELECT * FROM siniestromodelo WHERE siniestroId = '".$IdBuscado."'";
     }
 
     $result = $connect->query($sql);

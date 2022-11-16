@@ -10,7 +10,7 @@
         
         $resultsiniestro = $connect->query($sqlsini);
 
-        $sqlpres = "SELECT * FROM billingmodel WHERE ID = ".$id;
+        $sqlpres = "SELECT * FROM billingmodel WHERE IDdbsiniestro = ".$id;
 
         $resultpresupuesto = $connect->query($sqlpres);
 
@@ -31,7 +31,7 @@
 </nav>
 
 <h1 style="text-align: center; padding-top:10px">Detalles - <?php while ($row = $resultsiniestro->fetch_assoc()){ echo $row['siniestroId']; } ?></h1>
-<p style="text-align: center"><b>10/11/2022</b> </p>
+<p style="text-align: center"><b><?php $resultsiniestro = $connect->query($sqlsini); while ($row = $resultsiniestro->fetch_assoc()){ echo date("d-m-Y", strtotime($row['siniestroFecha']));} ?></b> </p>
 <hr style="width:70%" />
 <div class="container" style="padding-top:10px">
 
@@ -83,12 +83,12 @@
         
         <div class='container'>
             <form action='/backend/Siniestros/SiniestrosEditar.php' method='POST'>
-                <input class='detalles' type='number' hidden name='getid' value='".$_POST['id']."' >
+                <input class='detalles' type='number' hidden name='getid' value='".$row['ID']."' >
                 <input class='detalles' type='submit' value='Editar'>
             </form>
             <br />
             <form action='/backend/Database/preguntaprevia.php' method='POST'>
-                <input class='detalles' type='number' hidden name='idsiniestro' value='".$_POST['id']."' >
+                <input class='detalles' type='number' hidden name='idsiniestro' value='".$row['ID']."' >
                 <input class='detalles' value='Eliminar' type='submit'>
             </form>
             <br />
@@ -105,15 +105,14 @@
     <?php 
 
         if($resultpresupuesto->num_rows <= 0 || is_null($resultpresupuesto)){
-
-            echo "<button type='button' style='
-            background-color:green; width: 100%;
-            margin-right: 0.625%;
-            text-align: center;
-            border-radius: 10px;' href='#' class='btn btn-secondary'>Crear Presupuesto</button>
-            <br />
-            <br />";
-
+            $resultsiniestro = $connect->query($sqlsini);
+            while ($row = $resultsiniestro->fetch_assoc()){
+                echo "<form action='/backend/Presupuestos/PresupuestosCrear.php' method='POST'>
+                <input class='detalles' type='number' hidden name='id' value='".$row['ID']."' >
+                <input class='btn btn-info' style='width:100%' value='Crear Presupuesto' type='submit'></form>
+                <br />
+                <br />";
+            }
         }else{
             while ($row = $resultpresupuesto->fetch_assoc()){
             echo "
@@ -133,6 +132,9 @@
                     <div class='col'>
                         <p><b>Utilidad : ".$row['presupuestoUtilidad']."</b> </p>
                     </div>
+                    <div class='col'>
+                    <p><b>Anticipo : ".$row['presupuestoAnticipoProveedor']."</b> </p>
+                </div>
                 </div>
                     <div class='row'>
                     <div class='col'>
@@ -141,7 +143,9 @@
                 </div>
             </div>
             <br />
-                    <a class='detalles' href='/backend/Presupuestos/PresupuestosEditar.php'>Editar</a>
+                <form action='/backend/Presupuestos/PresupuestosEditar.php' method='POST'>
+                <input class='detalles' type='number' hidden name='getid' value='".$row['IDdbsiniestro']."' >
+                <input class='btn btn-info' style='width:100%' value='Editar Presupuesto' type='submit'></form>
             <br />
             <br />";
             }

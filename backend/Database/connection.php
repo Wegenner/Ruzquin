@@ -17,5 +17,4 @@
         die("Connection failed: " . $connect->connect_error);
     }
 
-
 ?>

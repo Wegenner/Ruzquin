@@ -21,11 +21,13 @@
     <ul class="nav">
         <?php
             $urlSiniestrosNav = "/backend/Siniestros/SiniestrosActivos.php";
-            echo "<li><a href='$urlSiniestrosNav' class='menuLink'> Siniestros Activos </a></li>"; 
-        ?>
-        <?php
+            echo "<li><a href='$urlSiniestrosNav' class='menuLink' > Siniestros Activos </a></li>"; 
+
             $urlSiniestrosNav = "/backend/Siniestros/SiniestrosBuscar.php";
             echo "<li><a href='$urlSiniestrosNav' class='menuLink' style='background: #2f698d'> Siniestros Buscar </a></li>"; 
+
+            $urlSiniestrosNav = "/backend/Siniestros/SiniestrosCrear.php";
+            echo "<li><a href='$urlSiniestrosNav' class='menuLink' > Nuevo </a></li>"; 
         ?>
         
     </ul>
