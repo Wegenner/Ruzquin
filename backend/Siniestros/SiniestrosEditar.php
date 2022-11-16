@@ -57,8 +57,6 @@
         siniestroColor =".filtrodedatos($_POST['siniestroColor']).",
         siniestroAnticipo =".filtrodedatos($_POST['siniestroAnticipo'])."
         WHERE ID = ".$id;
-        
-        echo $sqlupdate;
 
         if($connect->query($sqlupdate) === TRUE){
             header("Location: /backend/Siniestros/SiniestrosEditar.php?getid=".$id,true,303);
@@ -89,9 +87,7 @@
 <hr style="width: 70%"/>
 
 <div class="container">
-    <form action='/backend/Siniestros/SiniestrosEditar.php' method='POST'>
-        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-        <input type="hidden" />
+    <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>" method="POST">
 
         <div class="row">
             <div class="col formularios">
@@ -209,7 +205,7 @@
         <div class="row">
             <div class="col formularios">
                 <label style="margin-bottom: 5px" class="control-label siniestrosLabels">Descripción</label>
-                <input class="form-control" value="<?php echo $resultado['siniestroDescripcion']; ?>" name="siniestroDescripcion"/>
+                <textarea class="form-control" name="siniestroDescripcion"> <?php echo $resultado['siniestroDescripcion']; ?> </textarea> 
                 <span class="text-danger"></span>
             </div>
         </div>
@@ -265,7 +261,7 @@
     <br />
     <form action='/backend/Database/preguntaprevia.php' method='POST'>
         <input class='detalles' type='number' hidden name='idsiniestro' value="<?PHP echo $_POST['getid']; ?>" >
-        <input class='detalles' value="Regresar" type='submit'>
+        <input class='btn btn-danger' style="width:100%" value="Eliminar" type='submit'>
     </form>
 
 </div>

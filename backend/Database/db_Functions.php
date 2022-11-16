@@ -207,7 +207,7 @@ function selectUsuario($row){
 
         include $_SERVER['DOCUMENT_ROOT']."/backend/Database/connection.php"; 
 
-        $sql = "SELECT * FROM usuarios";
+        $sql = "SELECT * FROM usuarios WHERE UserRoles = 5";
 
         $resultado = $connect->query($sql);
 

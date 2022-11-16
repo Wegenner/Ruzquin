@@ -1,15 +1,16 @@
 <?php 
+
     include $_SERVER['DOCUMENT_ROOT']."/shared/_header.php";
     include $_SERVER['DOCUMENT_ROOT']."/backend/Database/connection.php";
     include $_SERVER['DOCUMENT_ROOT']."/backend/Database/db_Functions.php";
 
     if(isset($_POST['idsiniestro'])){ 
-        echo "funciona ";
+
         $id = $_POST['idsiniestro'];
         $sqlsininfo = "SELECT ID, siniestroId, siniestroNombre FROM siniestromodelo WHERE ID =".$id." LIMIT 1";
-        echo $sqlsininfo;
         $result = $connect->query($sqlsininfo);
         $result = $result->fetch_assoc();
+
 ?>
     <div class="container-fluid">
 
@@ -31,10 +32,10 @@
     </div>
 
 <?php 
+
     }
 
     if(isset($_POST['idusuario'])){ 
-        echo "funciona ";
 
         $sqluserinfo = "SELECT ID, UserName, UserEmail FROM usuarios WHERE ID =".filtrodedatos($_POST['idusuario'])." LIMIT 1";
         $result = $connect->query($sqluserinfo);
@@ -61,8 +62,10 @@
 
     </div>
 
-
 <?php 
+
     }
+
     include $_SERVER['DOCUMENT_ROOT']."/shared/_footer.php";
+    
 ?>
