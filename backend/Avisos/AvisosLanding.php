@@ -29,63 +29,90 @@
         <h1 style="margin-bottom: 20px"> Avisos </h1>
 
         <!-- Pondre hasta los ultimos 3 avisos con enfasís en el ultimo subido basado en fecha -->
-
-        <div class="row time">
-            <span> 28/10/2022 - 11:00 </span>
-        </div>
-
-        <div class="row mensaje">
-            <?php
+        <?php
             
-                if($_POST){
+            include $_SERVER['DOCUMENT_ROOT']."/backend/Database/connection.php";
+
+            $sqlavisos = "SELECT * FROM avisosmodel ORDER BY fechaaviso DESC LIMIT 3";
+
+            $aux = 0;
+
+            if($lista = $connect->query($sqlavisos)){
+                while($row = $lista->fetch_assoc()){
                     
-                    $mensaje = $_POST["aviso"];
-                    echo "<p style='font-size:large'>".$mensaje." </p>";
+                    $date = date("d-m-Y", strtotime($row['fechaaviso']));
 
-                }else{
-                    echo "<p style='font-size:large'> Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
-                    Integer pulvinar dignissim pulvinar. Cras consectetur massa non dolor vulputate, sit amet ullamcorper nulla mattis. 
-                    Nunc in nisl in nisi scelerisque faucibus. Sed libero nisl, aliquet at erat nec, commodo elementum nunc. 
-                    Aenean ut nunc et tortor egestas sagittis. Phasellus at malesuada orci. </p>";
-                }
+                    if($aux == 0){
+                        
+                        
+                        ?>
+                            <div class="row time">
+                                <span> <?php echo $date;?> </span>
+                            </div>
 
-            ?>
+                            <div class="row mensaje">
+
+                                <p style='font-size:large'> <?php echo $row['aviso'];?> </p>
+                                
+                            </div>
+
+                            <div class="row att" style="margin-bottom: 30px">
+                                <span> Att: Alejandro </span>
+                            </div>
+                        
+                        <?php
+                    
+                    }
+
+                    if($aux == 1){
+
+                    
+                        ?>
+                            <div class="row time">
+                                <span> <?php echo $date;?> </span>
+                            </div>
+
+                            <div class="row mensaje" style="width: 90%">
+                                <p style="font-size:small"> <?php echo $row['aviso'];?> </p>
+                            </div>
+
+                            <div class="row att">
+                                <span> Att: Alejandro </span>
+                            </div>
+                        <?php
+
+                    }
+
+                    if($aux == 2){
+
+                    
+                        ?>
+                        
+                        <div class="row time">
+                            <span> <?php echo $date;?> </span>
+                        </div>
+
+                        <div class="row mensaje" style="width: 90%">
+                            <p style="font-size:small"> <?php echo $row['aviso'];?> </p>
+                        </div>
+
+                        <div class="row att">
+                            <span> Att: Alejandro </span>
+                        </div>
+                        
+                        <?php
+
+                    }
+
+                    $aux += 1;
             
-        </div>
+        ?>
 
-        <div class="row att" style="margin-bottom: 30px">
-            <span> Att: Alejandro </span>
-        </div>
+<?php
+        }
+    }
 
-        <div class="row time">
-            <span> 28/10/2022 - 11:00 </span>
-        </div>
-
-        <div class="row mensaje" style="width: 90%">
-            <p style="font-size:small"> Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
-                Integer pulvinar dignissim pulvinar. Cras consectetur massa non dolor vulputate, sit amet ullamcorper nulla mattis. 
-                Nunc in nisl in nisi scelerisque faucibus. Sed libero nisl, aliquet at erat nec, commodo elementum nunc. 
-                Aenean ut nunc et tortor egestas sagittis. Phasellus at malesuada orci. </p>
-        </div>
-
-        <div class="row att">
-            <span> Att: Alejandro </span>
-        </div>
-
-        <div class="row time">
-            <span> 28/10/2022 - 11:00 </span>
-        </div>
-
-        <div class="row mensaje" style="width: 90%">
-            <p style="font-size:small"> Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
-                Integer pulvinar dignissim pulvinar. Cras consectetur massa non dolor vulputate, sit amet ullamcorper nulla mattis. 
-                Nunc in nisl in nisi scelerisque faucibus. Sed libero nisl, aliquet at erat nec, commodo elementum nunc. 
-                Aenean ut nunc et tortor egestas sagittis. Phasellus at malesuada orci. </p>
-        </div>
-
-        <div class="row att">
-            <span> Att: Alejandro </span>
-        </div>
+?>
 
         <form action="/backend/Siniestros/SiniestrosActivos.php" name="Login" method="post">
 
