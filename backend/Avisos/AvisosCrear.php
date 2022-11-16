@@ -1,5 +1,19 @@
 <?php 
     include $_SERVER['DOCUMENT_ROOT']."/shared/_header.php";
+    include $_SERVER['DOCUMENT_ROOT']."/backend/Database/connection.php";
+
+    if($_POST){
+    
+        $hoy = date_create("today")->format('Y-m-d');
+
+        $SQLaviso = "INSERT INTO avisosmodel (aviso, fechaaviso) VALUES ('".$_POST['aviso']."', '".$hoy."')";
+
+        if($resultado = $connect->query($SQLaviso)){
+            header("Location: /backend/Avisos/AvisosLanding.php", true, 303);
+            die();
+        }
+
+    }
 ?>
 
 <div class="container" style="display:flex;align-items:center;flex-direction:column">
@@ -8,7 +22,7 @@
 
     <hr class="line"/>
 
-    <form action="/backend/Avisos/AvisosLanding.php" name="Login" method="post">
+    <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>" method="POST">
 
         <div class="form">   
 
