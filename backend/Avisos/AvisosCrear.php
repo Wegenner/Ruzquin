@@ -4,9 +4,13 @@
 
     if($_POST){
     
-        $hoy = date_create("today")->format('Y-m-d');
+        date_default_timezone_set("America/Mexico_City");
+
+        $hoy = date_create("now")->format('Y-m-d H:i:s');
 
         $SQLaviso = "INSERT INTO avisosmodel (aviso, fechaaviso) VALUES ('".$_POST['aviso']."', '".$hoy."')";
+
+        echo $SQLaviso;
 
         if($resultado = $connect->query($SQLaviso)){
             header("Location: /backend/Avisos/AvisosLanding.php", true, 303);

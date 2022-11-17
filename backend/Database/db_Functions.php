@@ -189,7 +189,7 @@ function selectestado($row){
                         <option selected>Pago de daños</option>
                         <option>Facturación</option>";
             }
-            if(str_contains($row["siniestroEstado"], "factura")){
+            if(str_contains($row["siniestroEstado"], "Factura")){
                 return "<option >Recepción</option>
                         <option>Visita</option>
                         <option>Presupuesto</option>
