@@ -1,3 +1,13 @@
+<?php 
+
+  session_start();
+
+  if (!isset($_SESSION['rol'])){
+    header('Location:/index.php');
+  }
+
+?>
+
 <html>
     <head>
 
@@ -53,6 +63,15 @@
 
         $urlSiniestrosNav = "/backend/Avisos/AvisosCrear.php";
         echo "<li><a href='$urlSiniestrosNav' class='menuLink'> Avisos </a></li>"; 
+
+        $urlSiniestrosNav = "/backend/Chat/ChatNotificaciones.php";
+        echo "<li>
+
+                <a href='$urlSiniestrosNav' class='menuLink notificaciones'> 
+                  <span class='label label-pill label-danger count' style='border-radius:50px;'></span> 
+                  Notificaciones 
+                </a>
+              </li>"; 
     ?>
     </ul>
     <form action="/backend/Siniestros/SiniestrosResultados.php" method="POST">   

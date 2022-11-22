@@ -2,6 +2,9 @@
 
     include $_SERVER['DOCUMENT_ROOT']."/shared/_header.php";
     include $_SERVER['DOCUMENT_ROOT']."/backend/Database/connection.php"; 
+    include $_SERVER['DOCUMENT_ROOT']."/backend/Sistema/SistemaCrearNotificacion.php"; 
+
+    $noti = new Notificacion();
 
     if(isset($_POST['siniestroId'])){
 
@@ -17,6 +20,7 @@
         echo $sqlpresupuestocreado;
 
         if($result = $connect->query($sqlpresupuestocreado)){
+            $noti->notificar($_SESSION['nombre'],"creado el presupuesto de",$_POST['IDdbsiniestro']);
             header('Location: /backend/Siniestros/SiniestrosActivos.php',true,303);
             die();
         }

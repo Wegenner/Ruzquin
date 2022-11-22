@@ -51,7 +51,7 @@
 
     <hr />
 
-    <h2 style="text-align : center">Total : <?php echo $result->num_rows ?></h2>
+    <h2 style="text-align : center">Total : <?php echo $result->num_rows; ?></h2>
 
     <div class="rounded container-fluid align-items-center">
 
@@ -194,7 +194,7 @@
 
                         if ($result->num_rows > 0) {   
                             while($row = $result->fetch_assoc()) {
-                                if(str_contains($row["siniestroEstado"], "evidencia")){
+                                if(str_contains($row["siniestroEstado"], "Evidencia") || str_contains($row["siniestroEstado"], "Envío")){
                                     echo botonsiniestro($row);
                                 }
 

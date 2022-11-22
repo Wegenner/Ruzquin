@@ -5,6 +5,10 @@
 
     include $_SERVER['DOCUMENT_ROOT']."/backend/Database/db_Functions.php";
 
+    include $_SERVER['DOCUMENT_ROOT']."/backend/Sistema/SistemaCrearNotificacion.php"; 
+
+    $noti = new Notificacion();
+
     if(isset($_POST['id'])){
         
         $id = $_POST['id'];
@@ -59,6 +63,9 @@
         WHERE ID = ".$id;
 
         if($connect->query($sqlupdate) === TRUE){
+
+            $noti->notificar($_SESSION['nombre'],"editado",$_POST['id']);
+
             header("Location: /backend/Siniestros/SiniestrosActivos.php",true,303);
             die();
         }
@@ -169,7 +176,7 @@
         </div>
         <div class="row">
             <div class="col-auto">
-                <input type="hidden" value="<?php echo $resultado['siniestroUltimoEdit']; ?>" name="siniestroUltimoEdit" class="form-control" />
+                <input type="hidden" value="<?php echo $_SESSION['nombre']; ?>" name="siniestroUltimoEdit" class="form-control" />
                 <span class="text-danger"></span>
             </div>
         </div>

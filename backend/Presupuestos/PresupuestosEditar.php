@@ -2,6 +2,9 @@
     include $_SERVER['DOCUMENT_ROOT']."/shared/_header.php";
     include $_SERVER['DOCUMENT_ROOT']."/backend/Database/connection.php"; 
     include $_SERVER['DOCUMENT_ROOT']."/backend/Database/db_Functions.php";
+    include $_SERVER['DOCUMENT_ROOT']."/backend/Sistema/SistemaCrearNotificacion.php"; 
+
+    $noti = new Notificacion();
 
     if(isset($_POST['id'])){
 
@@ -24,6 +27,7 @@
         WHERE ID = ".$id;
 
         if($result = $connect->query($sqlupdate)){
+            $noti->notificar($_SESSION['nombre'],"editado el presupuesto de",$_POST['id']);
             header('location: /backend/Presupuestos/PresupuestosGraficos.php',true,303);
             die();
         }

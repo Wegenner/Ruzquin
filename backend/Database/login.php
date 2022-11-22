@@ -1,17 +1,32 @@
 <?php 
-    if($_POST){
+    session_start();
 
-        $Nombre = $_POST["Name"];
-        $Password = $_POST["Password"];
+    include $_SERVER['DOCUMENT_ROOT']."/backend/Database/connection.php";
 
-        $redirect = $_SERVER['DOCUMENT_ROOT']."/backend/Siniestros/SiniestrosActivos.php";
+    $sqlUsuario = "SELECT * FROM usuarios WHERE UserName = '".$_POST['Name']."'";
 
-        header("Location: /backend/Avisos/AvisosLanding.php",true,303);
-        die();
+    $result = $connect->query($sqlUsuario);
+
+    if($result->num_rows >= 1){
+        $result = $result->fetch_assoc();
+        
+        if(password_verify($_POST['Password'],$result["UserPassword"])){
+
+            $_SESSION['id'] = $result["ID"];
+            $_SESSION['rol'] = $result["UserRoles"];
+            $_SESSION['nombre'] = $result["UserName"];
+    
+            $redirect = "/backend/Siniestros/SiniestrosActivos.php";
+    
+            header("Location: ".$redirect,true,303);
+
+            die();
+        }
+    
 
     }else{
 
-       echo "Hola jeje algo salio mal";
+       echo "No hay un usuario con estos datos, revise y vuelva a intentar.";
 
     }
     

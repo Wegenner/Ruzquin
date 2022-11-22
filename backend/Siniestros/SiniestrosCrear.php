@@ -2,14 +2,21 @@
 
     include $_SERVER['DOCUMENT_ROOT']."/shared/_header.php";
     include $_SERVER['DOCUMENT_ROOT']."/backend/Database/connection.php"; 
+    include $_SERVER['DOCUMENT_ROOT']."/backend/Sistema/SistemaCrearNotificacion.php"; 
+
+    $noti = new Notificacion();
 
     if($_POST){
 
-        $sqlsiniestrocreado = "INSERT INTO siniestromodelo (siniestroId, siniestroFecha, siniestroNombre, siniestroDireccion, siniestroTelefono, siniestroEstado, siniestroProveedor, siniestroAseguradora, siniestroDescripcion) 
-                                VALUES ('".$_POST['siniestroId']."','".$_POST['siniestroFecha']."','".$_POST['siniestroNombre']."','".$_POST['siniestroDireccion']."','".$_POST['siniestroTelefono']."','".$_POST['siniestroEstado']."','".$_POST['siniestroProveedor']."','".$_POST['siniestroAseguradora']."','".$_POST['siniestroDescripcion']."') ";
+        $sqlsiniestrocreado = "INSERT INTO siniestromodelo (siniestroId, siniestroFecha, siniestroNombre, siniestroDireccion, siniestroTelefono, siniestroEstado, siniestroProveedor, siniestroAseguradora, siniestroDescripcion, siniestroCreador, siniestroUltimoEdit) 
+                                VALUES ('".$_POST['siniestroId']."','".$_POST['siniestroFecha']."','".$_POST['siniestroNombre']."','".$_POST['siniestroDireccion']."','".$_POST['siniestroTelefono']."','".$_POST['siniestroEstado']."','".$_POST['siniestroProveedor']."','".$_POST['siniestroAseguradora']."','".$_POST['siniestroDescripcion']."','".$_POST['siniestroCreador']."','".$_POST['siniestroCreador']."') ";
 
         if($result = $connect->query($sqlsiniestrocreado)){
+
+            $noti->notificar($_SESSION['nombre'],"creado", null);
+            
             header('Location: /backend/Siniestros/SiniestrosActivos.php',true,303);
+
             die();
         }
 
@@ -137,12 +144,7 @@
                 <div class="row">
 
                     <div class="form-group">
-                        <input type="hidden" for="siniestroUltimoEdit" style="margin-bottom: 5px" value="@User.Identity.Name" class="form-control" />
-                        <span for="siniestroUltimoEdit" class="text-danger"></span>
-                    </div>
-
-                    <div class="form-group">
-                        <input type="hidden" name="siniestroCreador" style="margin-bottom: 5px" value="@User.Identity.Name" class="form-control" />
+                        <input type="hidden" name="siniestroCreador" style="margin-bottom: 5px" value="<?php echo $_SESSION['nombre'];?>" class="form-control" />
                         <span class="text-danger"></span>
                     </div>
 
