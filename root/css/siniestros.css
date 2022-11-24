@@ -143,6 +143,7 @@ form{
     text-align: center;
     line-height: 3;
     border-radius: 10px;
+    background: #7f8e9d;
 }
 
     .eliminarArchivos:link {
@@ -254,4 +255,21 @@ select {
     #pendientedeale:active {
         background: #de8c1c;
         color: white;
+    }
+
+/*  Bloque de notificacines de sinestros */
+
+#btn-sinnoti{
+
+    display:flex;
+    border: solid;
+    background:#343a40; 
+    border-radius:16px; 
+    padding: 15px 20px 15px 30px;
+    margin: 10px 0 10px 0;
+    width: 100%;
+    color:white;
+}
+    #btn-sinnoti:hover{
+        background:#4b5b65; 
     }

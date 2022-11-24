@@ -13,7 +13,9 @@
 
         if($result = $connect->query($sqlsiniestrocreado)){
 
-            $noti->notificar($_SESSION['nombre'],"creado", null);
+            $id = $connect->query("SELECT ID FROM siniestromodelo ORDER BY ID DESC LIMIT 1 ")->fetch_assoc();
+
+            $noti->notificar($_SESSION['nombre'],"creado", $id['ID']);
             
             header('Location: /backend/Siniestros/SiniestrosActivos.php',true,303);
 

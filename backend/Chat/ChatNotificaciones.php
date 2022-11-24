@@ -1,8 +1,11 @@
 <!-- Creamos una funcion iterativa que genere entradas a todas las tablas de notificaciones
     de los usuarios y genere una push notification para js/ajax de manera que sean avisados -->
 
-    <?php 
+<?php 
     include $_SERVER['DOCUMENT_ROOT']."/shared/_header.php";
+	include $_SERVER['DOCUMENT_ROOT']."/backend/Database/connection.php";
+
+    $sqlNoti = "";
 ?>
 
 <div id="navSiniestros" class="container-fluid">
@@ -21,28 +24,16 @@
                 </ul>
             </nav>
         </div>
-        <div class="col" style="text-align:end">
-            <input type="text" style="border-radius:13px;"/>
-
-            <button type="button" class="btn btn-dark" style="border-radius: 20px !important"> Buscar </button>
-
-            <button type="button" style="background-color:#687e8c; 
-                                            line-height: 1.5;
-                                            border-radius: 16px"
-                class="btn btn-secondary"> Nuevo </button>
-        </div>
     </div>
 </div>
 
 <!-- Inicio de las notificaciones -->
 
-<div class="container">
-    
-    
+<div class="container generalnot">
 
 </div>
-
 
 <?php 
     include $_SERVER['DOCUMENT_ROOT']."/shared/_footer.php";
 ?>
+

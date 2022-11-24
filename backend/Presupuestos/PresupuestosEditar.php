@@ -27,7 +27,9 @@
         WHERE ID = ".$id;
 
         if($result = $connect->query($sqlupdate)){
-            $noti->notificar($_SESSION['nombre'],"editado el presupuesto de",$_POST['id']);
+            $sqlupdate = "SELECT * FROM billingmodel WHERE ID ='".$id."' LIMIT 1";
+            $result = $connect->query($sqlupdate)->fetch_assoc();
+            $noti->notificar($_SESSION['nombre'],"editado el presupuesto de",$result['IDdbsiniestro']);
             header('location: /backend/Presupuestos/PresupuestosGraficos.php',true,303);
             die();
         }
@@ -135,9 +137,13 @@
 
 
 <div class="container">
+    <br/> 
+    <form action="/backend/Siniestros/Siniestros.php" method="POST">
+        <input hidden type="number" name="id" value="<?php echo $resultpresupuesto['IDdbsiniestro'];?>">
+        <input class="detalles" type="submit" name="submit" value="Regresar">
+    </form>
     <br/>
-    <a class="detalles" href="/backend/Presupuestos/PresupuestosTodos.php">Regresar</a>
     <br/>
-    <br/>
-    <a class="detalles" href="/backend/Presupuestos/PresupuestosGraficos.php">Presupuestos</a>
+    <a class="detalles" href="/backend/Presupuestos/PresupuestosTodos.php">Lista de Presupuestos</a>
+
 </div>

@@ -66,7 +66,6 @@
 
         $urlSiniestrosNav = "/backend/Chat/ChatNotificaciones.php";
         echo "<li>
-
                 <a href='$urlSiniestrosNav' class='menuLink notificaciones'> 
                   <span class='label label-pill label-danger count' style='border-radius:50px;'></span> 
                   Notificaciones 
@@ -81,5 +80,7 @@
       <input type="submit" class="btn btn-dark" style="border-radius: 20px !important" value="Buscar">
 
     </form>
+
+    <a class="btn btn-info" style="margin-left:10px" href="/backend/Sistema/SistemaSingOut.php"><?php echo $_SESSION['nombre'];?></a>
   </div>
 </nav>
