@@ -2,6 +2,9 @@
 
     include $_SERVER['DOCUMENT_ROOT']."/shared/_header.php";
     include $_SERVER['DOCUMENT_ROOT']."/backend/Database/connection.php"; 
+    include $_SERVER['DOCUMENT_ROOT']."/backend/Sistema/SistemaCrearNotificacion.php"; 
+
+    $noti = new Notificacion();
 
     if(isset($_POST['siniestroId'])){
 
@@ -17,6 +20,7 @@
         echo $sqlpresupuestocreado;
 
         if($result = $connect->query($sqlpresupuestocreado)){
+            $noti->notificar($_SESSION['nombre'],"creado el presupuesto ",$_POST['IDdbsiniestro']);
             header('Location: /backend/Siniestros/SiniestrosActivos.php',true,303);
             die();
         }
@@ -101,7 +105,7 @@
                 <label class="control-label">Anticipo Proveedor</label>
             </div>
             <div class="col">
-                <input name="presupuestoAnticipoProveedor" value="<?php echo $resultpresupuesto['presupuestoAnticipoProveedor']; ?>" class="form-control" type="number" />
+                <input name="presupuestoAnticipoProveedor" value="" class="form-control" type="number" />
                 <span class="text-danger"></span>
             </div>
         </div>
@@ -124,14 +128,14 @@
 </form>
 
 <div class="container">
-<button type="button" style="
+<a style="
                     background-color:#687e8c; 
                     width: 100%;
                     margin: 10px 0 10px 0;
                     text-align: center;
                     border-radius: 10px;" href="/backend/Siniestros/SiniestrosActivos.php" class="btn btn-secondary">
         Regresar
-    </button>
+    </a>
 </div>
 
 <?php 
