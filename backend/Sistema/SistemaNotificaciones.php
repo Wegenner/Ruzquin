@@ -5,10 +5,10 @@
 	if(isset($_POST['view'])){
 
 		if($_POST['view'] != ''){
-			$sql = "UPDATE notificaciones SET estado = 1 WHERE estado = 0";	
+			$sql = "UPDATE notificaciones SET estado = '1' WHERE estado = '0'";	
 			$result = $connect->query($sql);
 
-			$sqlusr = "UPDATE usuarios SET UserNotifications = 0 WHERE ID=".$_SESSION['id'];
+			$sqlusr = "UPDATE usuarios SET UserNotifications = '0' WHERE ID='".$_SESSION['id']."'";
 			$result = $connect->query($sqlusr);
 		}
 

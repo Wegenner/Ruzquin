@@ -18,7 +18,7 @@ class Notificacion{
 			$nombreobjeto = $connect->query("SELECT siniestroId FROM siniestromodelo WHERE ID =".$IDobject['ID']);
 		}
 
-		$sqlNoti = "INSERT INTO notificaciones (autor,mensaje,fecha, idObjeto, nombreObjeto) VALUES ('" . $autor . "','" . $mensaje . "','" . $fecha . "','" . $IDobject . "','" . $nombreobjeto . "')";
+		$sqlNoti = "INSERT INTO notificaciones (autor,mensaje,fecha, idObjeto, nombreObjeto,estado) VALUES ('" . $autor . "','" . $mensaje . "','" . $fecha . "','" . $IDobject . "','" . $nombreobjeto . "',0)";
 
 		$sqlUserNoti = "UPDATE usuarios SET UserNotifications = UserNotifications + 1";
 
