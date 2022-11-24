@@ -6,7 +6,7 @@
 
         $_POST['contraseña'] = password_hash($_POST['contraseña'], PASSWORD_DEFAULT);
 
-        $sqlususario = "INSERT INTO usuarios (UserName, UserPhone, UserEmail, UserRoles, UserPassword) VALUES ('".$_POST['name']."', ".$_POST['telefono'].",'".$_POST['correo']."',".$_POST['rol'].",'".$_POST['contraseña']."')";
+        $sqlususario = "INSERT INTO usuarios (UserName, UserPhone, UserEmail, UserRoles, UserPassword, UserNotifications) VALUES ('".$_POST['name']."', ".$_POST['telefono'].",'".$_POST['correo']."',".$_POST['rol'].",'".$_POST['contraseña']."',0)";
         
         if($result = $connect->query($sqlususario)){
             header('Location: UsuariosTodos.php',true,303);

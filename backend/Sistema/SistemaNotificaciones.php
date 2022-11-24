@@ -40,7 +40,7 @@
 				"<div class='notification-subject'>". $row["autor"] . " - <span>". $fechaFormateada . " </span> </div>" . 
 				"<div class='notification-comment'> Ha " . $row["mensaje"]  . " del siniestro: ".$row["nombreObjeto"]."</div>" .
 				"</div>";
-			}
+			}else{
 
 			$responsebig = $responsebig . "<form action='/backend/Siniestros/Siniestros.php' id='noificaciongeneral' method='POST'>
 			<button id='btn-sinnoti' type='submit'>
@@ -54,6 +54,7 @@
 			"<div class='notification-subject'>". $row["autor"] . " - <span>". $fechaFormateada . " </span> </div>" . 
 			"<div class='notification-comment'> Ha " . $row["mensaje"]  . " del siniestro: ".$row["nombreObjeto"]."</div>" .
 			"</div>";
+			}
 
 		}
 	}else{
