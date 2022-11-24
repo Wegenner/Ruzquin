@@ -16,10 +16,6 @@ if(URLactual == "http://localhost/backend/Chat/ChatNotificaciones.php"){
                 {
                     $('.dropdown-menu').html(data.notification);
                     $('.generalnot').html(data.notificaciongrande);
-                    if(data.unseen_notification > 0)
-                    {
-                        $('.count').html(data.unseen_notification);
-                    }
                 }
             });
         }
