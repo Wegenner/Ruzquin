@@ -11,40 +11,22 @@ function botonsiniestro($row){
     }    
 
     if($row["siniestroColor"] == "null" || $row["siniestroColor"] == 0 ){
-        return "<form action='/backend/Siniestros/Siniestros.php' method='POST'>
-                    <input class='LigaSiniestros' type='number' hidden name='id' value='".$row['ID']."' >
-                    <input class='LigaSiniestros' type='submit' ".$colorines." value='".$row['siniestroId']."' >
-            </form>";
+        return "<div><form action='/backend/Siniestros/Siniestros.php' method='POST'><input class='LigaSiniestros' type='number' hidden name='id' value='".$row['ID']."' ><input class='LigaSiniestros' type='submit' ".$colorines." value='".$row['siniestroId']."' ></form></div>";
     }
     if($row["siniestroColor"] == 1 ){
-        return "<form action='/backend/Siniestros/Siniestros.php' method='POST'>
-                    <input class='LigaSiniestros' type='number' hidden name='id' value='".$row['ID']."' >
-                    <input class='LigaSiniestros' id='conqueja' type='submit' ".$colorines." value='".$row['siniestroId']."' >
-            </form>";
+        return "<div><form action='/backend/Siniestros/Siniestros.php' method='POST'><input class='LigaSiniestros' type='number' hidden name='id' value='".$row['ID']."' ><input class='LigaSiniestros' id='conqueja' type='submit' ".$colorines." value='".$row['siniestroId']."' ></form></div>";
     }
     if($row["siniestroColor"] == 2 ){
-        return "<form action='/backend/Siniestros/Siniestros.php' method='POST'>
-                    <input class='LigaSiniestros' type='number' hidden name='id' value='".$row['ID']."' >
-                    <input class='LigaSiniestros' id='conmasde3meses' type='submit' ".$colorines." value='".$row['siniestroId']."' >
-            </form>";
+        return "<div><form action='/backend/Siniestros/Siniestros.php' method='POST'><input class='LigaSiniestros' type='number' hidden name='id' value='".$row['ID']."' ><input class='LigaSiniestros' id='conmasde3meses' type='submit' ".$colorines." value='".$row['siniestroId']."' ></form></div>";
     }
     if($row["siniestroColor"] == 3 ){
-        return "<form action='/backend/Siniestros/Siniestros.php' method='POST'>
-                    <input class='LigaSiniestros' type='number' hidden name='id' value='".$row['ID']."' >
-                    <input class='LigaSiniestros' id='problemaconseguro' type='submit' ".$colorines." value='".$row['siniestroId']."' >
-            </form>";
+        return "<div><form action='/backend/Siniestros/Siniestros.php' method='POST'><input class='LigaSiniestros' type='number' hidden name='id' value='".$row['ID']."' ><input class='LigaSiniestros' id='problemaconseguro' type='submit' ".$colorines." value='".$row['siniestroId']."' ></form></div>";
     }
     if($row["siniestroColor"] == 4 ){
-        return "<form action='/backend/Siniestros/Siniestros.php' method='POST'>
-                    <input class='LigaSiniestros' type='number' hidden name='id' value='".$row['ID']."' >
-                    <input class='LigaSiniestros' id='necesitafactura' type='submit' ".$colorines." value='".$row['siniestroId']."' >
-            </form>";
+        return "<div><form action='/backend/Siniestros/Siniestros.php' method='POST'><input class='LigaSiniestros' type='number' hidden name='id' value='".$row['ID']."' ><input class='LigaSiniestros' id='necesitafactura' type='submit' ".$colorines." value='".$row['siniestroId']."' ></form></div>";
     }
     if($row["siniestroColor"] == 5 ){
-        return "<form action='/backend/Siniestros/Siniestros.php' method='POST'>
-                <input class='LigaSiniestros' type='number' hidden name='id' value='".$row['ID']."' >
-                <input class='LigaSiniestros' id='pendientedeale' type='submit' ".$colorines." value='".$row['siniestroId']."' >
-            </form>";
+        return "<div><form action='/backend/Siniestros/Siniestros.php' method='POST'><input class='LigaSiniestros' type='number' hidden name='id' value='".$row['ID']."' ><input class='LigaSiniestros' id='pendientedeale' type='submit' ".$colorines." value='".$row['siniestroId']."' ></form></div>";
     }
 }
 

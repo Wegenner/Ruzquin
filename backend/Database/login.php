@@ -16,7 +16,7 @@
             $_SESSION['rol'] = $result["UserRoles"];
             $_SESSION['nombre'] = $result["UserName"];
     
-            $redirect = "/backend/Siniestros/SiniestrosActivos.php";
+            $redirect = "/backend/Avisos/AvisosLanding.php";
     
             header("Location: ".$redirect,true,303);
 
