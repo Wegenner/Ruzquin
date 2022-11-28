@@ -1,6 +1,7 @@
 
 var URLactual = window.location;
 
+var enproducción = "https://wegenner.net/backend/Chat/ChatNotificaciones.php";
 
 if(URLactual == "http://localhost/backend/Chat/ChatNotificaciones.php"){
     $(document).ready(function(){

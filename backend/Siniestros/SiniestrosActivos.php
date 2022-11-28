@@ -1,18 +1,6 @@
 <?php 
 
     include $_SERVER['DOCUMENT_ROOT']."/shared/_header.php";
-    include $_SERVER['DOCUMENT_ROOT']."/backend/Database/connection.php"; 
-    include $_SERVER['DOCUMENT_ROOT']."/backend/Database/db_Functions.php"; 
-
-    $MesFin = date_create("today");
-    $MesInicio = date_create("today")->modify("-3 month");
-
-    $MesFin = $MesFin->format('Y-m-d');
-    $MesInicio = $MesInicio->format('Y-m-d');
-
-    $sql = "SELECT ID,siniestroId,siniestroColor, siniestroAnticipo,siniestroEstado FROM siniestromodelo WHERE (siniestroEstado != 'Cancelado')AND(siniestroEstado != 'Facturación')AND(siniestroEstado != 'Facturación ')AND(siniestroEstado != 'Facturacion')AND(siniestroEstado != 'Pago de daños')AND(siniestroFecha BETWEEN '".$MesInicio." 00:00:00' AND '".$MesFin." 00:00:00')";
-
-    $result = $connect->query($sql);
 
 ?>
 
@@ -51,7 +39,7 @@
 
     <hr />
 
-    <h2 style="text-align : center">Total : <?php echo $result->num_rows; ?></h2>
+    <h2 style="text-align : center" id='totalsiniestros'>Total : </h2>
 
     <div class="rounded container-fluid align-items-center">
 
@@ -63,48 +51,16 @@
                     <p style="margin-bottom:1rem;">Recepción</p>
                 </div>
 
-                    <ul id="siniestrosIds">
-                        
-                        <?php 
-                        
-                            $result = $connect->query($sql);
+                    <ul class="siniestrosIds" id="sinrecepcion">
+                    </ul>
 
-                            if ($result->num_rows > 0) {
-                            while($row = $result->fetch_assoc()) {
-                        
-                                if(str_contains($row["siniestroEstado"], "Recepción")){
-                                    echo botonsiniestro($row);
-                                }
+            </div>
+            <div class='col-auto align-items-center columnasSiniestros' style='padding:0;width:15%;text-align:center'>
+                <div class='titulosEstados'> 
+                    <p>Visita</p>
+                </div>
 
-                            }
-                    ?>
-
-
-</ul>
-
-    </div>
-    <div class='col-auto align-items-center columnasSiniestros' style='padding:0;width:15%;text-align:center'>
-        <div class='titulosEstados'> 
-            <p>Visita</p>
-        </div>
-
-        <ul class='siniestrosIds'>
-
-                        <?php
-
-                        $result = $connect->query($sql);
-
-                        while($row=$result->fetch_assoc()) {
-
-                            if(str_contains($row["siniestroEstado"], "Visita")){
-                                echo botonsiniestro($row);
-                            }
-                        }
-
-                        }
-
-                        ?>
-                
+                <ul class="siniestrosIds" id="sinvisita">
                 </ul>
 
             </div>
@@ -114,21 +70,7 @@
                     <p>Presupuesto</p>
                 </div>
 
-                <ul class="siniestrosIds">
-                        <?php  
-                        
-                        $result = $connect->query($sql);
-                        
-                            if ($result->num_rows > 0) {
-                            while($row = $result->fetch_assoc()) {
-
-                            if(str_contains($row["siniestroEstado"], "Presupuesto")){
-                                echo botonsiniestro($row);
-                            }
-                            }
-                        }
-                        ?>
-
+                <ul class="siniestrosIds" id="sinpresupuesto">
                 </ul>
 
             </div>
@@ -138,21 +80,7 @@
                     <p>Autorizado</p>
                 </div>
 
-                <ul class="siniestrosIds">
-                    
-                    <?php     
-
-                        $result = $connect->query($sql);
-
-                        if ($result->num_rows > 0) {
-                        while($row = $result->fetch_assoc()) {
-                        if(str_contains($row["siniestroEstado"], "Autorizado")){
-                            echo botonsiniestro($row);
-                        }
-                        }
-                    }
-                    ?>
-                    
+                <ul class="siniestrosIds" id="sinautorizado">
                 </ul>
 
             </div>
@@ -162,21 +90,7 @@
                     <p>Espera</p>
                 </div>
 
-                <ul class="siniestrosIds">
-
-                    <?php   
-                    
-                        $result = $connect->query($sql);
-                    
-                        if ($result->num_rows > 0) {
-                        while($row = $result->fetch_assoc()) {
-                        if(str_contains($row["siniestroEstado"], "espera")){
-                            echo botonsiniestro($row);
-                        }
-                        }
-                    }
-                    ?>
-                    
+                <ul class="siniestrosIds" id="sinespera">
                 </ul>
 
             </div>
@@ -186,23 +100,7 @@
                     <p>E. E.</p>
                 </div>
 
-                <ul class="siniestrosIds">
-
-                    <?php  
-
-                        $result = $connect->query($sql);
-
-                        if ($result->num_rows > 0) {   
-                            while($row = $result->fetch_assoc()) {
-                                if(str_contains($row["siniestroEstado"], "Evidencia") || str_contains($row["siniestroEstado"], "Envío")){
-                                    echo botonsiniestro($row);
-                                }
-
-                            }
-                        }
-
-                    ?>
-                
+                <ul class="siniestrosIds" id="sinevidencias">  
                 </ul>
 
             </div>
@@ -225,9 +123,24 @@
 </div>
 <br />
 
-<?php
 
-    $connect->close();
-    include $_SERVER['DOCUMENT_ROOT']."/shared/_footer.php";
+<br>
 
-?>
+<footer class="border-top footer text-muted">
+    <div class="container">
+        &copy; 2022 - Ruzquin - <a action="Privacy">Privacy</a>
+    </div>
+</footer>
+</body>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.3/dist/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+<script 
+src="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/js/bootstrap.min.js"
+integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+crossorigin="anonymous">
+</script>
+<script src="/root/js/chat_notificaciones.js"></script>
+<script src="/root/js/chat_siniestro.js"></script>
+
+</html>
